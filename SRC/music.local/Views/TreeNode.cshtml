@@ -1,0 +1,44 @@
+﻿@using System.Web.Configuration
+@using System.Web.Mvc.Html;
+@using music.local.Models;
+@model SoundTrackModel
+
+@{    
+    var host = WebConfigurationManager.AppSettings["AbsoluteHostPath"];
+    var icon = "";
+    var src = "";
+    var playAction = "";
+    switch ((TrackType)Model.ItemType)
+    {
+        case TrackType.Group:
+            icon = "glyphicon glyphicon-th-list";
+            break;
+        case TrackType.Album:
+            src = host + "/Home/File?p=" + Model.CoverPath;
+            icon = "glyphicon glyphicon-cd";
+            break;
+        case TrackType.Track:
+            playAction = "onclick=\"playAudio('" + Model.ParentGid + "-" + Model.order + "')\"";
+            src = host+"/Home/File?p="+ Model.FilePath;
+            icon = "glyphicon glyphicon-play";
+            break;
+    }
+    var data = "{\"icon\":\"" + icon + "\"}";
+}
+
+
+<li class="@(Model.ParentGid + "-" + Model.order)" @(Html.Raw(playAction)) data-jstree="@data" name="@Model.ParentGid" data-order="@Model.order" data-src="@src">
+    @Model.Name
+    @{
+        if (Model.ListTrack != null && Model.ListTrack.Any())
+        {
+            <ul>
+                @foreach (var child in Model.ListTrack)
+                {
+                    Html.RenderPartial("/Views/TreeNode.cshtml", child);
+                }
+            </ul>
+        }
+    }
+
+</li>

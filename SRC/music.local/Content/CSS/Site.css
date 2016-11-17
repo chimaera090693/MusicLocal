@@ -1,0 +1,12 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/*nav singer*/
+ul.nav>li.active>a{
+    background-color: #ddd !important;
+}
+ul.nav > li > a:hover, ul.nav > li > a:focus {
+    background-color: #eee;
+}
