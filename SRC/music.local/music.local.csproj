@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -312,6 +313,7 @@
     <Content Include="Content\VideoJS5.13\video-js.swf" />
     <Content Include="Content\VideoJS5.13\video.js" />
     <Content Include="Content\VideoJS5.13\video.min.js" />
+    <Content Include="Content\VideoJS5.13\videojs-sublime.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\CSS\Site.css" />
