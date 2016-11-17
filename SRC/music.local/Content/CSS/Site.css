@@ -1,6 +1,8 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 150px;
+    padding-top: 20px;
+    position: absolute;
+    width: 100%;
 }
 
 /*nav singer*/
@@ -10,3 +12,60 @@ ul.nav>li.active>a{
 ul.nav > li > a:hover, ul.nav > li > a:focus {
     background-color: #eee;
 }
+
+/*end nav singer============================================*/
+
+/*custom tree*/
+.jstree-anchor{
+    width:97%;
+}
+/*end custom tree===========================================*/
+
+
+/*footer player*/
+.footer-player{
+    height: 150px;
+    width: 100%;
+    position:fixed;
+    bottom:0px;
+}
+.albumCover{
+    position:absolute;
+    /*background-color:red;*/
+    height:150px;
+    width:20%;
+}
+.player-wraper{
+    position:absolute;
+    right:0px;
+    height:150px;
+    width:80%;
+}
+#player {
+    width:100%;
+    height:150px;
+}
+#player .vjs-control-btnCustom{
+    font-family: Glyphicons Halflings;
+    font-weight: normal;
+    font-style: normal;
+}
+#player .vjs-control-btnCustom:before{
+    font-size: small;
+    margin: 10% auto;
+}
+#player .vjs-control-btnnext:before{
+    content: "\e077";
+}
+#player .vjs-control-loop1:before{
+    content: "\e030";
+}
+#player .vjs-control-loop2:before{
+    content: "\e031";
+}
+#player .vjs-control-loop0:before{
+    content: "\e030";
+    color: red;
+}
+
+/*end footer player======================================*/
