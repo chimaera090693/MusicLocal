@@ -34,38 +34,95 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     /*background-color:red;*/
     height:150px;
     width:20%;
+    background-color: #ddd;
 }
+ .albumCover img{
+    height: 100%;
+    margin: 0 auto;
+    position:relative;
+}
+.controls-wraper{
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-color:#eee;
+    opacity: 0; 
+    top: 0px;
+}
+.controls-wraper:hover{
+    opacity: 0.8; 
+}
+.controls-wraper .buttons{
+    margin: 0 auto;
+    padding-top: 70px;
+    display: table;
+    position: relative;
+}
+
+
+
+
 .player-wraper{
     position:absolute;
     right:0px;
     height:150px;
     width:80%;
+    background-color:#dedede;
+    opacity:0.9;
 }
+
 #player {
     width:100%;
     height:150px;
 }
-#player .vjs-control-btnCustom{
+.control-btnCustom{
     font-family: Glyphicons Halflings;
     font-weight: normal;
     font-style: normal;
+    opacity:0.9;
+    background: none;
+    border: none;
+    color: inherit;
+    display: inline-block;
+    overflow: visible;
+    font-size: inherit;
+    line-height: inherit;
+    text-transform: none;
+    text-decoration: none;
+    transition: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    flex: none;
 }
-#player .vjs-control-btnCustom:before{
+.control-btnCustom:focus:before,
+.control-btnCustom:hover:before,
+.control-btnCustom:focus {
+  text-shadow: 0em 0em 1em #000; 
+
+}
+.control-btnCustom:before{
     font-size: small;
     margin: 10% auto;
 }
-#player .vjs-control-btnnext:before{
+.control-btnnext:before{
     content: "\e077";
 }
-#player .vjs-control-loop1:before{
+.control-loop1:before{
     content: "\e030";
 }
-#player .vjs-control-loop2:before{
+
+.control-loop2:before{
     content: "\e031";
 }
-#player .vjs-control-loop0:before{
+.control-loop0:before{
     content: "\e030";
     color: red;
+}
+.control-btnplay:before{
+    content: "\e072";
+}
+.control-btnpause:before{
+    content: "\e073";
 }
 
 /*end footer player======================================*/

@@ -40,8 +40,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net">
-      <HintPath>..\..\TestIEStreaming\MediaApi\bin\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -267,6 +268,8 @@
     <Content Include="Content\jsTree\test\visual\screenshots\mobile\.png" />
     <Content Include="Content\jsTree\test\visual\screenshots\mobile\home.png" />
     <Content Include="Content\jsTree\test\visual\screenshots\mobile\mobile.png" />
+    <Content Include="Content\JS\CustomJSWithVideoJS.js" />
+    <Content Include="Content\JS\CustomJSWithWavesurfer.js" />
     <Content Include="Content\JS\jquery-3.1.1.min.js" />
     <Content Include="Content\VideoJS5.13\alt\video-js-cdn.css" />
     <Content Include="Content\VideoJS5.13\alt\video-js-cdn.min.css" />
@@ -314,6 +317,8 @@
     <Content Include="Content\VideoJS5.13\video.js" />
     <Content Include="Content\VideoJS5.13\video.min.js" />
     <Content Include="Content\VideoJS5.13\videojs-sublime.css" />
+    <Content Include="Content\VideoJS5.13\videojs.wavesurfer.js" />
+    <Content Include="Content\WaveSurfer\wavesurfer.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\CSS\Site.css" />

@@ -9,11 +9,10 @@
 
 
 }
-<link href="~/Content/bootstrap3.3.7/css/bootstrap.css" rel="stylesheet"/>
+<link href="~/Content/bootstrap3.3.7/css/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/CSS/Site.css" rel="stylesheet" />
 <link href="~/Content/jsTree/dist/themes/default/style.css" rel="stylesheet" />
 <link href="~/Content/VideoJS5.13/video-js.css" rel="stylesheet" />
-<link href="~/Content/VideoJS5.13/videojs-sublime.css" rel="stylesheet" />
 <div class="body">
     <div class="main-cont">
         <div class="col-md-4">
@@ -29,7 +28,7 @@
                                 @soundTrackModel.Name
                             </a>
                         </li>
-                        if(!string.IsNullOrEmpty(isFirst) && soundTrackModel.CoverPath!="")
+                        if (!string.IsNullOrEmpty(isFirst) && soundTrackModel.CoverPath != "")
                         {
                             firstIMG = host + "/Home/File?p=" + soundTrackModel.CoverPath;
                         }
@@ -58,8 +57,8 @@
                                 </ul>
                             </div>
                         </div>
-                        isFirst = "";
-                        count++;
+                                    isFirst = "";
+                                    count++;
                     }
                 }
             </div>
@@ -69,104 +68,20 @@
 <div class="footer-player">
     <div class="albumCover">
         <img id="cover" src="@firstIMG" class="img-responsive"/>
+        <div class="controls-wraper">
+            <div class="buttons">
+                <button text="Pause" onclick="" id="btnPlay" class="control-btnCustom control-btnplay"></button>
+                <button text="Next" onclick="nextTrack()" id="btnMyNext" class="control-btnCustom control-btnnext"></button>
+                <button text="Repeat Album" onclick="changeLoop(this)" id="btnMyLoop" class="control-btnCustom control-loop2"></button>
+            </div> 
+        </div>
     </div>
     <div class="player-wraper">
-        <audio id="player" class="video-js vjs-sublime-skin" controls preload="auto"></audio>
+        @*<audio id="player" class="video-js vjs-sublime-skin" controls preload="auto"></audio>*@
     </div>
 </div>
 <script src="~/Content/JS/jquery-3.1.1.min.js"></script>
 <script src="~/Content/bootstrap3.3.7/js/bootstrap.js"></script>
 <script src="~/Content/jsTree/dist/jstree.js"></script>
-<script src="~/Content/VideoJS5.13/video.js"></script>
-
-<script>
-    
-    ///
-    ///isloop
-    ///0: no loop
-    ///1: loop this track
-    ///2: loop all album
-    var isLoop = 2;
-    $(function () {
-        $('.treeWraper').jstree();
-        $.myPlayer = videojs("player");
-        $.myCrntID = "";
-        $.myPlayer.on("ended", function () {
-            endPlay();
-        });
-        //btnNext
-        var buttonNext = $("<button text='Next' id='btnMyNext' class='vjs-control vjs-control-btnCustom vjs-control-btnnext'/>");
-        buttonNext.on("click", function () {
-            nextTrack();
-        });
-        buttonNext.insertAfter($(".vjs-play-control"));
-        //btnLoop
-        var buttonLoop = $("<button text='Loop' title='Repeat Album' id='btnMyLoop' class='vjs-control vjs-control-btnCustom vjs-control-loop2'></button>");
-        buttonLoop.on("click", function () {
-            changeLoop(this);
-        });
-        buttonLoop.insertAfter($(".vjs-remaining-time"));
-
-    });
-    
-    ///=============Event ============
-    function playAudio(cls) {
-        $.myCrntID = cls;
-        $.myPlayer.pause();
-        var newSrc = $("." + cls).first().data("src");
-        var cover = $("." + cls).first().parent().parent().data("src");
-        $("#cover").attr("src", cover);
-        $.myPlayer.src(newSrc);
-        $.myPlayer.play();
-    }
-    function endPlay() {
-        if (isLoop == 0) return;
-        if (isLoop == 1) {
-            $.myPlayer.play();
-            return;
-        }
-        //isloop==2 => load next track
-        nextTrack();
-        return;
-    }
-    function nextTrack() {
-
-    }
-    function changeLoop(ele) {
-        switch (isLoop) {
-            case 1:
-                isLoop = 2;
-                break;
-            case 2:
-                isLoop = 0;
-                break;
-            case 0:
-                isLoop = 1;
-                break;
-        }
-        $(ele).attr("class", getLoopButtonClass());
-        $(ele).attr("title", getLoopButtonText());
-    }
-    ///============End Event ================
-
-    ///============Common Function ================
-
-    //vjs-control vjs-control-btnCustom
-    function getLoopButtonClass() {
-        return 'vjs-control vjs-control-btnCustom vjs-control-loop' + isLoop;
-    }
-    function getLoopButtonText() {
-        switch (isLoop) {
-            case 1:
-                return 'Repeat one';
-                break;
-            case 2:
-                return 'Repeat Album';
-                break;
-            case 0:
-                return 'No repeat';
-                break;
-        }
-    }
-    ///============End Common Function ================
-</script>
+<script src="~/Content/WaveSurfer/wavesurfer.min.js"></script>
+<script src="~/Content/JS/CustomJSWithWavesurfer.js"></script>
