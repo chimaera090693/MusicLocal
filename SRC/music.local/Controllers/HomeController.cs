@@ -17,8 +17,7 @@ namespace music.local.Controllers
     {
         public ActionResult Index()
         {
-            List<SoundTrackModel> listAlbum = new List<SoundTrackModel>();
-            listAlbum = TrackProcessing.GetTree();
+            var listAlbum = TrackProcessing.GetTree();
             ViewBag.Data = listAlbum;
             return View("/Views/Home.cshtml");
         }

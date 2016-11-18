@@ -27,7 +27,7 @@
 }
 
 
-<li class="@(Model.ParentGid + "-" + Model.order)" @(Html.Raw(playAction)) data-jstree="@data" name="@Model.ParentGid" data-order="@Model.order" data-src="@src">
+<li class="@(Model.ParentGid + "-" + Model.order)" @(Html.Raw(playAction)) data-jstree="@data" name="@(Model.Name+" / "+Model.CoverPath)" data-order="@Model.order" data-src="@src">
     @Model.Name
     @{
         if (Model.ListTrack != null && Model.ListTrack.Any())

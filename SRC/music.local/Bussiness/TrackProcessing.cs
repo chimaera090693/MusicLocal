@@ -78,6 +78,7 @@ namespace music.local.Bussiness
                             st.order = count;
                             st.Name = file.Name;
                             st.ParentGid = parent.Gid;
+                            st.CoverPath = parent.Name;
                             st.FilePath = parent.FilePath + "\\" + file.Name;
                             //st.ListTrack = ReclusiveTree(st.FilePath, lever + 1, ref st);
                             count++;

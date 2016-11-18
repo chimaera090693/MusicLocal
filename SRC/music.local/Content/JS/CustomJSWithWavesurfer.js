@@ -19,22 +19,36 @@ $(function () {
 });
 
 ///=============Event ============
+
 function playAudio(cls, auto) {
     $.myCrntID = cls;
     //$.myPlayer.waveform.pause();
     var newSrc = $("." + cls).first().data("src");
     var cover = $("." + cls).first().parent().parent().data("src");
+    $("#playerSongInfor").text($("." + cls).attr("name"));
     $("#cover").attr("src", cover);
     $.myPlayer.load(newSrc);
     //$.myPlayer.play();
     $.myPlayer.once('ready', function () {
-        $.myPlayer.play();
+        //$.myPlayer.play();
+        togglePlay();
     });
     if (auto != undefined) {
         $.myFkingTree.jstree("deselect_all");
         $.myFkingTree.jstree("select_node", "." + cls);
     }
 }
+
+function togglePlay() {
+    $.myPlayer.playPause();
+    if ($.myPlayer.isPlaying()) {
+        //btnPlay
+        $("#btnPlay").attr("class", "control-btnCustom control-btnpause");
+    } else {
+        $("#btnPlay").attr("class", "control-btnCustom control-btnplay");
+    }
+}
+
 function endPlay() {
     if (isLoop == 1) {
         $.myPlayer.play();
@@ -44,6 +58,7 @@ function endPlay() {
     nextTrack();
     return;
 }
+
 function nextTrack() {
     //get next track
     var next = "";
@@ -66,6 +81,7 @@ function nextTrack() {
         }
     }
 }
+
 function changeLoop(ele) {
     switch (isLoop) {
         case 1:
@@ -81,6 +97,7 @@ function changeLoop(ele) {
     $(ele).attr("class", getLoopButtonClass());
     $(ele).attr("title", getLoopButtonText());
 }
+
 ///============End Event ================
 
 ///============Common Function ================

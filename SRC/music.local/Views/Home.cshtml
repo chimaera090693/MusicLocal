@@ -70,13 +70,14 @@
         <img id="cover" src="@firstIMG" class="img-responsive"/>
         <div class="controls-wraper">
             <div class="buttons">
-                <button text="Pause" onclick="" id="btnPlay" class="control-btnCustom control-btnplay"></button>
+                <button text="Pause" onclick="togglePlay()" id="btnPlay" class="control-btnCustom control-btnplay"></button>
                 <button text="Next" onclick="nextTrack()" id="btnMyNext" class="control-btnCustom control-btnnext"></button>
                 <button text="Repeat Album" onclick="changeLoop(this)" id="btnMyLoop" class="control-btnCustom control-loop2"></button>
             </div> 
         </div>
     </div>
     <div class="player-wraper">
+        <div id="playerSongInfor"></div>
         @*<audio id="player" class="video-js vjs-sublime-skin" controls preload="auto"></audio>*@
     </div>
 </div>
