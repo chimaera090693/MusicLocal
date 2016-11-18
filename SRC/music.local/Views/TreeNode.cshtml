@@ -22,6 +22,11 @@
             src = host+"/Home/File?p="+ Model.FilePath;
             icon = "glyphicon glyphicon-play";
             break;
+        default: 
+            playAction = "onclick=\"playAudio('" + Model.ParentGid + "-" + Model.order + "')\"";
+            src = host + "/Home/File?p=" + Model.FilePath;
+            icon = "glyphicon glyphicon-play";
+                break;
     }
     var data = "{\"icon\":\"" + icon + "\"}";
 }
