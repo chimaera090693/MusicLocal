@@ -45,6 +45,10 @@
       <HintPath>bin\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NAudio, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -162,6 +166,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bussiness\TrackProcessing.cs" />
+    <Compile Include="Bussiness\WaveFormProcessing.cs" />
     <Compile Include="CommonFunction\Common.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -172,6 +177,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\NAudio.dll" />
     <Content Include="Content\bootstrap3.3.7\css\bootstrap-theme.css" />
     <Content Include="Content\bootstrap3.3.7\css\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap3.3.7\css\bootstrap.css" />

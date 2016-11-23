@@ -21,6 +21,11 @@ namespace music.local.Controllers
             ViewBag.Data = listAlbum;
             return View("/Views/Home.cshtml");
         }
+        public FileContentResult Demo()
+        {
+            return WaveFormProcessing.DemoDraw();
+            //return Content("null");
+        }
 
         public FileResult File(string p)
         {
