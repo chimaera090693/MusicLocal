@@ -37,19 +37,18 @@ namespace music.local.Bussiness
 
                 Bitmap bmp = new Bitmap(1170, 200);
 
-                int BORDER_WIDTH = 5;
+                int BORDER_WIDTH = 1;
                 int width = bmp.Width - (2 * BORDER_WIDTH);
                 int height = bmp.Height - (2 * BORDER_WIDTH);
 
                 Mp3FileReader reader = new Mp3FileReader(strPath, wf => new NAudio.FileFormats.Mp3.DmoMp3FrameDecompressor(wf));
                 WaveChannel32 channelStream = new WaveChannel32(reader);
-
                 int bytesPerSample = (reader.WaveFormat.BitsPerSample / 8) * channelStream.WaveFormat.Channels;
-
+                channelStream.Dispose();
+                reader.Dispose();
                 using (Graphics g = Graphics.FromImage(bmp))
                 {
-
-                    g.Clear(Color.White);
+                    g.Clear(Color.Transparent);
                     Pen pen1 = new Pen(Color.Gray);
                     int size = data.Length;
 
@@ -84,17 +83,17 @@ namespace music.local.Bussiness
                         g.DrawLine(pen1, x, lowValue, x, highValue);
 
                     }
+                    wavestream.Close();
+                    wavestream.Dispose();
                 }
-
-                //string filename = WebConfigurationManager.AppSettings["PhysicalPath"]+"\\"+("image\\060.jpg");
-                //bmp.Save(filename);
-                //bmp.Dispose();
                 FileContentResult image = null;
                 using (var ms = new MemoryStream())
                 {
-                     bmp.Save(ms,ImageFormat.Jpeg);
-                     image = new FileContentResult(ms.ToArray(), "image/jpeg");
+                     bmp.Save(ms,ImageFormat.Png);
+                     image = new FileContentResult(ms.ToArray(), "image/png");
                 }
+                
+                bmp.Dispose();
                 return image;
             }
             catch (Exception e)
