@@ -6,7 +6,14 @@
 ///2: loop all album
 var isLoop = 2;
 $(function () {
-    $.myFkingTree = $('.treeWraper').jstree();
+    $.myFkingTree = $('.treeWraper').jstree(
+    {
+        "core": {
+            "multiple": false,
+            "worker": false
+        }
+    }
+    );
     $.myPlayer = WaveSurfer.create({
         container: '.player-wraper',
         height: 150
@@ -22,6 +29,9 @@ $(function () {
 
 function playAudio(cls, auto) {
     $.myCrntID = cls;
+    if (auto != undefined) {
+        BindSelectedTreeElement(cls);
+    }
     //$.myPlayer.waveform.pause();
     var newSrc = $("." + cls).first().data("src");
     var cover = $("." + cls).first().parent().parent().data("src");
@@ -33,10 +43,7 @@ function playAudio(cls, auto) {
         //$.myPlayer.play();
         togglePlay();
     });
-    if (auto != undefined) {
-        $.myFkingTree.jstree("deselect_all");
-        $.myFkingTree.jstree("select_node", "." + cls);
-    }
+
 }
 
 function togglePlay() {
@@ -66,7 +73,7 @@ function nextTrack() {
         var current = $.myCrntID.split('-');
         var nextId = current[1];
         next = current[0] + "-" + String(parseInt(nextId) + 1);
-        console.log(next);
+        //console.log(next);
         if ($("." + next).length) {
             playAudio(next, 1);
         } else {
@@ -75,7 +82,6 @@ function nextTrack() {
                 next = current[0] + "-" + 0;
                 if ($("." + next).length) {
                     playAudio(next, 1);
-
                 }
             }
         }
@@ -102,7 +108,17 @@ function changeLoop(ele) {
 
 ///============Common Function ================
 
-//vjs-control vjs-control-btnCustom
+function BindSelectedTreeElement(selector) {
+    $.myFkingTree.each(function (index, value) {
+        $(value).jstree("deselect_all");
+        if ($(value).find(selector).length > 0) {
+            //console.log(value);
+            //$(value).jstree("open_node", selector);
+            $(value).jstree("select_node", selector);
+        }
+
+    });
+}
 function getLoopButtonClass() {
     return 'control-btnCustom control-loop' + isLoop;
 }

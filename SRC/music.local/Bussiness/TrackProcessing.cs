@@ -27,7 +27,7 @@ namespace music.local.Bussiness
         }
 
         /// <summary>
-        /// đệ quy
+        /// đệ quy cây thư mục
         /// </summary>
         /// <param name="parentPath"></param>
         /// <param name="lever"></param>
@@ -67,14 +67,14 @@ namespace music.local.Bussiness
                     {
                         var file = new FileInfo(item);
                         var extension = Path.GetExtension(item);
-                        if(extension != null && (extension.ToLower() == ".jpeg" || extension.ToLower() == ".jpg"))
+                        if(extension != null && (extension.ToLower() != ".mp3"))
                         {
                             parent.CoverPath = parent.FilePath + "\\" + file.Name;
                         }
                         else
                         {
                             SoundTrackModel st = new SoundTrackModel();
-                            st.ItemType = lever;
+                            st.ItemType = (int)TrackType.Track;
                             st.order = count;
                             st.Name = file.Name;
                             st.ParentGid = parent.Gid;

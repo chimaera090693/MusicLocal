@@ -8,6 +8,7 @@
     var icon = "";
     var src = "";
     var playAction = "";
+    var ids = "";
     switch ((TrackType)Model.ItemType)
     {
         case TrackType.Group:
@@ -21,18 +22,20 @@
             playAction = "onclick=\"playAudio('" + Model.ParentGid + "-" + Model.order + "')\"";
             src = host+"/Home/File?p="+ Model.FilePath;
             icon = "glyphicon glyphicon-play";
+            ids = "id=" + Model.ParentGid + "-" + Model.order + "";
             break;
         default: 
             playAction = "onclick=\"playAudio('" + Model.ParentGid + "-" + Model.order + "')\"";
             src = host + "/Home/File?p=" + Model.FilePath;
             icon = "glyphicon glyphicon-play";
+            ids = "id=" + Model.ParentGid + "-" + Model.order + "";
                 break;
     }
     var data = "{\"icon\":\"" + icon + "\"}";
 }
 
 
-<li class="@(Model.ParentGid + "-" + Model.order)" @(Html.Raw(playAction)) data-jstree="@data" name="@(Model.Name+" / "+Model.CoverPath)" data-order="@Model.order" data-src="@src">
+<li @(ids) class="@(Model.ParentGid + "-" + Model.order)" @(Html.Raw(playAction)) data-jstree="@data" name="@(Model.Name+" / "+Model.CoverPath)" data-order="@Model.order" data-src="@src">
     @Model.Name
     @{
         if (Model.ListTrack != null && Model.ListTrack.Any())
