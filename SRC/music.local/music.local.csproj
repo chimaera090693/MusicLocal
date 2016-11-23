@@ -318,6 +318,7 @@
     <Content Include="Content\VideoJS5.13\video.min.js" />
     <Content Include="Content\VideoJS5.13\videojs-sublime.css" />
     <Content Include="Content\VideoJS5.13\videojs.wavesurfer.js" />
+    <Content Include="Content\WaveSurfer\wavesurfer.js" />
     <Content Include="Content\WaveSurfer\wavesurfer.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

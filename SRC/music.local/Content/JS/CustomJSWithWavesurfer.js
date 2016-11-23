@@ -30,7 +30,7 @@ $(function () {
 function playAudio(cls, auto) {
     $.myCrntID = cls;
     if (auto != undefined) {
-        BindSelectedTreeElement(cls);
+        BindSelectedTreeElement("." + cls);
     }
     //$.myPlayer.waveform.pause();
     var newSrc = $("." + cls).first().data("src");
