@@ -80,11 +80,14 @@
     </div>
     <div class="player-wraper">
         <div id="playerSongInfor"></div>
-        @*<audio id="player" class="video-js vjs-sublime-skin" controls preload="auto"></audio>*@
+        <div id="player-display">
+            <div id="remain-display" style="width:100%;"></div>
+        </div>
+        <audio id="player" class="hidden"  preload="auto"></audio>
     </div>
 </div>
 <script src="~/Content/JS/jquery-3.1.1.min.js"></script>
 <script src="~/Content/bootstrap3.3.7/js/bootstrap.js"></script>
 <script src="~/Content/jsTree/dist/jstree.js"></script>
-<script src="~/Content/WaveSurfer/wavesurfer.min.js"></script>
-<script src="~/Content/JS/CustomJSWithWavesurfer.js"></script>
+@*<script src="~/Content/WaveSurfer/wavesurfer.min.js"></script>*@
+<script src="~/Content/JS/CustomWithoutPlugin.js"></script>

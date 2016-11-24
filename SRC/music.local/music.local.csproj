@@ -276,6 +276,7 @@
     <Content Include="Content\jsTree\test\visual\screenshots\mobile\mobile.png" />
     <Content Include="Content\JS\CustomJSWithVideoJS.js" />
     <Content Include="Content\JS\CustomJSWithWavesurfer.js" />
+    <Content Include="Content\JS\CustomWithoutPlugin.js" />
     <Content Include="Content\JS\jquery-3.1.1.min.js" />
     <Content Include="Content\VideoJS5.13\alt\video-js-cdn.css" />
     <Content Include="Content\VideoJS5.13\alt\video-js-cdn.min.css" />

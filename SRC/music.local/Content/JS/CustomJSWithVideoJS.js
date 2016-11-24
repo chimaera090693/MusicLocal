@@ -1,4 +1,4 @@
-﻿///
+﻿///dùng player VideoJS
 ///isloop
 ///0: no loop
 ///1: loop this track

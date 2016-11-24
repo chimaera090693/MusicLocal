@@ -63,15 +63,36 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
 
 
 .player-wraper{
-    position:absolute;
-    right:0px;
+    position:relative;
+    /*right:0px;*/
+    float:right;
     height:150px;
     width:80%;
     background-color:#dedede;
     opacity:0.9;
+    border-left:1px solid #000;
+}
+#player-display{
+    position:absolute;
+    right:0px;
+    height:150px;
+    width:100%;
+    background-color:#dedede;
+    background-size: 100% 100%;
+    opacity:0.9;
+}
+#remain-display{
+    border-left:1px solid #000;
+    background-color:#eee;
+    opacity:0.5;
+    right: 0px;
+    transition: width 0.2s;
+    position:absolute;
+    height:150px;
 }
 
 #playerSongInfor{
+     z-index: 999;
      position:absolute;
      font-family:Arial;
      font-weight:bold;

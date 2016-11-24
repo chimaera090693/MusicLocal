@@ -1,4 +1,4 @@
-﻿//dùng wavesufer
+﻿///không có plugin player
 ///
 ///isloop
 ///0: no loop
@@ -14,15 +14,16 @@ $(function () {
         }
     }
     );
-    $.myPlayer = WaveSurfer.create({
-        container: '.player-wraper',
-        height: 150
-    });
-    $.myPlayer.on("finish", function () {
+    $.myPlayer = document.getElementById("player");
+    $.myPlayer.onended = (function () {
         endPlay();
     });
+    $.myPlayer.ontimeupdate= (function() {
+        //update time
+        UpdateDisplay();
+    });
     $.myCrntID = "";
-
+    document.getElementById("player-display").onclick = Seek;
 });
 
 ///=============Event ============
@@ -32,26 +33,35 @@ function playAudio(cls, auto) {
     if (auto != undefined) {
         BindSelectedTreeElement("." + cls);
     }
+    $.myPlayer.src = "";
     //$.myPlayer.waveform.pause();
     var newSrc = $("." + cls).first().data("src");
     var cover = $("." + cls).first().parent().parent().data("src");
     $("#playerSongInfor").text($("." + cls).attr("name"));
     $("#cover").attr("src", cover);
-    $.myPlayer.load(newSrc);
+    var playerimage = newSrc.replace("Home/File?p=", "Home/Demo?p=");
+    playerimage = encodeURI(playerimage);
+    //console.log(playerimage);
+    $("#player-display").css("background-image", "url(\"" + playerimage + "\")");
+    $.myPlayer.src= newSrc;
     //$.myPlayer.play();
-    $.myPlayer.once('ready', function () {
+    $.myPlayer.load();
+    $.myPlayer.addEventListener("canplay",function () {
+        togglePlay(1);
+        $.myPlayer.removeEventListener("canplay", function (){});
         //$.myPlayer.play();
-        togglePlay();
     });
 
 }
 
-function togglePlay() {
-    $.myPlayer.playPause();
-    if ($.myPlayer.isPlaying()) {
+function togglePlay(isplay) {
+    //$.myPlayer.playPause();
+    if ($.myPlayer.paused || isplay ==1) {
         //btnPlay
+        $.myPlayer.play();
         $("#btnPlay").attr("class", "control-btnCustom control-btnpause");
     } else {
+        $.myPlayer.pause();
         $("#btnPlay").attr("class", "control-btnCustom control-btnplay");
     }
 }
@@ -103,7 +113,30 @@ function changeLoop(ele) {
     $(ele).attr("class", getLoopButtonClass());
     $(ele).attr("title", getLoopButtonText());
 }
+function UpdateDisplay() {
+    var width = $("#player-display").width();
+    var totalTime = $.myPlayer.duration;
+    var crntTime = $.myPlayer.currentTime;
+    //console.log(width + "-" + totalTime + "-" + crntTime);
+    $("#remain-display").css("width", (width-((crntTime / totalTime) * width).toFixed(0)) + "px ");
+}
 
+function Seek(event) {
+    //player-display
+    var curPos = event.clientX - $(".albumCover").width();
+    //console.log(event.clientX);
+    var width = $("#player-display").width();
+    var totalTime = $.myPlayer.duration;
+    var crntTime = ((curPos / width) * totalTime).toFixed(0);
+
+    $("#remain-display").css("width", (curPos) + "px");
+    $.myPlayer.currentTime = crntTime;
+    $.myPlayer.addEventListener("canplay", function () {
+        $.myPlayer.removeEventListener("canplay", function () { });
+        $.myPlayer.play();
+    });
+    //$.myPlayer.play();
+}
 ///============End Event ================
 
 ///============Common Function ================
@@ -126,13 +159,10 @@ function getLoopButtonText() {
     switch (isLoop) {
         case 1:
             return 'Repeat one';
-            break;
         case 2:
             return 'Repeat Album';
-            break;
         case 0:
             return 'No repeat';
-            break;
     }
 }
 ///============End Common Function ================

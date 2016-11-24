@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.EntitySql;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -14,28 +15,29 @@ namespace music.local.Bussiness
 {
     public class WaveFormProcessing
     {
-        public static FileContentResult DemoDraw()
+        public static float zoomper = (float)0.90;
+        public static FileContentResult DemoDraw(string fn = "")
         {
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
-            physPath = physPath + @"\Music\Millenario - Elisa.mp3";
+            physPath = physPath + (fn==""? @"\Music\Millenario - Elisa.mp3": fn);
             //var n = new NAudio.Wave.AudioFileReader(physPath);
             //using (AudioFileReader aFileReader = new AudioFileReader(physPath))
             //{
             //     //aFileReader.re
             //}
-            return WriteToFile("", physPath, new byte[500]);
+            return WriteToFile(physPath);
         }
 
-        private static FileContentResult WriteToFile(string SongID, string strPath, byte[] Buffer)
+        private static FileContentResult WriteToFile(string strPath)
         {
             try
             {
                 int samplesPerPixel = 128;
                 long startPosition = 0;
                 //FileStream newFile = new FileStream(GeneralUtils.Get_SongFilePath() + "/" + strPath, FileMode.Create);
-                float[] data = FloatArrayFromByteArray(Buffer);
+                //float[] data = FloatArrayFromByteArray(Buffer);
 
-                Bitmap bmp = new Bitmap(1170, 200);
+                Bitmap bmp = new Bitmap(3256, 400);
 
                 int BORDER_WIDTH = 1;
                 int width = bmp.Width - (2 * BORDER_WIDTH);
@@ -50,18 +52,18 @@ namespace music.local.Bussiness
                 {
                     g.Clear(Color.Transparent);
                     Pen pen1 = new Pen(Color.Gray);
-                    int size = data.Length;
-
-                    string hexValue1 = "#009adf";
-                    Color colour1 =ColorTranslator.FromHtml(hexValue1);
-                    pen1.Color = colour1;
+                    //int size = data.Length;
+                    //string hexValue1 = "#009adf";
+                    //Color colour1 =ColorTranslator.FromHtml(hexValue1);
+                    //pen1.Color = colour1;
+                    pen1.Width = (float)0.1;
 
                     Stream wavestream = new Mp3FileReader(strPath, wf => new NAudio.FileFormats.Mp3.DmoMp3FrameDecompressor(wf));
-
+                    samplesPerPixel = (int)(wavestream.Length / bytesPerSample) / width;
                     wavestream.Position = 0;
                     int bytesRead1;
                     byte[] waveData1 = new byte[samplesPerPixel * bytesPerSample];
-                    wavestream.Position = startPosition + (width * bytesPerSample * samplesPerPixel);
+                    wavestream.Position = startPosition;//+ (width * bytesPerSample * samplesPerPixel);
 
                     for (float x = 0; x < width; x++)
                     {
@@ -73,13 +75,13 @@ namespace music.local.Bussiness
                         for (int n = 0; n < bytesRead1; n += 2)
                         {
                             short sample = BitConverter.ToInt16(waveData1, n);
-                            if (sample < low) low = sample;
-                            if (sample > high) high = sample;
+                            if (sample < low){low = sample;}
+                            if (sample > high){high = sample;}
                         }
-                        float lowPercent = ((((float)low) - short.MinValue) / ushort.MaxValue);
-                        float highPercent = ((((float)high) - short.MinValue) / ushort.MaxValue);
-                        float lowValue = height * lowPercent;
-                        float highValue = height * highPercent;
+                        float lowPercent = (( Zoom((float)low) - short.MinValue) / ushort.MaxValue);
+                        float highPercent = (( Zoom((float)high) - short.MinValue) / ushort.MaxValue);
+                        float lowValue = (height * lowPercent);
+                        float highValue = (height * highPercent);
                         g.DrawLine(pen1, x, lowValue, x, highValue);
 
                     }
@@ -102,6 +104,7 @@ namespace music.local.Bussiness
             }
             return null;
         }
+        #region common
         public static float[] FloatArrayFromStream(MemoryStream stream)
         {
             return FloatArrayFromByteArray(stream.GetBuffer());
@@ -116,6 +119,14 @@ namespace music.local.Bussiness
             }
             return output;
         }
+
+        public static float Zoom(float pecent)
+        {
+            var rtn = zoomper * pecent;
+            return rtn;
+        }
+        #endregion 
+        
     
     }
 }
