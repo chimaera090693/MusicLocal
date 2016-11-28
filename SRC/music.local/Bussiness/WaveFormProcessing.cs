@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core.Common.EntitySql;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using NAudio.Wave;
@@ -51,7 +46,6 @@ namespace music.local.Bussiness
         {
             try
             {
-                int samplesPerPixel = 128;
                 long startPosition = 0;
                 //FileStream newFile = new FileStream(GeneralUtils.Get_SongFilePath() + "/" + strPath, FileMode.Create);
                 //float[] data = FloatArrayFromByteArray(Buffer);
@@ -70,13 +64,11 @@ namespace music.local.Bussiness
                 using (Graphics g = Graphics.FromImage(bmp))
                 {
                     g.Clear(Color.Transparent);
-                    Pen pen1 = new Pen(Color.Gray);
-                    pen1.Width = (float)0.1;
+                    Pen pen1 = new Pen(Color.Gray) {Width = (float) 0.1};
 
                     Stream wavestream = new Mp3FileReader(strPath, wf => new NAudio.FileFormats.Mp3.DmoMp3FrameDecompressor(wf));
-                    samplesPerPixel = (int)(wavestream.Length / bytesPerSample) / width;
+                    var samplesPerPixel = (int)(wavestream.Length / bytesPerSample) / width;
                     wavestream.Position = 0;
-                    int bytesRead1;
                     byte[] waveData1 = new byte[samplesPerPixel * bytesPerSample];
                     wavestream.Position = startPosition;//+ (width * bytesPerSample * samplesPerPixel);
 
@@ -84,7 +76,7 @@ namespace music.local.Bussiness
                     {
                         short low = 0;
                         short high = 0;
-                        bytesRead1 = wavestream.Read(waveData1, 0, samplesPerPixel * bytesPerSample);
+                        var bytesRead1 = wavestream.Read(waveData1, 0, samplesPerPixel * bytesPerSample);
                         if (bytesRead1 == 0)
                             break;
                         for (int n = 0; n < bytesRead1; n += 2)
@@ -93,8 +85,8 @@ namespace music.local.Bussiness
                             if (sample < low) { low = sample; }
                             if (sample > high) { high = sample; }
                         }
-                        float lowPercent = ((Zoom((float)low) - short.MinValue) / ushort.MaxValue);
-                        float highPercent = ((Zoom((float)high) - short.MinValue) / ushort.MaxValue);
+                        float lowPercent = ((Zoom(low) - short.MinValue) / ushort.MaxValue);
+                        float highPercent = ((Zoom(high) - short.MinValue) / ushort.MaxValue);
                         float lowValue = (height * lowPercent);
                         float highValue = (height * highPercent);
                         g.DrawLine(pen1, x, lowValue, x, highValue);
@@ -103,7 +95,7 @@ namespace music.local.Bussiness
                     wavestream.Close();
                     wavestream.Dispose();
                 }
-                FileContentResult image = null;
+                FileContentResult image;
                 using (var ms = new MemoryStream())
                 {
                     bmp.Save(ms, ImageFormat.Png);

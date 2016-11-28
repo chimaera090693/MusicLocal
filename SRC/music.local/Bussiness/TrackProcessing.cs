@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Media;
 using System.Reflection;
-using System.Web;
 using System.Web.Configuration;
 using music.local.Models;
-using NAudio;
-using NAudio.Wave;
-using WebGrease.Css.Ast.Selectors;
 
 namespace music.local.Bussiness
 {
@@ -22,7 +16,7 @@ namespace music.local.Bussiness
         /// <returns></returns>
         public static List<SoundTrackModel> GetTree()
         {
-            List<SoundTrackModel> list = new List<SoundTrackModel>();
+            List<SoundTrackModel> list;
 
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
             var stParent = new SoundTrackModel();
