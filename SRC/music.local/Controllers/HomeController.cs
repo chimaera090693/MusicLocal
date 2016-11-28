@@ -1,4 +1,6 @@
 ﻿using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using music.local.Bussiness;
@@ -19,7 +21,7 @@ namespace music.local.Controllers
             //return Content("null");
         }
 
-        public FileResult File(string p)
+        public ActionResult File(string p)
         {
             if (string.IsNullOrEmpty(p))
                 return null;
@@ -33,12 +35,29 @@ namespace music.local.Controllers
                 {
                     fileMine = "image/jpeg";
                 }
-                return new FilePathResult(filePath, fileMine)
+                using (var str = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
-                    FileDownloadName = f.Name
-                };
+                    byte[] data = new byte[str.Length];
+                    int br = str.Read(data, 0, data.Length);
+                    if (br != str.Length)
+                        throw new System.IO.IOException(filePath);
+                    //var ms = str.
+                    //return new FileContentResult(str, "image/png");
+
+                    return new FileContentResult(data, fileMine);
+                }
+                //return new FilePathResult(filePath, fileMine)
+                //{
+                //    FileDownloadName = f.Name
+                //};
             }
             return null;
+        }
+
+        public HttpResponseMessage Stream(string p)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            
         }
     }
 }

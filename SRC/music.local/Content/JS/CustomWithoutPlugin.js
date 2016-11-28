@@ -122,19 +122,21 @@ function UpdateDisplay() {
 }
 
 function Seek(event) {
+    console.log($.myPlayer.currentTime);
     //player-display
     var curPos = event.clientX - $(".albumCover").width();
     //console.log(event.clientX);
     var width = $("#player-display").width();
     var totalTime = $.myPlayer.duration;
     var crntTime = ((curPos / width) * totalTime).toFixed(0);
-
+    console.log(totalTime);
+    console.log(crntTime);
     $("#remain-display").css("width", (curPos) + "px");
-    $.myPlayer.currentTime = crntTime;
-    $.myPlayer.addEventListener("canplay", function () {
-        $.myPlayer.removeEventListener("canplay", function () { });
-        $.myPlayer.play();
-    });
+    $.myPlayer.currentTime = parseInt(crntTime);
+    //$.myPlayer.addEventListener("canplay", function () {
+    //    $.myPlayer.removeEventListener("canplay", function () { });
+    //    //$.myPlayer.play();
+    //});
     //$.myPlayer.play();
 }
 ///============End Event ================
