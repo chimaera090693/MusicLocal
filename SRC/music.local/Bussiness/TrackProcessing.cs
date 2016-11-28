@@ -10,6 +10,7 @@ using System.Web.Configuration;
 using music.local.Models;
 using NAudio;
 using NAudio.Wave;
+using WebGrease.Css.Ast.Selectors;
 
 namespace music.local.Bussiness
 {
@@ -51,14 +52,17 @@ namespace music.local.Bussiness
                     foreach (var item in listDir)
                     {
                         var dirInf = new DirectoryInfo(item);
-                        SoundTrackModel st = new SoundTrackModel();
-                        st.ItemType = lever;
-                        st.Name = dirInf.Name;
-                        st.Gid = Guid.NewGuid().ToString().Replace("-","");
-                        st.ParentGid = parent.Gid;
-                        st.FilePath = parent.FilePath + "\\" + dirInf.Name;
-                        st.ListTrack = ReclusiveTree(physPath  + "\\" + st.FilePath, lever + 1,ref st);
-                        list.Add(st);
+                        if (!(dirInf.Name == "image" && string.IsNullOrEmpty(parent.FilePath)))
+                        {
+                            SoundTrackModel st = new SoundTrackModel();
+                            st.ItemType = lever;
+                            st.Name = dirInf.Name;
+                            st.Gid = Guid.NewGuid().ToString().Replace("-", "");
+                            st.ParentGid = parent.Gid;
+                            st.FilePath = parent.FilePath + "\\" + dirInf.Name;
+                            st.ListTrack = ReclusiveTree(physPath + "\\" + st.FilePath, lever + 1, ref st);
+                            list.Add(st); 
+                        }
                     }
                 }
 

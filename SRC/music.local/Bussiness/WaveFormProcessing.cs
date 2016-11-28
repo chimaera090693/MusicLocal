@@ -5,7 +5,10 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
@@ -15,17 +18,33 @@ namespace music.local.Bussiness
 {
     public class WaveFormProcessing
     {
-        public static float zoomper = (float)0.90;
-        public static FileContentResult DemoDraw(string fn = "")
+        public static float zoomper = (float)1.0;
+        public static ActionResult DemoDraw(string fn = "")
         {
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
-            physPath = physPath + (fn==""? @"\Music\Millenario - Elisa.mp3": fn);
-            //var n = new NAudio.Wave.AudioFileReader(physPath);
-            //using (AudioFileReader aFileReader = new AudioFileReader(physPath))
-            //{
-            //     //aFileReader.re
-            //}
-            return WriteToFile(physPath);
+            var mp3Path = physPath + (fn==""? @"\Music\Millenario - Elisa.mp3": fn);
+            var imgPath = physPath + "\\image\\" + GetMd5Hash(mp3Path) + ".png";
+
+            if (!Directory.Exists(physPath + "\\image"))
+            {
+                Directory.CreateDirectory(physPath + "\\image");
+            }
+
+            if (File.Exists(imgPath))
+            {
+                //using(var str  = new FileStream(imgPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                //{
+                //    byte[] data = new byte[str.Length];
+                //    int br = str.Read(data, 0, data.Length);
+                //    if (br != str.Length)
+                //        throw new System.IO.IOException(imgPath);
+                //    //var ms = str.
+                //    //return new FileContentResult(str, "image/png");
+                //    return new FileContentResult(data, "image/png");
+                //}
+                return new FilePathResult(imgPath, "image/png");
+            }
+            return WriteToFile(mp3Path);
         }
 
         private static FileContentResult WriteToFile(string strPath)
@@ -52,10 +71,6 @@ namespace music.local.Bussiness
                 {
                     g.Clear(Color.Transparent);
                     Pen pen1 = new Pen(Color.Gray);
-                    //int size = data.Length;
-                    //string hexValue1 = "#009adf";
-                    //Color colour1 =ColorTranslator.FromHtml(hexValue1);
-                    //pen1.Color = colour1;
                     pen1.Width = (float)0.1;
 
                     Stream wavestream = new Mp3FileReader(strPath, wf => new NAudio.FileFormats.Mp3.DmoMp3FrameDecompressor(wf));
@@ -75,11 +90,11 @@ namespace music.local.Bussiness
                         for (int n = 0; n < bytesRead1; n += 2)
                         {
                             short sample = BitConverter.ToInt16(waveData1, n);
-                            if (sample < low){low = sample;}
-                            if (sample > high){high = sample;}
+                            if (sample < low) { low = sample; }
+                            if (sample > high) { high = sample; }
                         }
-                        float lowPercent = (( Zoom((float)low) - short.MinValue) / ushort.MaxValue);
-                        float highPercent = (( Zoom((float)high) - short.MinValue) / ushort.MaxValue);
+                        float lowPercent = ((Zoom((float)low) - short.MinValue) / ushort.MaxValue);
+                        float highPercent = ((Zoom((float)high) - short.MinValue) / ushort.MaxValue);
                         float lowValue = (height * lowPercent);
                         float highValue = (height * highPercent);
                         g.DrawLine(pen1, x, lowValue, x, highValue);
@@ -91,10 +106,17 @@ namespace music.local.Bussiness
                 FileContentResult image = null;
                 using (var ms = new MemoryStream())
                 {
-                     bmp.Save(ms,ImageFormat.Png);
-                     image = new FileContentResult(ms.ToArray(), "image/png");
+                    bmp.Save(ms, ImageFormat.Png);
+                    image = new FileContentResult(ms.ToArray(), "image/png");
                 }
-                
+                //var mp3FileInfor = Path.GetFileName(strPath);
+                var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
+                string hash = GetMd5Hash(strPath);
+
+                if (!string.IsNullOrEmpty(hash))
+                {
+                    bmp.Save(physPath + "\\image\\" + hash + ".png", ImageFormat.Png);
+                }
                 bmp.Dispose();
                 return image;
             }
@@ -125,8 +147,23 @@ namespace music.local.Bussiness
             var rtn = zoomper * pecent;
             return rtn;
         }
-        #endregion 
-        
-    
+
+
+        public static string GetMd5Hash(string input)
+        {
+            using (MD5 md5Hash = MD5.Create())
+            {
+                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+                StringBuilder sBuilder = new StringBuilder();
+                foreach (byte t in data)
+                {
+                    sBuilder.Append(t.ToString("x2"));
+                }
+                return sBuilder.ToString();
+            }
+        }
+        #endregion
+
+
     }
 }
