@@ -1,10 +1,6 @@
 ﻿///không có plugin player
 ///
-///isloop
-///0: no loop
-///1: loop this track
-///2: loop all album
-var isLoop = 2;
+
 $(function () {
     $.myFkingTree = $('.treeWraper').jstree(
     {
@@ -24,6 +20,8 @@ $(function () {
     });
     $.myCrntID = "";
     document.getElementById("player-display").onclick = Seek;
+
+    InitLoop();
 });
 
 ///=============Event ============
@@ -38,6 +36,10 @@ function playAudio(cls, auto) {
     var newSrc = $("." + cls).first().data("src");
     var cover = $("." + cls).first().parent().parent().data("src");
     $("#playerSongInfor").text($("." + cls).attr("name"));
+
+    var songname = $("." + cls + " a:first").text();
+    $(document).prop('title', defaultTitle + ' - ' + songname);
+
     $("#cover").attr("src", cover);
     var playerimage = newSrc.replace("Home/File?p=", "Home/Demo?p=");
     playerimage = encodeURI(playerimage);
@@ -59,10 +61,10 @@ function togglePlay(isplay) {
     if ($.myPlayer.paused || isplay ==1) {
         //btnPlay
         $.myPlayer.play();
-        $("#btnPlay").attr("class", "control-btnCustom control-btnpause");
+        $("#btnPlay").attr("class", Class_BtnPlay_Play);
     } else {
         $.myPlayer.pause();
-        $("#btnPlay").attr("class", "control-btnCustom control-btnplay");
+        $("#btnPlay").attr("class", Class_BtnPlay_Pause);
     }
 }
 
@@ -110,6 +112,7 @@ function changeLoop(ele) {
             isLoop = 1;
             break;
     }
+    writeCookie(Cookie_LoopStatus, isLoop, 7);
     $(ele).attr("class", getLoopButtonClass());
     $(ele).attr("title", getLoopButtonText());
 }
@@ -133,11 +136,6 @@ function Seek(event) {
     console.log(crntTime);
     $("#remain-display").css("width", (curPos) + "px");
     $.myPlayer.currentTime = parseInt(crntTime);
-    //$.myPlayer.addEventListener("canplay", function () {
-    //    $.myPlayer.removeEventListener("canplay", function () { });
-    //    //$.myPlayer.play();
-    //});
-    //$.myPlayer.play();
 }
 ///============End Event ================
 
@@ -154,17 +152,6 @@ function BindSelectedTreeElement(selector) {
 
     });
 }
-function getLoopButtonClass() {
-    return 'control-btnCustom control-loop' + isLoop;
-}
-function getLoopButtonText() {
-    switch (isLoop) {
-        case 1:
-            return 'Repeat one';
-        case 2:
-            return 'Repeat Album';
-        case 0:
-            return 'No repeat';
-    }
-}
+
+
 ///============End Common Function ================

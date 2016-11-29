@@ -54,10 +54,10 @@ namespace music.local.Controllers
             return null;
         }
 
-        public HttpResponseMessage Stream(string p)
-        {
-            HttpResponseMessage response = new HttpResponseMessage();
+        //public HttpResponseMessage Stream(string p)
+        //{
+        //    HttpResponseMessage response = new HttpResponseMessage();
             
-        }
+        //}
     }
 }

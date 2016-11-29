@@ -3,7 +3,6 @@
 ///0: no loop
 ///1: loop this track
 ///2: loop all album
-var isLoop = 2;
 $(function () {
     $('.treeWraper').jstree();
     $.myPlayer = videojs("player");

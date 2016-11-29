@@ -13,7 +13,7 @@ namespace music.local.Bussiness
 {
     public class WaveFormProcessing
     {
-        public static float zoomper = (float)1.0;
+        public static float Zoommer = (float)0.8;
         public static ActionResult DemoDraw(string fn = "")
         {
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
@@ -27,16 +27,6 @@ namespace music.local.Bussiness
 
             if (File.Exists(imgPath))
             {
-                //using(var str  = new FileStream(imgPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-                //{
-                //    byte[] data = new byte[str.Length];
-                //    int br = str.Read(data, 0, data.Length);
-                //    if (br != str.Length)
-                //        throw new System.IO.IOException(imgPath);
-                //    //var ms = str.
-                //    //return new FileContentResult(str, "image/png");
-                //    return new FileContentResult(data, "image/png");
-                //}
                 return new FilePathResult(imgPath, "image/png");
             }
             return WriteToFile(mp3Path);
@@ -136,14 +126,14 @@ namespace music.local.Bussiness
 
         public static float Zoom(float pecent)
         {
-            var rtn = zoomper * pecent;
+            var rtn = Zoommer * pecent;
             return rtn;
         }
 
 
         public static string GetMd5Hash(string input)
         {
-            using (MD5 md5Hash = MD5.Create())
+            using (var md5Hash = MD5.Create())
             {
                 byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
                 StringBuilder sBuilder = new StringBuilder();
@@ -155,7 +145,5 @@ namespace music.local.Bussiness
             }
         }
         #endregion
-
-
     }
 }

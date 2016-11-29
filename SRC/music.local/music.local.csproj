@@ -274,6 +274,8 @@
     <Content Include="Content\jsTree\test\visual\screenshots\mobile\.png" />
     <Content Include="Content\jsTree\test\visual\screenshots\mobile\home.png" />
     <Content Include="Content\jsTree\test\visual\screenshots\mobile\mobile.png" />
+    <Content Include="Content\JS\Common.js" />
+    <Content Include="Content\JS\CookieHelper.js" />
     <Content Include="Content\JS\CustomJSWithVideoJS.js" />
     <Content Include="Content\JS\CustomJSWithWavesurfer.js" />
     <Content Include="Content\JS\CustomWithoutPlugin.js" />
