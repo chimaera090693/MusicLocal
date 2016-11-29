@@ -1,5 +1,6 @@
-﻿///không có plugin player
-///
+﻿/// không có plugin player
+/// <reference path="~/Content/JS/CookieHelper.js" />
+/// <reference path="~/Content/JS/Common.js" />
 
 $(function () {
     $.myFkingTree = $('.treeWraper').jstree(
@@ -80,7 +81,7 @@ function endPlay() {
 
 function nextTrack() {
     //get next track
-    var next = "";
+    var next;
     if ($.myCrntID != undefined && $.myCrntID != "") {
         var current = $.myCrntID.split('-');
         var nextId = current[1];
@@ -100,22 +101,7 @@ function nextTrack() {
     }
 }
 
-function changeLoop(ele) {
-    switch (isLoop) {
-        case 1:
-            isLoop = 2;
-            break;
-        case 2:
-            isLoop = 0;
-            break;
-        case 0:
-            isLoop = 1;
-            break;
-    }
-    writeCookie(Cookie_LoopStatus, isLoop, 7);
-    $(ele).attr("class", getLoopButtonClass());
-    $(ele).attr("title", getLoopButtonText());
-}
+
 function UpdateDisplay() {
     var width = $("#player-display").width();
     var totalTime = $.myPlayer.duration;

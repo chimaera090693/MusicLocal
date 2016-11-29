@@ -1,4 +1,5 @@
-﻿///Common variable
+﻿/// <reference path="~/Content/JS/CookieHelper.js" />
+/// Common variable
 var defaultTitle = "Far, anyway!";
 
 ///isloop
@@ -33,6 +34,7 @@ function getLoopButtonText() {
         case 0:
             return Txt_BtnLoop_NoR;
     }
+    return "";
 }
 
 function InitLoop() {
@@ -45,4 +47,22 @@ function InitLoop() {
     }
     $("#btnMyLoop").attr("class", getLoopButtonClass());
     $("#btnMyLoop").attr("title", getLoopButtonText());
+}
+
+function changeLoop(ele) {
+    //console.log(ele);
+    switch (parseInt(isLoop)) {
+        case 1:
+            isLoop = 2;
+            break;
+        case 2:
+            isLoop = 0;
+            break;
+        case 0:
+            isLoop = 1;
+            break;
+    }
+    writeCookie(Cookie_LoopStatus, isLoop, 7);
+    $(ele).attr("class", getLoopButtonClass());
+    $(ele).attr("title", getLoopButtonText());
 }
