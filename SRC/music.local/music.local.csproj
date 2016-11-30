@@ -169,6 +169,7 @@
     <Compile Include="Bussiness\WaveFormProcessing.cs" />
     <Compile Include="CommonFunction\Common.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,6 +187,8 @@
     <Content Include="Content\bootstrap3.3.7\js\bootstrap.js" />
     <Content Include="Content\bootstrap3.3.7\js\bootstrap.min.js" />
     <Content Include="Content\bootstrap3.3.7\js\npm.js" />
+    <Content Include="Content\CSS\Login.css" />
+    <Content Include="Content\Image\1.png" />
     <Content Include="Content\jsTree\demo\basic\index.html" />
     <Content Include="Content\jsTree\demo\filebrowser\data\root\asdf\New Text Document.txt" />
     <Content Include="Content\jsTree\demo\filebrowser\data\root\assets\ajax_nodes.html" />
@@ -343,6 +346,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -403,6 +407,7 @@
     <None Include="Project_Readme.html" />
     <Content Include="Views\TreeNode.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Login.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

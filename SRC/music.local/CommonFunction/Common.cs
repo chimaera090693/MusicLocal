@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Web;
 using log4net;
 
 namespace music.local
@@ -16,6 +17,22 @@ namespace music.local
                 Logger.Error("--------------------------------");
                 Logger.Error("");
             }
+        }
+
+        /// <summary>
+        /// Kiểm tra trạng thái đăng nhập
+        /// </summary>
+        /// <param name="IsRedirect">redirect nếu chưa đăng nhập</param>
+        /// <returns></returns>
+        public static bool CheckLogin(bool IsRedirect = true)
+        {
+            var chkLogin = HttpContext.Current.Session["IsLogin"];
+            if (chkLogin != null && (string) chkLogin == "ok")
+            {
+                return true;
+            }
+            if(IsRedirect) HttpContext.Current.Response.Redirect("~/Login");
+            return false;
         }
     }
 }

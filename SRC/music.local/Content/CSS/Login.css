@@ -1,0 +1,38 @@
+﻿body {
+    background-image: url('../Image/1.png');
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-size: cover;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+}
+
+/*Login form*/
+.login-form {
+    margin: 0 auto;
+    width: 300px;
+    height: 150px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 1px 1px #888;
+    opacity: 0.8;
+    background-color: #eee;
+}
+
+    .login-form .input-wraper {
+        width: 270px;
+        margin: 0 auto;
+        padding-top: 17%;
+    }
+
+        .login-form .input-wraper input {
+            width: 200px;
+            display: inline-block;
+        }
+
+        .login-form .input-wraper button {
+            display: inline-block;
+        }
+
+
+/*Login form===============================================*/

@@ -11,18 +11,21 @@ namespace music.local.Controllers
     {
         public ActionResult Index()
         {
+            Common.CheckLogin();
             var listAlbum = TrackProcessing.GetTree();
             ViewBag.Data = listAlbum;
             return View("/Views/Home.cshtml");
         }
         public ActionResult Demo(string p="")
         {
+            Common.CheckLogin();
             return WaveFormProcessing.DemoDraw(p);
             //return Content("null");
         }
 
         public ActionResult File(string p)
         {
+            Common.CheckLogin();
             if (string.IsNullOrEmpty(p))
                 return null;
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];

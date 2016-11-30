@@ -59,9 +59,6 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     position: relative;
 }
 
-
-
-
 .player-wraper{
     position:relative;
     /*right:0px;*/
@@ -156,3 +153,5 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
 }
 
 /*end footer player======================================*/
+
+
