@@ -39,7 +39,9 @@ function playAudio(cls, auto) {
     $("#playerSongInfor").text($("." + cls).attr("name"));
 
     var songname = $("." + cls + " a:first").text();
-    $(document).prop('title', defaultTitle + ' - ' + songname);
+
+    setPageTitle(songname);
+    //$(document).prop('title', defaultTitle + ' - ' + songname);
 
     $("#cover").attr("src", cover);
     var playerimage = newSrc.replace("Home/File?p=", "Home/Demo?p=");
@@ -61,9 +63,11 @@ function togglePlay(isplay) {
     //$.myPlayer.playPause();
     if ($.myPlayer.paused || isplay ==1) {
         //btnPlay
+        setPageTitle();
         $.myPlayer.play();
         $("#btnPlay").attr("class", Class_BtnPlay_Play);
     } else {
+        setPageTitle("");
         $.myPlayer.pause();
         $("#btnPlay").attr("class", Class_BtnPlay_Pause);
     }

@@ -66,3 +66,22 @@ function changeLoop(ele) {
     $(ele).attr("class", getLoopButtonClass());
     $(ele).attr("title", getLoopButtonText());
 }
+
+function setPageTitle(songname) {
+    if ($.myInverter) {
+        clearInterval($.myInverter);
+    }
+    if (songname === "") {
+        $(document).prop('title', defaultTitle);
+    } else {
+        $.currentSong = songname == undefined ? $.currentSong : songname;
+        $.myInverter = setInterval(function() {
+            var currenttt = $(document).prop('title');
+            if (currenttt === defaultTitle) {
+                $(document).prop('title', $.currentSong);
+            } else {
+                $(document).prop('title', defaultTitle);
+            }
+        }, 3000);
+    }
+}
