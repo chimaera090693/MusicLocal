@@ -19,6 +19,17 @@ namespace music.local
             }
         }
 
+        public static void WriteDebug(string title, string exception)
+        {
+            {
+                Logger.Debug("");
+                Logger.Debug("--------------------------------");
+                Logger.Debug(title + ": " + exception);
+                Logger.Debug("--------------------------------");
+                Logger.Debug("");
+            }
+        }
+
         /// <summary>
         /// Kiểm tra trạng thái đăng nhập
         /// </summary>

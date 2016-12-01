@@ -43,7 +43,7 @@ namespace music.local.Controllers
             //không có range hoặc là range gồm toàn bộ file
             if (rangeHeader == null || !rangeHeader.Ranges.Any())
             {
-                Common.WriteLog("MediaController, line 100", "Request video range is null or all file! \r\n" + p);
+                Common.WriteDebug("MediaController, line 100", "Request video range is null or all file! \r\n" + p);
 
                 response.Headers.AcceptRanges.Add("bytes");
                 //status code
@@ -68,7 +68,7 @@ namespace music.local.Controllers
             if (rangeHeader.Unit != "bytes" || rangeHeader.Ranges.Count > 1 ||
                 !MediaUtilities.CheckRangeItem(rangeHeader.Ranges.First(), totalLength, out start, out end))
             {
-                Common.WriteLog("MediaController, line 139", "Request video range is invalid! \r\n" + p);
+                Common.WriteDebug("MediaController, line 139", "Request video range is invalid! \r\n" + p);
                 response.StatusCode = HttpStatusCode.RequestedRangeNotSatisfiable;
                 response.Content = new StreamContent(Stream.Null);
                 response.Content.Headers.ContentRange = new ContentRangeHeaderValue(totalLength);
@@ -78,7 +78,7 @@ namespace music.local.Controllers
                 return response;
             }
             //range hợp lệ
-            Common.WriteLog("MediaController, line 149", "Request video range is valid, send content! \r\n" + p);
+            Common.WriteDebug("MediaController, line 149", "Request video range is valid, send content! \r\n" + p);
             var contentRange = new ContentRangeHeaderValue(start, end, totalLength);
             // status code là partial content.
             response.StatusCode = HttpStatusCode.PartialContent;
