@@ -14,33 +14,24 @@ namespace music.local.Controllers
 {
     public class StreammingController : ApiController
     {
-        public HttpResponseMessage Get(string filepath)
+        public HttpResponseMessage Get(string p)
         {
-            if (string.IsNullOrEmpty(filepath) || filepath.Split('&').Length < 2)
-            {
-                Common.WriteLog(MethodBase.GetCurrentMethod().Name, "Invalid Filepath!");
-                return null;
-            }
-            var key = filepath.Split('&')[1];
-            filepath = filepath.Split('&')[0];
             var response = Request.CreateResponse();
-            //response.Headers.Connection.Add("keep-alive");
-            //response.Headers.Connection.Add("close");
             response.Headers.TransferEncodingChunked = true;
             response.Headers.Add("Accept-Ranges", "bytes");
             response.Headers.Add("Keep-Alive", "timeout=10");
 
             //response.He
             var appPath = WebConfigurationManager.AppSettings["PhysicalPath"];
-            var fileInfo = new FileInfo(appPath.Replace("\\", "/") + filepath);
+            var fileInfo = new FileInfo(appPath.Replace("\\", "/") + p);
 
             //check path
-            if (string.IsNullOrEmpty(filepath))
+            if (string.IsNullOrEmpty(p))
             {
                 response.StatusCode = HttpStatusCode.NotFound;
                 return response;
             }
-            if (!File.Exists(appPath + filepath))
+            if (!File.Exists(appPath + p))
             {
                 response.StatusCode = HttpStatusCode.NotFound;
                 return response;
@@ -52,26 +43,23 @@ namespace music.local.Controllers
             //không có range hoặc là range gồm toàn bộ file
             if (rangeHeader == null || !rangeHeader.Ranges.Any())
             {
-                Common.WriteLog("MediaController, line 100", "Request video range is null or all file! \r\n" + filepath);
+                Common.WriteLog("MediaController, line 100", "Request video range is null or all file! \r\n" + p);
 
                 response.Headers.AcceptRanges.Add("bytes");
-                //response.StatusCode = HttpStatusCode.PartialContent;
-                //edit
-                response.StatusCode = HttpStatusCode.OK;
+                //status code
+                response.StatusCode = HttpStatusCode.PartialContent;
+                //response.StatusCode = HttpStatusCode.OK;
 
-                //check video/audio
-                if (fileInfo.Extension.Equals(".oga") || fileInfo.Extension.Equals(".mp3"))
-                {
-                    response.Content = AudioContent(fileInfo, 0, totalLength - 1);
-                    response.Content.Headers.ContentLength = totalLength;
-                    response.Headers.TransferEncodingChunked = null;
-                }
+                //return audio content
+                response.Content = AudioContent(fileInfo, 0, totalLength - 1);
+                response.Content.Headers.ContentLength = totalLength;
+                response.Headers.TransferEncodingChunked = null;
                 
                 //check firefox -> không cho content length
                 //if (!Request.Headers.UserAgent.ToString().Contains("Firefox"))
                 response.Content.Headers.ContentLength = totalLength;
                 response.Content.Headers.ContentRange = new ContentRangeHeaderValue(totalLength);
-                response.Content.Headers.ContentType = new MediaTypeHeaderValue("video/mp4");
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("audio/mpeg3");
                 return response;
             }
 
@@ -80,7 +68,7 @@ namespace music.local.Controllers
             if (rangeHeader.Unit != "bytes" || rangeHeader.Ranges.Count > 1 ||
                 !MediaUtilities.CheckRangeItem(rangeHeader.Ranges.First(), totalLength, out start, out end))
             {
-                Common.WriteLog("MediaController, line 139", "Request video range is invalid! \r\n" + filepath);
+                Common.WriteLog("MediaController, line 139", "Request video range is invalid! \r\n" + p);
                 response.StatusCode = HttpStatusCode.RequestedRangeNotSatisfiable;
                 response.Content = new StreamContent(Stream.Null);
                 response.Content.Headers.ContentRange = new ContentRangeHeaderValue(totalLength);
@@ -90,23 +78,21 @@ namespace music.local.Controllers
                 return response;
             }
             //range hợp lệ
-            Common.WriteLog("MediaController, line 149", "Request video range is valid, send content! \r\n" + filepath);
+            Common.WriteLog("MediaController, line 149", "Request video range is valid, send content! \r\n" + p);
             var contentRange = new ContentRangeHeaderValue(start, end, totalLength);
             // status code là partial content.
             response.StatusCode = HttpStatusCode.PartialContent;
             //response.StatusCode = HttpStatusCode.OK;
             response.Headers.TransferEncodingChunked = true;
 
-            if (fileInfo.Extension.Equals(".oga") || fileInfo.Extension.Equals(".mp3"))
-            {
-                response.Content = AudioContent(fileInfo, start, end);
-                response.Content.Headers.ContentLength = end - start + 1;
-                response.Headers.TransferEncodingChunked = null;
-            }
+            //audio content
+            response.Content = AudioContent(fileInfo, start, end);
+            response.Content.Headers.ContentLength = end - start + 1;
+            response.Headers.TransferEncodingChunked = null;
 
             //check header, là firefox thì ko thêm tham số content length và range
             response.Content.Headers.ContentRange = contentRange;
-            response.Content.Headers.ContentType = new MediaTypeHeaderValue("video/mp4");
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("audio/mpeg3");
             //if (Request.Headers.UserAgent.ToString().Contains("Firefox"))  return response;
             response.Content.Headers.ContentLength = end - start + 1;
             return response;

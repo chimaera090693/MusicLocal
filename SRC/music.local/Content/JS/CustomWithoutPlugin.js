@@ -44,7 +44,8 @@ function playAudio(cls, auto) {
     //$(document).prop('title', defaultTitle + ' - ' + songname);
 
     $("#cover").attr("src", cover);
-    var playerimage = newSrc.replace("Home/File?p=", "Home/Demo?p=");
+    //var playerimage = newSrc.replace("Home/File?p=", "Home/Demo?p=");
+    var playerimage = newSrc.replace("api/Streamming/Get?p=", "Home/Demo?p=");
     playerimage = encodeURI(playerimage);
     //console.log(playerimage);
     $("#player-display").css("background-image", "url(\"" + playerimage + "\")");
@@ -115,15 +116,15 @@ function UpdateDisplay() {
 }
 
 function Seek(event) {
-    console.log($.myPlayer.currentTime);
+    //console.log($.myPlayer.currentTime);
     //player-display
     var curPos = event.clientX - $(".albumCover").width();
     //console.log(event.clientX);
     var width = $("#player-display").width();
     var totalTime = $.myPlayer.duration;
     var crntTime = ((curPos / width) * totalTime).toFixed(0);
-    console.log(totalTime);
-    console.log(crntTime);
+    //console.log(totalTime);
+    //console.log(crntTime);
     $("#remain-display").css("width", (curPos) + "px");
     $.myPlayer.currentTime = parseInt(crntTime);
 }

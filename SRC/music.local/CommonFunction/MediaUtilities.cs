@@ -99,13 +99,13 @@ namespace music.local
                 }
                 catch (HttpException error)
                 {
-                    Common.WriteLogError("Error", error + error.StackTrace);
+                    Common.WriteLog("Error", error + error.StackTrace);
                     Console.WriteLine(error);
                     break;
                 }
                 catch (Exception ex)
                 {
-                    Common.WriteLogError("Error", ex + ex.StackTrace);
+                    Common.WriteLog("Error", ex + ex.StackTrace);
                     Console.WriteLine(ex);
                     break;
                 }

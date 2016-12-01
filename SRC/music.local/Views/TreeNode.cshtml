@@ -20,13 +20,15 @@
             break;
         case TrackType.Track:
             playAction = "onclick=\"playAudio('" + Model.ParentGid + "-" + Model.order + "')\"";
-            src = host+"/Home/File?p="+ Model.FilePath;
+            //src = host+"/Home/File?p="+ Model.FilePath;
+            src = host+"/api/Streamming/Get?p="+ Model.FilePath;
             icon = "glyphicon glyphicon-play";
             ids = "id=" + Model.ParentGid + "-" + Model.order + "";
             break;
         default: 
             playAction = "onclick=\"playAudio('" + Model.ParentGid + "-" + Model.order + "')\"";
-            src = host + "/Home/File?p=" + Model.FilePath;
+            //src = host + "/Home/File?p=" + Model.FilePath;
+            src = host + "/Streamming?p=" + Model.FilePath;
             icon = "glyphicon glyphicon-play";
             ids = "id=" + Model.ParentGid + "-" + Model.order + "";
                 break;
