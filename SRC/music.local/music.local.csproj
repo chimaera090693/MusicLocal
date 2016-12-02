@@ -182,6 +182,7 @@
     <Compile Include="Bussiness\WaveFormProcessing.cs" />
     <Compile Include="CommonFunction\Common.cs" />
     <Compile Include="CommonFunction\MediaUtilities.cs" />
+    <Compile Include="CommonFunction\VideoStream.cs" />
     <Compile Include="Controllers\StreammingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />

@@ -105,7 +105,7 @@ namespace music.local
                 }
                 catch (Exception ex)
                 {
-                    Common.WriteDebug("Debug", ex + ex.StackTrace);
+                    Common.WriteLog("Debug", ex + ex.StackTrace);
                     Console.WriteLine(ex);
                     break;
                 }
