@@ -28,6 +28,7 @@ $(function () {
 ///=============Event ============
 
 function playAudio(cls, auto) {
+    CheckSession();
     $.myCrntID = cls;
     if (auto != undefined) {
         BindSelectedTreeElement("." + cls);
@@ -76,6 +77,7 @@ function togglePlay(isplay) {
 
 function endPlay() {
     if (isLoop == 1) {
+        CheckSession();
         $.myPlayer.play();
         return;
     }

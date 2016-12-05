@@ -16,11 +16,10 @@ namespace music.local.Controllers
             ViewBag.Data = listAlbum;
             return View("/Views/Home.cshtml");
         }
-        public ActionResult Demo(string p="")
+        public ActionResult Demo(string p = "")
         {
-            Common.CheckLogin();
+            //Common.CheckLogin();
             return WaveFormProcessing.DemoDraw(p);
-            //return Content("null");
         }
 
         public ActionResult File(string p)
@@ -44,23 +43,23 @@ namespace music.local.Controllers
                     int br = str.Read(data, 0, data.Length);
                     if (br != str.Length)
                         throw new System.IO.IOException(filePath);
-                    //var ms = str.
-                    //return new FileContentResult(str, "image/png");
-
                     return new FileContentResult(data, fileMine);
                 }
-                //return new FilePathResult(filePath, fileMine)
-                //{
-                //    FileDownloadName = f.Name
-                //};
             }
             return null;
         }
 
-        //public HttpResponseMessage Stream(string p)
-        //{
-        //    HttpResponseMessage response = new HttpResponseMessage();
-            
-        //}
+         /// <summary>
+         /// renew session
+         /// </summary>
+         /// <returns></returns>
+        public ActionResult CheckSession()
+        {
+            if (Common.CheckLogin(false))
+            {
+                return Content("1");
+            }
+            return Content("0");
+        }
     }
 }

@@ -183,6 +183,7 @@
     <Compile Include="CommonFunction\Common.cs" />
     <Compile Include="CommonFunction\MediaUtilities.cs" />
     <Compile Include="CommonFunction\VideoStream.cs" />
+    <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\StreammingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -351,7 +352,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\CSS\Site.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -362,7 +365,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -424,6 +426,7 @@
     <Content Include="Views\TreeNode.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Login.cshtml" />
+    <Content Include="Views\FilmIndex.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

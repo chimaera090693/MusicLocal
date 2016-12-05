@@ -10,7 +10,8 @@ namespace music.local.Models
         Singer =0, //ca sĩ
         Group=1,   //các nhóm sản phẩm
         Album=2,   //album
-        Track =3   //tracks
+        Track =3,   //tracks
+        Video =4  //tracks
     }
     public class SoundTrackModel
     {

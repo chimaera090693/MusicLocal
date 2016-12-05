@@ -13,7 +13,7 @@ namespace music.local.Bussiness
 {
     public class WaveFormProcessing
     {
-        public static float Zoommer = (float)0.8;
+        public static float Zoommer = (float)1.2;
         public static ActionResult DemoDraw(string fn = "")
         {
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
@@ -36,9 +36,9 @@ namespace music.local.Bussiness
         {
             try
             {
+                const int ConstMinVal = short.MinValue;
+                const int Denominator = ushort.MaxValue ;
                 long startPosition = 0;
-                //FileStream newFile = new FileStream(GeneralUtils.Get_SongFilePath() + "/" + strPath, FileMode.Create);
-                //float[] data = FloatArrayFromByteArray(Buffer);
 
                 Bitmap bmp = new Bitmap(3256, 400);
 
@@ -60,23 +60,40 @@ namespace music.local.Bussiness
                     var samplesPerPixel = (int)(wavestream.Length / bytesPerSample) / width;
                     wavestream.Position = 0;
                     byte[] waveData1 = new byte[samplesPerPixel * bytesPerSample];
-                    wavestream.Position = startPosition;//+ (width * bytesPerSample * samplesPerPixel);
+                    //wavestream.Position =  (width * bytesPerSample * samplesPerPixel);
 
-                    for (float x = 0; x < width; x++)
+                    for (float x = 0; x < width-1; x++)
                     {
-                        short low = 0;
-                        short high = 0;
+                        int low = 0;
+                        int high = 0;
                         var bytesRead1 = wavestream.Read(waveData1, 0, samplesPerPixel * bytesPerSample);
                         if (bytesRead1 == 0)
                             break;
-                        for (int n = 0; n < bytesRead1; n += 2)
+                        int totalLow = 0, countLow=0;
+                        int totalHigh = 0, countHigh=0;
+                        for (int n = 0; n <= bytesRead1-2; n +=2)
                         {
-                            short sample = BitConverter.ToInt16(waveData1, n);
-                            if (sample < low) { low = sample; }
-                            if (sample > high) { high = sample; }
+                            int sample = BitConverter.ToInt16(waveData1, n); ;
+                            if (sample > 0)
+                            {
+                                if (sample > high) { high = sample; }
+
+                                totalHigh += sample;
+                                countHigh++;
+                            }
+                            else
+                            {
+                                    if (sample < low) { low = sample; }
+                                    totalLow += sample;
+                                    countLow++;
+                            }
+                            
                         }
-                        float lowPercent = ((Zoom(low) - short.MinValue) / ushort.MaxValue);
-                        float highPercent = ((Zoom(high) - short.MinValue) / ushort.MaxValue);
+                        low =(low + totalLow/(countLow == 0 ? 1 : countLow))/2;
+                        high =(high + totalHigh / (countHigh == 0 ? 1 : countHigh))/2;
+
+                        float lowPercent = ((float)(low - ConstMinVal) / Denominator);
+                        float highPercent = ((float)(high - ConstMinVal) / Denominator);
                         float lowValue = (height * lowPercent);
                         float highValue = (height * highPercent);
                         g.DrawLine(pen1, x, lowValue, x, highValue);
@@ -97,7 +114,7 @@ namespace music.local.Bussiness
 
                 if (!string.IsNullOrEmpty(hash))
                 {
-                    bmp.Save(physPath + "\\image\\" + hash + ".png", ImageFormat.Png);
+                    //bmp.Save(physPath + "\\image\\" + hash + ".png", ImageFormat.Png);
                 }
                 bmp.Dispose();
                 return image;
@@ -124,9 +141,9 @@ namespace music.local.Bussiness
             return output;
         }
 
-        public static float Zoom(float pecent)
+        public static float Zoom(float pecent, bool isNegative = false)
         {
-            var rtn = Zoommer * pecent;
+            var rtn = !isNegative ? Zoommer * pecent : pecent / Zoommer;
             return rtn;
         }
 

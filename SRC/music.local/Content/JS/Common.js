@@ -18,7 +18,7 @@ var Class_BtnPlay_Pause = "control-btnCustom control-btnplay";
 var Class_BtnLoop = "control-btnCustom control-loop";
 var Txt_BtnLoop_ROne = "Repeat one";
 var Txt_BtnLoop_RAlbum = "Repeat Album";
-var Txt_BtnLoop_NoR= "No repeat";   
+var Txt_BtnLoop_NoR = "No repeat";
 
 
 //common function
@@ -75,7 +75,7 @@ function setPageTitle(songname) {
         $(document).prop('title', defaultTitle);
     } else {
         $.currentSong = songname == undefined ? $.currentSong : songname;
-        $.myInverter = setInterval(function() {
+        $.myInverter = setInterval(function () {
             var currenttt = $(document).prop('title');
             if (currenttt === defaultTitle) {
                 $(document).prop('title', $.currentSong);
@@ -84,4 +84,18 @@ function setPageTitle(songname) {
             }
         }, 3000);
     }
+}
+
+function CheckSession() {
+    $.ajax({
+        type: "GET",
+        url: "/home/CheckSession",
+        contentType: "text/html; charset=utf-8",
+        success: function (data) {
+            //console.log(data);;
+            if (data != "1") {
+               location.reload();
+           }
+        }
+    });
 }
