@@ -6,9 +6,10 @@
 }
 
 /*nav singer*/
-ul.nav>li.active>a{
+ul.nav > li.active > a {
     background-color: #ddd !important;
 }
+
 ul.nav > li > a:hover, ul.nav > li > a:focus {
     background-color: #eee;
 }
@@ -16,97 +17,105 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
 /*end nav singer============================================*/
 
 /*custom tree*/
-.jstree-anchor{
-    width:97%;
+.jstree-anchor {
+    width: 97%;
 }
 /*end custom tree===========================================*/
 
 
 /*footer player*/
-.footer-player{
+.footer-player {
     height: 150px;
     width: 100%;
-    position:fixed;
-    bottom:0px;
+    position: fixed;
+    bottom: 0px;
 }
-.albumCover{
-    position:absolute;
+
+.albumCover {
+    position: absolute;
     /*background-color:red;*/
-    height:150px;
-    width:20%;
+    height: 150px;
+    width: 20%;
     background-color: #ccc;
 }
- .albumCover img{
+
+    .albumCover img {
+        height: 100%;
+        margin: 0 auto;
+        position: relative;
+    }
+
+.controls-wraper {
+    width: 100%;
     height: 100%;
-    margin: 0 auto;
-    position:relative;
-}
-.controls-wraper{
-    width:100%;
-    height:100%;
-    position:absolute;
-    background-color:#eee;
-    opacity: 0; 
+    position: absolute;
+    background-color: #eee;
+    opacity: 0;
     top: 0px;
 }
-.controls-wraper:hover{
-    opacity: 0.7; 
-}
-.controls-wraper .buttons{
-    margin: 0 auto;
-    padding-top: 70px;
-    display: table;
+
+    .controls-wraper:hover {
+        opacity: 0.7;
+    }
+
+    .controls-wraper .buttons {
+        margin: 0 auto;
+        padding-top: 70px;
+        display: table;
+        position: relative;
+    }
+
+.player-wraper {
     position: relative;
+    /*right:0px;*/
+    float: right;
+    height: 150px;
+    width: 80%;
+    background-color: #dedede;
+    opacity: 0.9;
+    border-left: 1px solid #000;
 }
 
-.player-wraper{
-    position:relative;
-    /*right:0px;*/
-    float:right;
-    height:150px;
-    width:80%;
-    background-color:#dedede;
-    opacity:0.9;
-    border-left:1px solid #000;
-}
-#player-display{
-    position:absolute;
-    right:0px;
-    height:150px;
-    width:100%;
-    background-color:#dedede;
+#player-display {
+    position: absolute;
+    right: 0px;
+    height: 150px;
+    width: 100%;
+    background-color: #dedede;
     background-size: 100% 100%;
-    opacity:0.9;
+    opacity: 0.9;
 }
-#remain-display{
-    border-left:1px solid #000;
-    background-color:#eee;
-    opacity:0.5;
+
+#remain-display {
+    border-left: 1px solid #000;
+    background-color: #eee;
+    opacity: 0.5;
     right: 0px;
     transition: width 0.2s;
-    position:absolute;
-    height:150px;
+    position: absolute;
+    height: 150px;
 }
 
-#playerSongInfor{
-     z-index: 999;
-     position:absolute;
-     font-family:Arial;
-     font-weight:bold;
-     font-size:15pt;
-     color: #fff;
-     text-shadow: 0em 0em 1em #888; 
+#playerSongInfor {
+    z-index: 999;
+    position: absolute;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 15pt;
+    color: #fff;
+    text-shadow: 0em 0em 1em #888;
 }
 
 #player {
-    width:100%;
-    height:150px;
+    width: 100%;
+    height: 150px;
 }
-.control-btnCustom{
+
+.control-btnCustom {
     font-family: Glyphicons Halflings;
     font-weight: normal;
     font-style: normal;
-    opacity:0.9;
+    opacity: 0.9;
     background: none;
     border: none;
     color: inherit;
@@ -121,37 +130,99 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     -moz-appearance: none;
     flex: none;
 }
-.control-btnCustom:focus:before,
-.control-btnCustom:hover:before,
-.control-btnCustom:focus {
-  text-shadow: 0em 0em 1em #000; 
 
-}
-.control-btnCustom:before{
-    font-size: small;
-    margin: 10% auto;
-}
-.control-btnnext:before{
+    .control-btnCustom:focus:before,
+    .control-btnCustom:hover:before,
+    .control-btnCustom:focus {
+        text-shadow: 0em 0em 1em #000;
+    }
+
+    .control-btnCustom:before {
+        font-size: small;
+        margin: 10% auto;
+    }
+
+.control-btnnext:before {
     content: "\e077";
 }
-.control-loop1:before{
+
+.control-loop1:before {
     content: "\e030";
 }
 
-.control-loop2:before{
+.control-loop2:before {
     content: "\e031";
 }
-.control-loop0:before{
+
+.control-loop0:before {
     content: "\e030";
     color: red;
 }
-.control-btnplay:before{
+
+.control-btnplay:before {
     content: "\e072";
 }
-.control-btnpause:before{
+
+.control-btnpause:before {
     content: "\e073";
 }
 
-/*end footer player======================================*/
+/*end footer player======================================================*/
 
 
+/*Video*/
+
+.list-video-item {
+    cursor: pointer;
+}
+
+    .list-video-item * {
+        cursor: pointer;
+    }
+
+.listitem-cover {
+    margin: 3px;
+    width: 50px;
+    height: 30px;
+    display: inline-block;
+}
+
+.video-detail .playlist-wraper {
+    background-color:#eee ;
+    box-shadow: 0em 0em 1em #eee;
+    width: 990px;
+    overflow-y: hidden;
+    display: block;
+    height: 165px;
+    position: fixed;
+    bottom: 0px;
+}
+
+.video-detail .ul {
+    display: inline-flex;
+}
+
+.video-detail .li {
+    box-shadow: 0em 0em 1em #dedede;
+    background-color:#dedede ;
+    cursor:pointer;
+    margin-right: 5px;
+    display: block;
+    float: left;
+    width: 150px;
+    height: 150px;
+    padding: 5px;
+}
+
+    .video-detail .li p {
+        height: 62px;
+        width: 140px;
+        overflow: hidden;
+    }
+.video-detail #video-player{
+    width:100%;
+    height: 410px;
+    /*border: 1px solid red;*/
+}
+
+/*end Video==============================================================*/

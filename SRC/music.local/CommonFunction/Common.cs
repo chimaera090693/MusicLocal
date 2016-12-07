@@ -76,5 +76,11 @@ namespace music.local
                 }
             }
         }
+
+        public static string GetFileName(string oldValue)
+        {
+            if (string.IsNullOrEmpty(oldValue)) return "";
+            return oldValue.Replace(" ", "").Replace("(", "").Replace(")", "");
+        }
     }
 }

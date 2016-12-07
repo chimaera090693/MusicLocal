@@ -50,7 +50,7 @@ namespace music.local.Bussiness
                     foreach (var item in listDir)
                     {
                         var dirInf = new DirectoryInfo(item);
-                        if (!((dirInf.Name == "image" || dirInf.Name == "video") && string.IsNullOrEmpty(parent.FilePath)))
+                        if (!((dirInf.Name == "image" || dirInf.Name.ToLower() == "video") && string.IsNullOrEmpty(parent.FilePath)))
                         {
                             SoundTrackModel st = new SoundTrackModel();
                             st.ItemType = lever;
@@ -58,7 +58,7 @@ namespace music.local.Bussiness
                             st.Gid = Guid.NewGuid().ToString().Replace("-", "");
                             st.ParentGid = parent.Gid;
                             st.FilePath = parent.FilePath + "\\" + dirInf.Name;
-                            if (extType.Equals(".mp3"))
+                            //if (extType.Equals(".mp3"))
                                st.ListTrack = ReclusiveTree(physPath + "\\" + st.FilePath, lever + 1, ref st);
                             list.Add(st);
                         }
@@ -113,7 +113,7 @@ namespace music.local.Bussiness
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
 
             var stParent = new SoundTrackModel();
-            stParent.FilePath = "";
+            stParent.FilePath = "\\Video";
             var list = ReclusiveTree(physPath+"\\Video", (int)TrackType.Singer, ref stParent, ".mp4");
             return list;
         }

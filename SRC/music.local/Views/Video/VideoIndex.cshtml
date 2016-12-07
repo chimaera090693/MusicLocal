@@ -1,9 +1,12 @@
 ﻿@using System.Web.Configuration
+@using music.local
 @using music.local.Models
 @{
     Layout = null;
     List<SoundTrackModel> list = (List<SoundTrackModel>)ViewBag.Data;
     var host = WebConfigurationManager.AppSettings["AbsoluteHostPath"];
+    var isFirst = "";
+    var count = 0;
 }
 
 <head>
@@ -15,21 +18,61 @@
 </head>
 <div class="video-content body">
     <div class="main-cont">
-        <div class="col-md-4">
-            <ul>
-                @foreach (var item in list)
+        <div class="col-md-3">
+            <ul style="padding:0px;" class="nav nav-stacked">
+                @if (list != null)
                 {
-                    <li class="list-video" data-src="">
-                        <img class="listitem-cover" />
-                        <label class="listitem-label">@item.Name</label>
-                    </li>
+                    count = 0;
+                    isFirst = "active";
+                    foreach (var item in list)
+                    {
+                        <li role="presentation" class="list-video-item @isFirst" data-src="">
+                            <a href="#@("folder-" + count + "-" + Common.GetFileName(item.Name))" aria-controls="home" role="tab" data-toggle="tab">
+                                <img class="listitem-cover img-responsive" src="@("/Home/File?p=" + item.CoverPath)" />
+                                <label class="listitem-label">@item.Name</label>
+                            </a>
+                        </li>
+                        isFirst = "";
+                        count ++;
+                    }
                 }
             </ul>
         </div>
-        <div class="col-md-8">
-            
+        <div class="col-md-9">
+            <div class="tab-content">
+                @if (list != null)
+                {
+                    isFirst = "active";
+                    count = 0;
+                    foreach (var item in list)
+                    {
+                        <div role="tabpanel" class="tab-pane @isFirst" id="@("folder-" + count + "-" + Common.GetFileName(item.Name))">
+                            <div class="video-detail">
+                                <video id="video-player"></video>
+                                <div class="playlist-wraper">
+                                    <div class="ul">
+                                        @* build tree view *@
+                                        @foreach (var child in item.ListTrack)
+                                        {
+                                            <div class="li">
+                                                <img title="@child.Name" class="img-responsive" src="@Url.Action("Thumbnail", "Video", new { p = child.FilePath })" />
+                                                <p title="@child.Name">@child.Name</p>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        isFirst = "";
+                        count++;
+                    }
+                }
+            </div>
         </div>
     </div>
 </div>
 
+<script src="~/Content/JS/jquery-3.1.1.min.js"></script>
+<script src="~/Content/bootstrap3.3.7/js/bootstrap.js"></script>
+<script src="~/Content/JS/Common.js"></script>
 
