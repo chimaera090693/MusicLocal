@@ -12,8 +12,9 @@ namespace music.local.Bussiness
     {
         private static string[] arrImageExt = new[] { ".png", ".bmp", ".jpg", ".jpeg" };
 
+        #region Audio
         /// <summary>
-        /// build tree object
+        /// build tree object for audio
         /// </summary>
         /// <returns></returns>
         public static List<SoundTrackModel> GetTree()
@@ -33,8 +34,9 @@ namespace music.local.Bussiness
         /// <param name="parentPath"></param>
         /// <param name="lever"></param>
         /// <param name="parent"></param>
+        /// <param name="extType">type file(".mp3" or ".mp4")</param>
         /// <returns></returns>
-        private static List<SoundTrackModel> ReclusiveTree(string parentPath, int lever, ref SoundTrackModel parent)
+        private static List<SoundTrackModel> ReclusiveTree(string parentPath, int lever, ref SoundTrackModel parent, string extType=".mp3")
         {
             try
             {
@@ -48,7 +50,7 @@ namespace music.local.Bussiness
                     foreach (var item in listDir)
                     {
                         var dirInf = new DirectoryInfo(item);
-                        if (!((dirInf.Name == "image" || dirInf.Name == "film") && string.IsNullOrEmpty(parent.FilePath)))
+                        if (!((dirInf.Name == "image" || dirInf.Name == "video") && string.IsNullOrEmpty(parent.FilePath)))
                         {
                             SoundTrackModel st = new SoundTrackModel();
                             st.ItemType = lever;
@@ -56,7 +58,8 @@ namespace music.local.Bussiness
                             st.Gid = Guid.NewGuid().ToString().Replace("-", "");
                             st.ParentGid = parent.Gid;
                             st.FilePath = parent.FilePath + "\\" + dirInf.Name;
-                            st.ListTrack = ReclusiveTree(physPath + "\\" + st.FilePath, lever + 1, ref st);
+                            if (extType.Equals(".mp3"))
+                               st.ListTrack = ReclusiveTree(physPath + "\\" + st.FilePath, lever + 1, ref st);
                             list.Add(st);
                         }
                     }
@@ -71,7 +74,7 @@ namespace music.local.Bussiness
                     {
                         var file = new FileInfo(item);
                         var extension = Path.GetExtension(item);
-                        if (extension != null && (extension.ToLower() != ".mp3") && arrImageExt.Contains(extension))
+                        if (extension != null && (extension.ToLower() != extType) && arrImageExt.Contains(extension.ToLower()))
                         {
                             extension = extension.ToLower();
                             // image file
@@ -103,6 +106,17 @@ namespace music.local.Bussiness
             }
         }
 
+        #endregion 
+
+        public static List<SoundTrackModel> GetVideoList()
+        {
+            var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
+
+            var stParent = new SoundTrackModel();
+            stParent.FilePath = "";
+            var list = ReclusiveTree(physPath+"\\Video", (int)TrackType.Singer, ref stParent, ".mp4");
+            return list;
+        }
 
     }
 }

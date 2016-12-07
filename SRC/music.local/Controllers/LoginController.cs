@@ -12,7 +12,7 @@ namespace music.local.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var chkLogin = Session["IsLogin"];
+            Common.WriteLogAccess();
             if (Common.CheckLogin(false))
             {
                 Response.Redirect("/");

@@ -1,0 +1,35 @@
+﻿@using System.Web.Configuration
+@using music.local.Models
+@{
+    Layout = null;
+    List<SoundTrackModel> list = (List<SoundTrackModel>)ViewBag.Data;
+    var host = WebConfigurationManager.AppSettings["AbsoluteHostPath"];
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Video</title>
+    <link href="~/Content/bootstrap3.3.7/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/CSS/Site.css" rel="stylesheet" />
+    <link href="~/Content/jsTree/dist/themes/default/style.css" rel="stylesheet" />
+</head>
+<div class="video-content body">
+    <div class="main-cont">
+        <div class="col-md-4">
+            <ul>
+                @foreach (var item in list)
+                {
+                    <li class="list-video" data-src="">
+                        <img class="listitem-cover" />
+                        <label class="listitem-label">@item.Name</label>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-8">
+            
+        </div>
+    </div>
+</div>
+
+

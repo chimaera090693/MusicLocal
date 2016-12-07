@@ -1,6 +1,4 @@
 ﻿using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using music.local.Bussiness;
@@ -11,20 +9,20 @@ namespace music.local.Controllers
     {
         public ActionResult Index()
         {
-            Common.CheckLogin();
+            if (!Common.CheckLogin()) return null;
             var listAlbum = TrackProcessing.GetTree();
             ViewBag.Data = listAlbum;
             return View("/Views/Home.cshtml");
         }
         public ActionResult Demo(string p = "")
         {
-            //Common.CheckLogin();
+            //if (!Common.CheckLogin()) return null;
             return WaveFormProcessing.DemoDraw(p);
         }
 
         public ActionResult File(string p)
         {
-            Common.CheckLogin();
+            if(!Common.CheckLogin()) return null;
             if (string.IsNullOrEmpty(p))
                 return null;
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
@@ -42,7 +40,7 @@ namespace music.local.Controllers
                     byte[] data = new byte[str.Length];
                     int br = str.Read(data, 0, data.Length);
                     if (br != str.Length)
-                        throw new System.IO.IOException(filePath);
+                        throw new IOException(filePath);
                     return new FileContentResult(data, fileMine);
                 }
             }

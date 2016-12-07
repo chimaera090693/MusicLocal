@@ -1,7 +1,8 @@
 ﻿/// <reference path="~/Content/JS/CookieHelper.js" />
 /// Common variable
 var defaultTitle = "Far, anyway!";
-
+var enableLogErr = false;
+var enableLogDebug = false;
 ///isloop
 ///0: no loop
 ///1: loop this track
@@ -21,7 +22,7 @@ var Txt_BtnLoop_RAlbum = "Repeat Album";
 var Txt_BtnLoop_NoR = "No repeat";
 
 
-//common function
+//audio player function
 function getLoopButtonClass() {
     return Class_BtnLoop + isLoop;
 }
@@ -50,7 +51,7 @@ function InitLoop() {
 }
 
 function changeLoop(ele) {
-    //console.log(ele);
+    LogDebug(ele);
     switch (parseInt(isLoop)) {
         case 1:
             isLoop = 2;
@@ -67,6 +68,7 @@ function changeLoop(ele) {
     $(ele).attr("title", getLoopButtonText());
 }
 
+// genneral page funtion
 function setPageTitle(songname) {
     if ($.myInverter) {
         clearInterval($.myInverter);
@@ -92,10 +94,20 @@ function CheckSession() {
         url: "/home/CheckSession",
         contentType: "text/html; charset=utf-8",
         success: function (data) {
-            //console.log(data);;
+            LogDebug.log(data);;
             if (data != "1") {
                location.reload();
            }
         }
     });
+}
+function LogError(msg) {
+    if (enableLogErr) {
+        console.log(msg);
+    }
+}
+function LogDebug(msg) {
+    if (enableLogDebug) {
+        console.log(msg);
+    }
 }

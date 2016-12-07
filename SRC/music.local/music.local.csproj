@@ -187,6 +187,7 @@
     <Compile Include="Controllers\StreammingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -427,6 +428,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Login.cshtml" />
     <Content Include="Views\FilmIndex.cshtml" />
+    <Content Include="Views\Video\VideoIndex.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -42,21 +42,18 @@ function playAudio(cls, auto) {
     var songname = $("." + cls + " a:first").text();
 
     setPageTitle(songname);
-    //$(document).prop('title', defaultTitle + ' - ' + songname);
 
     $("#cover").attr("src", cover);
     //var playerimage = newSrc.replace("Home/File?p=", "Home/Demo?p=");
     var playerimage = newSrc.replace("api/Streamming/Get?p=", "Home/Demo?p=");
     playerimage = encodeURI(playerimage);
-    //console.log(playerimage);
+    LogDebug(playerimage);
     $("#player-display").css("background-image", "url(\"" + playerimage + "\")");
     $.myPlayer.src= newSrc;
-    //$.myPlayer.play();
     $.myPlayer.load();
     $.myPlayer.addEventListener("canplay",function () {
         togglePlay(1);
         $.myPlayer.removeEventListener("canplay", function (){});
-        //$.myPlayer.play();
     });
 
 }
@@ -93,7 +90,7 @@ function nextTrack() {
         var current = $.myCrntID.split('-');
         var nextId = current[1];
         next = current[0] + "-" + String(parseInt(nextId) + 1);
-        //console.log(next);
+        LogDebug(next);
         if ($("." + next).length) {
             playAudio(next, 1);
         } else {
@@ -113,20 +110,20 @@ function UpdateDisplay() {
     var width = $("#player-display").width();
     var totalTime = $.myPlayer.duration;
     var crntTime = $.myPlayer.currentTime;
-    //console.log(width + "-" + totalTime + "-" + crntTime);
+    LogDebug(width + "-" + totalTime + "-" + crntTime);
     $("#remain-display").css("width", (width-((crntTime / totalTime) * width).toFixed(0)) + "px ");
 }
 
 function Seek(event) {
-    //console.log($.myPlayer.currentTime);
+    LogDebug($.myPlayer.currentTime);
     //player-display
     var curPos = event.clientX - $(".albumCover").width();
-    //console.log(event.clientX);
+    LogDebug(event.clientX);
     var width = $("#player-display").width();
     var totalTime = $.myPlayer.duration;
     var crntTime = ((curPos / width) * totalTime).toFixed(0);
-    //console.log(totalTime);
-    //console.log(crntTime);
+    LogDebug(totalTime);
+    LogDebug(crntTime);
     $("#remain-display").css("width", (curPos) + "px");
     $.myPlayer.currentTime = parseInt(crntTime);
 }
@@ -138,13 +135,10 @@ function BindSelectedTreeElement(selector) {
     $.myFkingTree.each(function (index, value) {
         $(value).jstree("deselect_all");
         if ($(value).find(selector).length > 0) {
-            //console.log(value);
-            //$(value).jstree("open_node", selector);
+            LogDebug(value);
             $(value).jstree("select_node", selector);
         }
 
     });
 }
-
-
 ///============End Common Function ================
