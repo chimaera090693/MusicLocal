@@ -114,7 +114,7 @@ namespace music.local.Bussiness
 
                 if (!string.IsNullOrEmpty(hash))
                 {
-                    //bmp.Save(physPath + "\\image\\" + hash + ".png", ImageFormat.Png);
+                    bmp.Save(physPath + "\\image\\" + hash + ".png", ImageFormat.Png);
                 }
                 bmp.Dispose();
                 return image;
