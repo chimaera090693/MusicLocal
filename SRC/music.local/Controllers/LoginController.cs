@@ -28,7 +28,13 @@ namespace music.local.Controllers
             if (PassInWF.Equals(pass))
             {
                 Session["IsLogin"] = "ok";
-                Response.Redirect("/");
+                string crnturl = Session["CurrentURL"] as string;
+                if (string.IsNullOrEmpty(crnturl))
+                {
+                    Response.Redirect("/");
+                    return null;
+                }
+                Response.Redirect(crnturl);
                 return null;
             }
             return View("~/Views/Login.cshtml");

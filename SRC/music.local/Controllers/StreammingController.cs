@@ -18,7 +18,7 @@ namespace music.local.Controllers
         {
             try
             {
-
+                //if (!Common.CheckLogin()) return null;
                 var response = Request.CreateResponse();
                 response.Headers.TransferEncodingChunked = true;
                 response.Headers.Add("Accept-Ranges", "bytes");
@@ -27,7 +27,7 @@ namespace music.local.Controllers
                 VideoStream vid;
                 //response.He
                 var appPath = WebConfigurationManager.AppSettings["PhysicalPath"];
-                var fileInfo = new FileInfo(appPath.Replace("\\", "/") + p);
+                var fileInfo = new FileInfo((appPath + p).Replace("\\", "/"));
 
                 //check path
                 if (string.IsNullOrEmpty(p))

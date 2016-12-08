@@ -42,12 +42,18 @@ namespace music.local
         /// <returns></returns>
         public static bool CheckLogin(bool IsRedirect = true)
         {
-            var chkLogin = HttpContext.Current.Session["IsLogin"];
-            if (chkLogin != null && (string) chkLogin == "ok")
+            if (HttpContext.Current.Session != null)
             {
-                return true;
+                var chkLogin = HttpContext.Current.Session["IsLogin"];
+                if (chkLogin != null && (string) chkLogin == "ok")
+                {
+                    return true;
+                }
+                var currentURL = HttpContext.Current.Request.Url;
+                if (IsRedirect)
+                   HttpContext.Current.Session["CurrentURL"] = currentURL.AbsolutePath;
+                if (IsRedirect) HttpContext.Current.Response.Redirect("~/Login");
             }
-            if(IsRedirect) HttpContext.Current.Response.Redirect("~/Login");
             return false;
         }
 
@@ -57,22 +63,25 @@ namespace music.local
         public static void WriteLogAccess()
         {
             var ipAddress = HttpContext.Current.Request.UserHostAddress;
-            var tr = HttpContext.Current.Request.Headers["User-Agent"];
-            var msg = (DateTime.Now.ToString("s") + ": " + ipAddress + "    ||  User-Agent:" + tr);
-            using (
-                StreamWriter file =
-                    new StreamWriter(txtLogAccess, true))
+            if (!("127.0.0.1").Equals(ipAddress))
             {
-                try
+                var tr = HttpContext.Current.Request.Headers["User-Agent"];
+                var msg = (DateTime.Now.ToString("s") + ": " + ipAddress + "    ||  User-Agent:" + tr);
+                using (
+                    StreamWriter file =
+                        new StreamWriter(txtLogAccess, true))
                 {
-                    file.WriteLine(msg);
-                    file.WriteLine("=================================================================");
-                    file.Flush();
-                    file.Close();
-                }
-                catch (Exception ex)
-                {
-                    WriteLog(MethodBase.GetCurrentMethod().Name, ex + ex.StackTrace);
+                    try
+                    {
+                        file.WriteLine(msg);
+                        file.WriteLine("=================================================================");
+                        file.Flush();
+                        file.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        WriteLog(MethodBase.GetCurrentMethod().Name, ex + ex.StackTrace);
+                    }
                 }
             }
         }

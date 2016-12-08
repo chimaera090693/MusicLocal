@@ -1,8 +1,8 @@
 ﻿/// <reference path="~/Content/JS/CookieHelper.js" />
 /// Common variable
 var defaultTitle = "Far, anyway!";
-var enableLogErr = false;
-var enableLogDebug = false;
+var enableLogErr = true;
+var enableLogDebug = true;
 ///isloop
 ///0: no loop
 ///1: loop this track
