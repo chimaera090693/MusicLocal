@@ -15,14 +15,14 @@ namespace music.local.Controllers
         // GET: Video
         public ActionResult Index()
         {
-            if (!Common.CheckLogin()) return null;
+            if (!LoginsProcessing.CheckLogin(true)) return null;
             ViewBag.Data = TrackProcessing.GetVideoList();
             return View("/Views/Video/VideoIndex.cshtml");
         }
 
         public ActionResult Thumbnail(string p = "")
         {
-            if (!Common.CheckLogin()) return null;
+            if (!LoginsProcessing.CheckLogin()) return null;
             if (!string.IsNullOrEmpty(p))
             {
                 var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];

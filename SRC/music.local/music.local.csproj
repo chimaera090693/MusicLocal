@@ -51,6 +51,18 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -178,11 +190,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Bussiness\DataAccess\Logins.cs" />
+    <Compile Include="Bussiness\LoginsProcessing.cs" />
     <Compile Include="Bussiness\TrackProcessing.cs" />
     <Compile Include="Bussiness\WaveFormProcessing.cs" />
     <Compile Include="CommonFunction\Common.cs" />
     <Compile Include="CommonFunction\MediaUtilities.cs" />
     <Compile Include="Bussiness\ThumbnailGen.cs" />
+    <Compile Include="CommonFunction\SqlHelper.cs" />
+    <Compile Include="CommonFunction\SqliteHelper.cs" />
     <Compile Include="CommonFunction\VideoStream.cs" />
     <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\StreammingController.cs" />

@@ -34,28 +34,7 @@ namespace music.local
                 Logger.Debug("");
             }
         }
-
-        /// <summary>
-        /// Kiểm tra trạng thái đăng nhập
-        /// </summary>
-        /// <param name="IsRedirect">redirect nếu chưa đăng nhập</param>
-        /// <returns></returns>
-        public static bool CheckLogin(bool IsRedirect = true)
-        {
-            if (HttpContext.Current.Session != null)
-            {
-                var chkLogin = HttpContext.Current.Session["IsLogin"];
-                if (chkLogin != null && (string) chkLogin == "ok")
-                {
-                    return true;
-                }
-                var currentURL = HttpContext.Current.Request.Url;
-                if (IsRedirect)
-                   HttpContext.Current.Session["CurrentURL"] = currentURL.AbsolutePath;
-                if (IsRedirect) HttpContext.Current.Response.Redirect("~/Login");
-            }
-            return false;
-        }
+        
 
         /// <summary>
         /// ghi log access ra file text

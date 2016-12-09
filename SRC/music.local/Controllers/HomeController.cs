@@ -9,7 +9,7 @@ namespace music.local.Controllers
     {
         public ActionResult Index()
         {
-            if (!Common.CheckLogin()) return null;
+            if (!LoginsProcessing.CheckLogin(true)) return null;
             var listAlbum = TrackProcessing.GetTree();
             ViewBag.Data = listAlbum;
             return View("/Views/Home.cshtml");
@@ -22,7 +22,7 @@ namespace music.local.Controllers
 
         public ActionResult File(string p)
         {
-            if(!Common.CheckLogin()) return null;
+            if (!LoginsProcessing.CheckLogin()) return null;
             if (string.IsNullOrEmpty(p))
                 return null;
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
@@ -53,7 +53,7 @@ namespace music.local.Controllers
          /// <returns></returns>
         public ActionResult CheckSession()
         {
-            if (Common.CheckLogin(false))
+            if (LoginsProcessing.CheckLogin())
             {
                 return Content("1");
             }
