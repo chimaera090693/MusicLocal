@@ -200,11 +200,18 @@
     <Compile Include="CommonFunction\SqlHelper.cs" />
     <Compile Include="CommonFunction\SqliteHelper.cs" />
     <Compile Include="CommonFunction\VideoStream.cs" />
-    <Compile Include="Controllers\FilmController.cs" />
-    <Compile Include="Controllers\StreammingController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Controllers\HomeController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\LoginController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\StreammingController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\VideoController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -442,9 +449,10 @@
     <None Include="Project_Readme.html" />
     <Content Include="Views\TreeNode.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Login.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\FilmIndex.cshtml" />
     <Content Include="Views\Video\VideoIndex.cshtml" />
+    <Content Include="Views\Login\AccessLog.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
+using music.local.Bussiness.DataAccess;
 
 namespace music.local.Bussiness
 {
@@ -23,27 +25,28 @@ namespace music.local.Bussiness
                     var expired = chkLogin.Rows[0]["Expired"];
                     if (expired != DBNull.Value)
                     {
-                        var dt = Convert.ToDateTime(expired);
+                        var dt = DateTime.ParseExact(expired.ToString(), Logins.SqliteDateTimeFormat, CultureInfo.InvariantCulture);
                         if (dt >= DateTime.Now)
                         {
+                            Logins.Logins_UpdateLastActive(ipAddress, DateTime.Now.ToString(Logins.SqliteDateTimeFormat));
                             return true;
                         }
                     }
                     else
                     {
-                        var created = Convert.ToDateTime(chkLogin.Rows[0]["Created"]);
+                        var created = DateTime.ParseExact(chkLogin.Rows[0]["Created"].ToString(), Logins.SqliteDateTimeFormat, CultureInfo.InvariantCulture);
                         if (created.AddDays(2) >= DateTime.Now)
                         {
+                            Logins.Logins_UpdateLastActive(ipAddress, DateTime.Now.ToString(Logins.SqliteDateTimeFormat));
                             return true;
                         }
                     }
                 }
-                return true;
             }
             if (redirect)
             {
-               // var abpath = HttpContext.Current.Request.Url.AbsolutePath;
-              //  HttpContext.Current.Response.Redirect("~/Login?ru=" + abpath);
+               var abpath = HttpContext.Current.Request.Url.AbsolutePath;
+              HttpContext.Current.Response.Redirect("~/Login?ru=" + abpath);
             }
             return false;
         }

@@ -9,7 +9,7 @@ namespace music.local.Bussiness.DataAccess
     {
         #region using sqlite
 
-        private static string SqliteDateTimeFormat = "dd-MM-yyyy HH:mm:ss";
+        public static string SqliteDateTimeFormat = "dd-MM-yyyy HH:mm:ss";
 
         /// <summary>
         /// cập nhật/ thêm mới
@@ -18,12 +18,26 @@ namespace music.local.Bussiness.DataAccess
         /// <param name="created"></param>
         /// <param name="Expired"></param>
         /// <param name="other"></param>
-        public static void Logins_Update(string ip, DateTime? created, DateTime? Expired, string other)
+        /// <param name="lastActive"></param>
+        public static void Logins_Update(string ip, DateTime? created, DateTime? Expired, string other, DateTime? lastActive= null)
         {
             var strCreated = (created ?? DateTime.Now).ToString(SqliteDateTimeFormat);
             var strExp = (Expired ?? DateTime.Now.AddDays(2)).ToString(SqliteDateTimeFormat);
-            string strCommandText = "insert into Logins values ('" + ip + "', '" + strCreated + "', '" + strExp + "', '" + other + "')";
+            var strlastActive = (lastActive ?? DateTime.Now).ToString(SqliteDateTimeFormat);
             SqliteHelper sqliteHelper = new SqliteHelper();
+            string strCommandText = "select * from Logins where Identity='"+ip+"'";
+            var data = sqliteHelper.ExecuteGetDataTable(strCommandText);
+            if (data != null && data.Rows.Count > 0)
+            {
+                strCommandText = "update Logins set Identity='" + ip + "', Created= '" + strCreated + "', Expired='" + strExp
+                    + "', OtherInfor='" + other + "', LastActive ='" + strlastActive + "'";
+            }
+            else
+            {
+                strCommandText = "insert into Logins values ('" + ip + "', '" + strCreated + "', '" + strExp + "', '" +
+                                 other + "', '" + strlastActive + "')";
+            }
+
             sqliteHelper.ExecuteNonQuery(strCommandText);
         }
 
@@ -35,9 +49,16 @@ namespace music.local.Bussiness.DataAccess
         public static DataTable Logins_Get(string ip="")
         {
             string strCommandText = "select * from Logins where Identity = '" + ip + "'";
-            SqliteHelper sqliteHelper = new SqliteHelper();
-            sqliteHelper.ExecuteNonQuery(strCommandText);
+            if (string.IsNullOrEmpty(ip)) strCommandText = "select * from Logins";
+            var sqliteHelper = new SqliteHelper();
             return sqliteHelper.ExecuteGetDataTable(strCommandText);
+        }
+
+        public static int Logins_UpdateLastActive(string ip, string lastActive)
+        {
+            string strCommandText = "update Logins set LastActive = '" + lastActive + "' where Identity = '" + ip + "'";
+            var sqliteHelper = new SqliteHelper();
+            return sqliteHelper.ExecuteNonQuery(strCommandText);
         }
         #endregion
 

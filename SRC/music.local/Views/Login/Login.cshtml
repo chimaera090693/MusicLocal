@@ -15,7 +15,7 @@
 <body onclick="focusInput()">
     <div class="login-form">
         <div class="input-wraper">
-            @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
             {
                 <input type="password" required class="form-control" name="pass" id="pass" />
                 <button type="submit" class="btn btn-default">Login</button>

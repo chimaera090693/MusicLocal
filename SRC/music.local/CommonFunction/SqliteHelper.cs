@@ -24,20 +24,28 @@ namespace music.local.CommonFunction
             }
 
             var Connection = new SQLiteConnection(SqliteConnectionstring);
-            Connection.Open();
-            if (!CheckExistsTable("Logins"))
+            SQLiteCommand command = null;
+            try
             {
-                string sql = "create table Logins (Identity nvarchar(50), Created nvarchar(50) ,Expired nvarchar(50), OtherInfor nvarchar(200))";
-                var command = new SQLiteCommand(sql, Connection);
-                command.ExecuteNonQuery();
-                command.Dispose();
+                Connection.Open();
+                if (!CheckExistsTable("Logins"))
+                {
+                    string sql =
+                        "create table Logins (Identity nvarchar(50), Created nvarchar(50) ,Expired nvarchar(50), OtherInfor nvarchar(200), LastActive nvarchar(50))";
+                    command = new SQLiteCommand(sql, Connection);
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                }
             }
-            if (Connection.State != ConnectionState.Closed)
+            finally
             {
-                Connection.Close();
-                Connection.Dispose();
+                if (command != null) command.Dispose();
+                if (Connection.State != ConnectionState.Closed)
+                {
+                    Connection.Close();
+                    Connection.Dispose();
+                }
             }
-
         }
 
 
@@ -46,18 +54,26 @@ namespace music.local.CommonFunction
             DataTable dt = null;
             using (var Connection = new SQLiteConnection(SqliteConnectionstring))
             {
-
-                Connection.Open();
-                string sql = commandstr;
-                var command = new SQLiteCommand(sql, Connection);
-                SQLiteDataAdapter dataAdt = new SQLiteDataAdapter(command);
-                DataSet ds = new DataSet();
-                dataAdt.Fill(ds);
-                if (ds.Tables.Count > 0)
+                SQLiteCommand command = null;
+                try
                 {
-                    dt = ds.Tables[0];
+                    Connection.Open();
+                    string sql = commandstr;
+                    command = new SQLiteCommand(sql, Connection);
+                    SQLiteDataAdapter dataAdt = new SQLiteDataAdapter(command);
+                    DataSet ds = new DataSet();
+                    dataAdt.Fill(ds);
+                    ds.Dispose();
+                    dataAdt.Dispose();
+                    if (ds.Tables.Count > 0)
+                    {
+                        dt = ds.Tables[0];
+                    }
+                    command.Dispose();
                 }
-                command.Dispose();
+                finally {
+                    if (command != null) command.Dispose();
+                }
             }
             return dt;
         }
@@ -65,14 +81,22 @@ namespace music.local.CommonFunction
 
         public int ExecuteNonQuery(string commandstr)
         {
-            int result;
+            int result; 
+            SQLiteCommand command = null;
             using (var Connection = new SQLiteConnection(SqliteConnectionstring))
             {
-                Connection.Open();
-                string sql = commandstr;
-                var command = new SQLiteCommand(sql, Connection);
-                result = command.ExecuteNonQuery();
-                command.Dispose();
+                try
+                {
+                    Connection.Open();
+                    string sql = commandstr;
+                    command = new SQLiteCommand(sql, Connection);
+                    result = command.ExecuteNonQuery();
+                    command.Dispose();
+                }
+                finally
+                {
+                    if (command != null) command.Dispose();
+                }
             }
             return result;
         }
