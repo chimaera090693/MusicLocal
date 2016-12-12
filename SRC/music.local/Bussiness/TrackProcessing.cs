@@ -76,9 +76,9 @@ namespace music.local.Bussiness
                         var extension = Path.GetExtension(item);
                         if (extension != null && (extension.ToLower() != extType) && arrImageExt.Contains(extension.ToLower()))
                         {
-                            extension = extension.ToLower();
+                            //extension = extension.ToLower();
                             // image file
-                                parent.CoverPath = parent.FilePath + "\\" + file.Name;
+                            parent.CoverPath = parent.FilePath + "\\" + file.Name;
                         }
                         else
                         {

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
-using System.Web;
 using System.Web.Configuration;
 using System.Web.Http;
 
@@ -18,14 +16,14 @@ namespace music.local.Controllers
         {
             try
             {
+                //không check login vì ảnh hưởng đến performance
                 //if (!Common.CheckLogin()) return null;
                 var response = Request.CreateResponse();
                 response.Headers.TransferEncodingChunked = true;
                 response.Headers.Add("Accept-Ranges", "bytes");
                 response.Headers.Add("Keep-Alive", "timeout=10");
 
-                VideoStream vid;
-                //response.He
+                //path.combine error??
                 var appPath = WebConfigurationManager.AppSettings["PhysicalPath"];
                 var fileInfo = new FileInfo((appPath + p).Replace("\\", "/"));
 
@@ -48,7 +46,7 @@ namespace music.local.Controllers
                 //không có range hoặc là range gồm toàn bộ file
                 if (rangeHeader == null || !rangeHeader.Ranges.Any())
                 {
-                    Common.WriteDebug("MediaController, line 100", "Request video range is null or all file! \r\n" + p);
+                    Common.WriteDebug("StreammingController, line 49 ", "Request video range is null or all file! \r\n" + p);
                     response.Headers.AcceptRanges.Add("bytes");
                     response.StatusCode = HttpStatusCode.OK;
                 }
@@ -57,7 +55,7 @@ namespace music.local.Controllers
                     if (rangeHeader.Unit != "bytes" || rangeHeader.Ranges.Count > 1 ||
                     !MediaUtilities.CheckRangeItem(rangeHeader.Ranges.First(), totalLength, out start, out end))
                     {
-                        Common.WriteDebug("MediaController, line 139", "Request video range is invalid! \r\n" + p);
+                        Common.WriteDebug("StreammingController, line 58", "Request video range is invalid! \r\n" + p);
                         response.StatusCode = HttpStatusCode.RequestedRangeNotSatisfiable;
                         response.Content = new StreamContent(Stream.Null);
                         response.Content.Headers.ContentRange = new ContentRangeHeaderValue(totalLength);
@@ -67,7 +65,7 @@ namespace music.local.Controllers
                         return response;
                     }
                     //range hợp lệ
-                    Common.WriteDebug("MediaController, line 149", "Request video range is valid, send content! \r\n" + p);
+                    Common.WriteDebug("StreammingController, line 68", "Request video range is valid, send content! \r\n" + p);
                     contentRange = new ContentRangeHeaderValue(start, end, totalLength);
                     
                 }
@@ -84,7 +82,7 @@ namespace music.local.Controllers
                 }
                 else
                 {
-                    vid = new VideoStream(appPath + p, start, end);
+                    var vid = new VideoStream(appPath + p, start, end);
                     response.Content = VideoContent(vid, fileInfo.Extension);
                     response.Content.Headers.ContentType = new MediaTypeHeaderValue("video/mp4");
                 }

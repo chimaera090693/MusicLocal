@@ -1,5 +1,4 @@
 ﻿@using System.Data
-@using System.Web.UI.WebControls
 
 @{
     Layout = null;
@@ -18,7 +17,7 @@
     @if (data != null && data.Rows.Count > 0)
     {
         var count = 1;
-        using (Html.BeginForm("ActionLog", "Login"))
+        using (Html.BeginForm("AccessLog", "Login"))
         {
             <table class="table table-striped table-hover  table-condensed">
                 <tr>

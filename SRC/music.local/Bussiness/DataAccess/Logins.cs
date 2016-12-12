@@ -21,24 +21,27 @@ namespace music.local.Bussiness.DataAccess
         /// <param name="lastActive"></param>
         public static void Logins_Update(string ip, DateTime? created, DateTime? Expired, string other, DateTime? lastActive= null)
         {
-            var strCreated = (created ?? DateTime.Now).ToString(SqliteDateTimeFormat);
-            var strExp = (Expired ?? DateTime.Now.AddDays(2)).ToString(SqliteDateTimeFormat);
-            var strlastActive = (lastActive ?? DateTime.Now).ToString(SqliteDateTimeFormat);
-            SqliteHelper sqliteHelper = new SqliteHelper();
-            string strCommandText = "select * from Logins where Identity='"+ip+"'";
-            var data = sqliteHelper.ExecuteGetDataTable(strCommandText);
-            if (data != null && data.Rows.Count > 0)
+            if (!string.IsNullOrEmpty(ip))
             {
-                strCommandText = "update Logins set Identity='" + ip + "', Created= '" + strCreated + "', Expired='" + strExp
-                    + "', OtherInfor='" + other + "', LastActive ='" + strlastActive + "'";
-            }
-            else
-            {
-                strCommandText = "insert into Logins values ('" + ip + "', '" + strCreated + "', '" + strExp + "', '" +
-                                 other + "', '" + strlastActive + "')";
-            }
+                var strCreated = (created ?? DateTime.Now).ToString(SqliteDateTimeFormat);
+                var strExp = (Expired ?? DateTime.Now.AddDays(2)).ToString(SqliteDateTimeFormat);
+                var strlastActive = (lastActive ?? DateTime.Now).ToString(SqliteDateTimeFormat);
+                SqliteHelper sqliteHelper = new SqliteHelper();
+                string strCommandText = "select * from Logins where Identity='" + ip + "'";
+                var data = sqliteHelper.ExecuteGetDataTable(strCommandText);
+                if (data != null && data.Rows.Count > 0)
+                {
+                    strCommandText = "update Logins set Identity='" + ip + "', Created= '" + strCreated + "', Expired='" + strExp
+                        + "', OtherInfor='" + other + "', LastActive ='" + strlastActive + "'";
+                }
+                else
+                {
+                    strCommandText = "insert into Logins values ('" + ip + "', '" + strCreated + "', '" + strExp + "', '" +
+                                     other + "', '" + strlastActive + "')";
+                }
 
-            sqliteHelper.ExecuteNonQuery(strCommandText);
+                sqliteHelper.ExecuteNonQuery(strCommandText); 
+            }
         }
 
         /// <summary>

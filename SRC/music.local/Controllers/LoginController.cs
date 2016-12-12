@@ -30,9 +30,9 @@ namespace music.local.Controllers
             var PassInWF = WebConfigurationManager.AppSettings["Password"];
             if (PassInWF.Equals(pass))
             {
-                var ipAddress = System.Web.HttpContext.Current.Request.UserHostAddress;
+                var clientId = LoginsProcessing.GetRequestId(System.Web.HttpContext.Current);
                 var tr = System.Web.HttpContext.Current.Request.Headers["User-Agent"];
-                LoginsProcessing.Login(ipAddress, tr);
+                LoginsProcessing.Login(clientId, tr);
                 Response.Redirect(string.IsNullOrEmpty(ru)?"/":ru);
                 return null;
             }
@@ -43,28 +43,28 @@ namespace music.local.Controllers
         public ActionResult AccessLog()
         {
             if (!LoginsProcessing.CheckLogin(true)) return null;
-            var listAC = Bussiness.DataAccess.Logins.Logins_Get();
+            var listAC = Logins.Logins_Get();
             ViewBag.ListAccessLog = listAC;
             return View("~/Views/Login/AccessLog.cshtml");
         }
 
         [HttpPost]
-        public ActionResult ActionLog()
+        public ActionResult AccessLog(string ru="/")
         {
             if (!LoginsProcessing.CheckLogin(true)) return null;
 
             var ip = Request.Form["ActionRemove"];
-            if (!string.IsNullOrEmpty(ip))
+            //if (!string.IsNullOrEmpty(ip))
             {
-                var currentIp = System.Web.HttpContext.Current.Request.UserHostAddress;
+                var currentID = LoginsProcessing.GetRequestId(System.Web.HttpContext.Current);
                 Logins.Logins_DeleteLog(ip);
-                if (ip.Equals(currentIp))
+                if (ip.Equals(currentID))
                 {
                     Response.Redirect("/Login?ru=/Login/AccessLog");
                     return null;
                 }
             }
-            var listAC = Bussiness.DataAccess.Logins.Logins_Get();
+            var listAC = Logins.Logins_Get();
             ViewBag.ListAccessLog = listAC;
             return View("~/Views/Login/AccessLog.cshtml");
         }
