@@ -56,7 +56,14 @@ namespace music.local.Bussiness.DataAccess
 
         public static int Logins_UpdateLastActive(string ip, string lastActive)
         {
-            string strCommandText = "update Logins set LastActive = '" + lastActive + "' where Identity = '" + ip + "'";
+            string strCommandText = "update Logins set LastActive = '" + lastActive + "' where Identity = '" + ip + "' ";
+            var sqliteHelper = new SqliteHelper();
+            return sqliteHelper.ExecuteNonQuery(strCommandText);
+        }
+
+        public static int Logins_DeleteLog(string ip)
+        {
+            string strCommandText = "DELETE FROM Logins WHERE Identity='" + ip + "' ";
             var sqliteHelper = new SqliteHelper();
             return sqliteHelper.ExecuteNonQuery(strCommandText);
         }

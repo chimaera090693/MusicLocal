@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Configuration;
+﻿using System.Web.Configuration;
 using System.Web.Mvc;
 using music.local.Bussiness;
+using music.local.Bussiness.DataAccess;
 
 namespace music.local.Controllers
 {
@@ -16,18 +13,19 @@ namespace music.local.Controllers
         /// <param name="ru"></param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult Index(string ru = "")
+        public ActionResult Index(string ru = "/")
         {
             Common.WriteLogAccess();
             if (LoginsProcessing.CheckLogin())
             {
-                Response.Redirect(ru);
+                Response.Redirect(string.IsNullOrEmpty(ru)?"/":ru);
                 return null;
             }
+            ViewBag.RediectURL = ru;
             return View("~/Views/Login/Login.cshtml");
         }
         [HttpPost]
-        public ActionResult Login(string ru = "", string pass = "")
+        public ActionResult Login(string ru = "/", string pass = "")
         {
             var PassInWF = WebConfigurationManager.AppSettings["Password"];
             if (PassInWF.Equals(pass))
@@ -41,9 +39,31 @@ namespace music.local.Controllers
             return View("~/Views/Login/Login.cshtml");
         }
 
-
+        [HttpGet]
         public ActionResult AccessLog()
         {
+            if (!LoginsProcessing.CheckLogin(true)) return null;
+            var listAC = Bussiness.DataAccess.Logins.Logins_Get();
+            ViewBag.ListAccessLog = listAC;
+            return View("~/Views/Login/AccessLog.cshtml");
+        }
+
+        [HttpPost]
+        public ActionResult ActionLog()
+        {
+            if (!LoginsProcessing.CheckLogin(true)) return null;
+
+            var ip = Request.Form["ActionRemove"];
+            if (!string.IsNullOrEmpty(ip))
+            {
+                var currentIp = System.Web.HttpContext.Current.Request.UserHostAddress;
+                Logins.Logins_DeleteLog(ip);
+                if (ip.Equals(currentIp))
+                {
+                    Response.Redirect("/Login?ru=/Login/AccessLog");
+                    return null;
+                }
+            }
             var listAC = Bussiness.DataAccess.Logins.Logins_Get();
             ViewBag.ListAccessLog = listAC;
             return View("~/Views/Login/AccessLog.cshtml");
