@@ -17,27 +17,27 @@ namespace music.local.Bussiness
             var ipAddress = HttpContext.Current.Request.UserHostAddress;
             if (!string.IsNullOrEmpty(ipAddress))
             {
-                //var chkLogin = DataAccess.Logins.Logins_Get(ipAddress);
-                //if (chkLogin != null && chkLogin.Rows.Count>0)
-                //{
-                //    var expired = chkLogin.Rows[0]["Expired"];
-                //    if (expired != DBNull.Value)
-                //    {
-                //        var dt = Convert.ToDateTime(expired);
-                //        if (dt >= DateTime.Now)
-                //        {
-                //            return true;
-                //        }
-                //    }
-                //    else
-                //    {
-                //        var created = Convert.ToDateTime(chkLogin.Rows[0]["Created"]);
-                //        if (created.AddDays(2) >= DateTime.Now)
-                //        {
-                //            return true;
-                //        }
-                //    }
-                //}
+                var chkLogin = DataAccess.Logins.Logins_Get(ipAddress);
+                if (chkLogin != null && chkLogin.Rows.Count > 0)
+                {
+                    var expired = chkLogin.Rows[0]["Expired"];
+                    if (expired != DBNull.Value)
+                    {
+                        var dt = Convert.ToDateTime(expired);
+                        if (dt >= DateTime.Now)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        var created = Convert.ToDateTime(chkLogin.Rows[0]["Created"]);
+                        if (created.AddDays(2) >= DateTime.Now)
+                        {
+                            return true;
+                        }
+                    }
+                }
                 return true;
             }
             if (redirect)

@@ -127,9 +127,9 @@ namespace music.local
 
         public static Bitmap GetBitmapFromHBitmap(IntPtr nativeHBitmap)
         {
-            Bitmap bmp = Bitmap.FromHbitmap(nativeHBitmap);
+            Bitmap bmp = Image.FromHbitmap(nativeHBitmap);
 
-            if (Bitmap.GetPixelFormatSize(bmp.PixelFormat) < 32)
+            if (Image.GetPixelFormatSize(bmp.PixelFormat) < 32)
                 return bmp;
 
             return CreateAlphaBitmap(bmp, PixelFormat.Format32bppArgb);

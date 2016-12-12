@@ -381,9 +381,7 @@
     </Content>
     <Content Include="Views\Home.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Content\VideoJS5.13\examples\elephantsdream\captions.ar.vtt" />
@@ -440,6 +438,7 @@
     <Content Include="Content\jsTree\src\themes\main.less" />
     <Content Include="Content\jsTree\src\themes\mixins.less" />
     <Content Include="Content\jsTree\src\themes\responsive.less" />
+    <Content Include="App_Data\MusicLocal.db" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\TreeNode.cshtml" />
     <Content Include="Views\Web.config" />

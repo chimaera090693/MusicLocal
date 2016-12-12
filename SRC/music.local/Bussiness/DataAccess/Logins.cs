@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
+using music.local.CommonFunction;
 
 namespace music.local.Bussiness.DataAccess
 {
@@ -24,13 +22,9 @@ namespace music.local.Bussiness.DataAccess
         {
             var strCreated = (created ?? DateTime.Now).ToString(SqliteDateTimeFormat);
             var strExp = (Expired ?? DateTime.Now.AddDays(2)).ToString(SqliteDateTimeFormat);
-            string strCommandText = "Logins_Update";
-            SqlParameter[] paraLocal = new SqlParameter[4];
-            paraLocal[0] = new SqlParameter("@Identity", ip);
-            paraLocal[1] = new SqlParameter("@Created", created);
-            paraLocal[2] = new SqlParameter("@Expired", Expired);
-            paraLocal[3] = new SqlParameter("@OtherInfor", other);
-            SqlHelper.ExecuteNonQuery(CommandType.StoredProcedure, strCommandText, paraLocal);
+            string strCommandText = "insert into Logins values ('" + ip + "', '" + strCreated + "', '" + strExp + "', '" + other + "')";
+            SqliteHelper sqliteHelper = new SqliteHelper();
+            sqliteHelper.ExecuteNonQuery(strCommandText);
         }
 
         /// <summary>
@@ -40,10 +34,10 @@ namespace music.local.Bussiness.DataAccess
         /// <returns></returns>
         public static DataTable Logins_Get(string ip="")
         {
-            string strCommandText = "Logins_Update";
-            SqlParameter[] paraLocal = new SqlParameter[1];
-            paraLocal[0] = new SqlParameter("@Identity", ip);
-            return SqlHelper.ExecuteData(CommandType.StoredProcedure, strCommandText, paraLocal);
+            string strCommandText = "select * from Logins where Identity = '" + ip + "'";
+            SqliteHelper sqliteHelper = new SqliteHelper();
+            sqliteHelper.ExecuteNonQuery(strCommandText);
+            return sqliteHelper.ExecuteGetDataTable(strCommandText);
         }
         #endregion
 
