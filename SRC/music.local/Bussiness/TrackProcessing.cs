@@ -50,7 +50,7 @@ namespace music.local.Bussiness
                     foreach (var item in listDir)
                     {
                         var dirInf = new DirectoryInfo(item);
-                        if (!((dirInf.Name == "image" || dirInf.Name.ToLower() == "video") && string.IsNullOrEmpty(parent.FilePath)))
+                        if (!((dirInf.Name[0] == '_' || dirInf.Name.ToLower() == "video" ) && string.IsNullOrEmpty(parent.FilePath)))
                         {
                             SoundTrackModel st = new SoundTrackModel();
                             st.ItemType = lever;

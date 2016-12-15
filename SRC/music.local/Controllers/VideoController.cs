@@ -26,19 +26,32 @@ namespace music.local.Controllers
             if (!string.IsNullOrEmpty(p))
             {
                 var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
+                var thumbName = WaveFormProcessing.GetMd5Hash(p);
+                var thumbSavePath = physPath + "\\_thumb\\" + thumbName + ".png";
+
                 var fPath = physPath+ p;
-                if (System.IO.File.Exists(fPath))
+                if (!System.IO.File.Exists(thumbSavePath))
                 {
-                    FileContentResult image;
-                    using (var bmp = ThumbnailGen.GetThumbnail(fPath, 150, 86, ThumbnailOptions.None))
+                    //không có => generate thumb
+                    if (System.IO.File.Exists(fPath))
                     {
-                        using (var ms = new MemoryStream())
+                        FileContentResult image;
+                        using (var bmp = ThumbnailGen.GetThumbnail(fPath, 150, 86, ThumbnailOptions.None))
                         {
-                            bmp.Save(ms, ImageFormat.Png);
-                            image = new FileContentResult(ms.ToArray(), "image/png");
+                            using (var ms = new MemoryStream())
+                            {
+                                bmp.Save(ms, ImageFormat.Png);
+                                bmp.Save(thumbSavePath);
+                                image = new FileContentResult(ms.ToArray(), "image/png");
+                            }
                         }
+                        return image;
                     }
-                    return image;
+                }
+                else
+                {
+                    //có => đọc file
+                    return  new FilePathResult(thumbSavePath, "image/png");
                 }
             }
             return null;

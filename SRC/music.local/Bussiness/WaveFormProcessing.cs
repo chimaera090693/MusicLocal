@@ -18,11 +18,11 @@ namespace music.local.Bussiness
         {
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
             var mp3Path = physPath + (fn==""? @"\Music\Millenario - Elisa.mp3": fn);
-            var imgPath = physPath + "\\image\\" + GetMd5Hash(mp3Path) + ".png";
+            var imgPath = physPath + "\\_image\\" + GetMd5Hash(mp3Path) + ".png";
 
-            if (!Directory.Exists(physPath + "\\image"))
+            if (!Directory.Exists(physPath + "\\_image"))
             {
-                Directory.CreateDirectory(physPath + "\\image");
+                Directory.CreateDirectory(physPath + "\\_image");
             }
 
             if (File.Exists(imgPath))
@@ -114,7 +114,7 @@ namespace music.local.Bussiness
 
                 if (!string.IsNullOrEmpty(hash))
                 {
-                    bmp.Save(physPath + "\\image\\" + hash + ".png", ImageFormat.Png);
+                    bmp.Save(physPath + "\\_image\\" + hash + ".png", ImageFormat.Png);
                 }
                 bmp.Dispose();
                 return image;
