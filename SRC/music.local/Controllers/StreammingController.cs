@@ -12,6 +12,7 @@ namespace music.local.Controllers
 {
     public class StreammingController : ApiController
     {
+        private static readonly string appPath = WebConfigurationManager.AppSettings["PhysicalPath"];
         public HttpResponseMessage Get(string p)
         {
             try
@@ -24,7 +25,7 @@ namespace music.local.Controllers
                 response.Headers.Add("Keep-Alive", "timeout=10");
 
                 //path.combine error??
-                var appPath = WebConfigurationManager.AppSettings["PhysicalPath"];
+                //var appPath = WebConfigurationManager.AppSettings["PhysicalPath"];
                 var fileInfo = new FileInfo((appPath + p).Replace("\\", "/"));
 
                 //check path

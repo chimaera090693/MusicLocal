@@ -18,7 +18,7 @@ namespace music.local.Bussiness
         {
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
             var mp3Path = physPath + (fn==""? @"\Music\Millenario - Elisa.mp3": fn);
-            var imgPath = physPath + "\\_image\\" + GetMd5Hash(mp3Path) + ".png";
+            var imgPath = physPath + "\\_image\\" + Common.GetMd5Hash(mp3Path) + ".png";
 
             if (!Directory.Exists(physPath + "\\_image"))
             {
@@ -110,7 +110,7 @@ namespace music.local.Bussiness
                 }
                 //var mp3FileInfor = Path.GetFileName(strPath);
                 var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
-                string hash = GetMd5Hash(strPath);
+                string hash = Common.GetMd5Hash(strPath);
 
                 if (!string.IsNullOrEmpty(hash))
                 {
@@ -146,21 +146,7 @@ namespace music.local.Bussiness
             var rtn = !isNegative ? Zoommer * pecent : pecent / Zoommer;
             return rtn;
         }
-
-
-        public static string GetMd5Hash(string input)
-        {
-            using (var md5Hash = MD5.Create())
-            {
-                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-                StringBuilder sBuilder = new StringBuilder();
-                foreach (byte t in data)
-                {
-                    sBuilder.Append(t.ToString("x2"));
-                }
-                return sBuilder.ToString();
-            }
-        }
+        
         #endregion
     }
 }

@@ -192,6 +192,7 @@ namespace music.local
             nativeSize.Height = height;
 
             IntPtr hBitmap;
+            // ReSharper disable once SuspiciousTypeConversion.Global
             HResult hr = ((IShellItemImageFactory)nativeShellItem).GetImage(nativeSize, options, out hBitmap);
 
             Marshal.ReleaseComObject(nativeShellItem);

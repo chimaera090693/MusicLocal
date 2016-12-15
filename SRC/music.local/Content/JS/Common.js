@@ -73,6 +73,7 @@ function setPageTitle(songname) {
     if ($.myInverter) {
         clearInterval($.myInverter);
     }
+    $(document).prop('title', defaultTitle);
     if (songname === "") {
         $(document).prop('title', defaultTitle);
     } else {

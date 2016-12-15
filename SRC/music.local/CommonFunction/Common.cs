@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Hosting;
 using log4net;
@@ -69,6 +71,20 @@ namespace music.local
         {
             if (string.IsNullOrEmpty(oldValue)) return "";
             return oldValue.Replace(" ", "").Replace("(", "").Replace(")", "");
+        }
+
+        public static string GetMd5Hash(string input)
+        {
+            using (var md5Hash = MD5.Create())
+            {
+                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+                StringBuilder sBuilder = new StringBuilder();
+                foreach (byte t in data)
+                {
+                    sBuilder.Append(t.ToString("x2"));
+                }
+                return sBuilder.ToString();
+            }
         }
     }
 }

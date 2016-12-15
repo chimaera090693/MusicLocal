@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
+﻿using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using music.local.Bussiness;
@@ -26,7 +22,7 @@ namespace music.local.Controllers
             if (!string.IsNullOrEmpty(p))
             {
                 var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
-                var thumbName = WaveFormProcessing.GetMd5Hash(p);
+                var thumbName = Common.GetMd5Hash(p);
                 var thumbSavePath = physPath + "\\_thumb\\" + thumbName + ".png";
 
                 var fPath = physPath+ p;
