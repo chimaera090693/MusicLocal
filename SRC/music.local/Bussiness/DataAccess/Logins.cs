@@ -9,7 +9,6 @@ namespace music.local.Bussiness.DataAccess
     {
         #region using sqlite
 
-        public static string SqliteDateTimeFormat = "dd-MM-yyyy HH:mm:ss";
 
         /// <summary>
         /// cập nhật/ thêm mới
@@ -23,9 +22,9 @@ namespace music.local.Bussiness.DataAccess
         {
             if (!string.IsNullOrEmpty(ip))
             {
-                var strCreated = (created ?? DateTime.Now).ToString(SqliteDateTimeFormat);
-                var strExp = (Expired ?? DateTime.Now.AddDays(2)).ToString(SqliteDateTimeFormat);
-                var strlastActive = (lastActive ?? DateTime.Now).ToString(SqliteDateTimeFormat);
+                var strCreated = (created ?? DateTime.Now).ToString(SqliteHelper.SqliteDateTimeFormat);
+                var strExp = (Expired ?? DateTime.Now.AddDays(2)).ToString(SqliteHelper.SqliteDateTimeFormat);
+                var strlastActive = (lastActive ?? DateTime.Now).ToString(SqliteHelper.SqliteDateTimeFormat);
                 SqliteHelper sqliteHelper = new SqliteHelper();
                 string strCommandText = "select * from Logins where Identity='" + ip + "'";
                 var data = sqliteHelper.ExecuteGetDataTable(strCommandText);

@@ -7,6 +7,7 @@ namespace music.local.CommonFunction
 {
     public class SqliteHelper
     {
+        public static string SqliteDateTimeFormat = "dd-MM-yyyy HH:mm:ss";
         public static string SqliteFile = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\MusicLocal.db";
         public static string SqliteConnectionstring = "Data Source=" + SqliteFile + ";Version=3;FailIfMissing=False;Pooling=True;Max Pool Size=15;";
         //private SQLiteConnection Connection;

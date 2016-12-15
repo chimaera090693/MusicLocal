@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Web;
 using music.local.Bussiness.DataAccess;
+using music.local.CommonFunction;
 
 namespace music.local.Bussiness
 {
@@ -23,20 +24,20 @@ namespace music.local.Bussiness
                     var expired = chkLogin.Rows[0]["Expired"];
                     if (expired != DBNull.Value)
                     {
-                        var dt = DateTime.ParseExact(expired.ToString(), Logins.SqliteDateTimeFormat, CultureInfo.InvariantCulture);
+                        var dt = DateTime.ParseExact(expired.ToString(), SqliteHelper.SqliteDateTimeFormat, CultureInfo.InvariantCulture);
                         if (dt >= DateTime.Now)
                         {
-                            
-                            Logins.Logins_UpdateLastActive(idClient, DateTime.Now.ToString(Logins.SqliteDateTimeFormat));
+
+                            Logins.Logins_UpdateLastActive(idClient, DateTime.Now.ToString(SqliteHelper.SqliteDateTimeFormat));
                             return true;
                         }
                     }
                     else
                     {
-                        var created = DateTime.ParseExact(chkLogin.Rows[0]["Created"].ToString(), Logins.SqliteDateTimeFormat, CultureInfo.InvariantCulture);
+                        var created = DateTime.ParseExact(chkLogin.Rows[0]["Created"].ToString(), SqliteHelper.SqliteDateTimeFormat, CultureInfo.InvariantCulture);
                         if (created.AddDays(2) >= DateTime.Now)
                         {
-                            Logins.Logins_UpdateLastActive(idClient, DateTime.Now.ToString(Logins.SqliteDateTimeFormat));
+                            Logins.Logins_UpdateLastActive(idClient, DateTime.Now.ToString(SqliteHelper.SqliteDateTimeFormat));
                             return true;
                         }
                     }
