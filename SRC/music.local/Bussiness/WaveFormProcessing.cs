@@ -98,7 +98,7 @@ namespace music.local.Bussiness
                         g.DrawLine(pen3, x, lowValue, x, highValue);
                         var dif = 0.2*(highValue - lowValue);
                         g.DrawLine(pen2, x, (int)(lowValue + dif), x, (int)(highValue - dif));
-                        dif =dif+ dif/2;
+                        dif =dif+ dif/1.5;
                         g.DrawLine(pen1, x, (int)(lowValue + dif), x, (int)(highValue - dif));
 
                     }

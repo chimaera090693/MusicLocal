@@ -91,8 +91,7 @@ namespace music.local
         public static bool IsTesting()
         {
             var chk = WebConfigurationManager.AppSettings["DeployType"];
-            if ("Testing".Equals(chk)) return true;
-            return false;
+            return "Testing".Equals(chk);
         }
     }
 }
