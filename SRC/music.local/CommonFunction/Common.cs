@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Hosting;
 using log4net;
 
@@ -85,6 +86,13 @@ namespace music.local
                 }
                 return sBuilder.ToString();
             }
+        }
+
+        public static bool IsTesting()
+        {
+            var chk = WebConfigurationManager.AppSettings["DeployType"];
+            if ("Testing".Equals(chk)) return true;
+            return false;
         }
     }
 }

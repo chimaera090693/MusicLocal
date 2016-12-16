@@ -3,8 +3,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using NAudio.Wave;
@@ -38,7 +36,6 @@ namespace music.local.Bussiness
             {
                 const int ConstMinVal = short.MinValue;
                 const int Denominator = ushort.MaxValue ;
-                long startPosition = 0;
 
                 Bitmap bmp = new Bitmap(3256, 400);
 
@@ -54,7 +51,9 @@ namespace music.local.Bussiness
                 using (Graphics g = Graphics.FromImage(bmp))
                 {
                     g.Clear(Color.Transparent);
-                    Pen pen1 = new Pen(Color.Gray) {Width = (float) 0.1};
+                    Pen pen1 = new Pen(Color.FromArgb(255, 110, 110, 110)) { Width = (float)0.1 };
+                    Pen pen2 = new Pen(Color.FromArgb(255,150,150,150)) {Width = (float) 0.1};
+                    Pen pen3 = new Pen(Color.FromArgb(255, 170, 170, 170)) { Width = (float)0.1 };
 
                     Stream wavestream = new Mp3FileReader(strPath, wf => new NAudio.FileFormats.Mp3.DmoMp3FrameDecompressor(wf));
                     var samplesPerPixel = (int)(wavestream.Length / bytesPerSample) / width;
@@ -73,7 +72,7 @@ namespace music.local.Bussiness
                         int totalHigh = 0, countHigh=0;
                         for (int n = 0; n <= bytesRead1-2; n +=2)
                         {
-                            int sample = BitConverter.ToInt16(waveData1, n); ;
+                            int sample = BitConverter.ToInt16(waveData1, n); 
                             if (sample > 0)
                             {
                                 if (sample > high) { high = sample; }
@@ -96,11 +95,18 @@ namespace music.local.Bussiness
                         float highPercent = ((float)(high - ConstMinVal) / Denominator);
                         float lowValue = (height * lowPercent);
                         float highValue = (height * highPercent);
-                        g.DrawLine(pen1, x, lowValue, x, highValue);
+                        g.DrawLine(pen3, x, lowValue, x, highValue);
+                        var dif = 0.2*(highValue - lowValue);
+                        g.DrawLine(pen2, x, (int)(lowValue + dif), x, (int)(highValue - dif));
+                        dif =dif+ dif/2;
+                        g.DrawLine(pen1, x, (int)(lowValue + dif), x, (int)(highValue - dif));
 
                     }
                     wavestream.Close();
                     wavestream.Dispose();
+                    pen1.Dispose();
+                    pen2.Dispose();
+                    pen3.Dispose();
                 }
                 FileContentResult image;
                 using (var ms = new MemoryStream())
@@ -112,9 +118,9 @@ namespace music.local.Bussiness
                 var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
                 string hash = Common.GetMd5Hash(strPath);
 
-                if (!string.IsNullOrEmpty(hash))
+                if (!string.IsNullOrEmpty(hash) && !Common.IsTesting())
                 {
-                    bmp.Save(physPath + "\\_image\\" + hash + ".png", ImageFormat.Png);
+                   bmp.Save(physPath + "\\_image\\" + hash + ".png", ImageFormat.Png);
                 }
                 bmp.Dispose();
                 return image;
