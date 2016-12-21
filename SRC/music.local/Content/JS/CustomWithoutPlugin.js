@@ -19,6 +19,10 @@ $(function () {
         //update time
         UpdateDisplay();
     });
+    $.myPlayer.onerror(function () {
+        LogDebug($.myCrntID);
+        nextTrack();
+    });
     $.myCrntID = "";
     document.getElementById("player-display").onclick = Seek;
 
