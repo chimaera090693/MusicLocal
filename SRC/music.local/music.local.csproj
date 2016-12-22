@@ -275,6 +275,7 @@
     <Content Include="Content\JS\CustomJSWithWavesurfer.js" />
     <Content Include="Content\JS\CustomWithoutPlugin.js" />
     <Content Include="Content\JS\jquery-3.1.1.min.js" />
+    <Content Include="Content\JS\VideoIndex.js" />
     <Content Include="Content\VideoJS5.13\font\VideoJS.svg" />
     <Content Include="Content\VideoJS5.13\ie8\videojs-ie8.js" />
     <Content Include="Content\VideoJS5.13\ie8\videojs-ie8.min.js" />
