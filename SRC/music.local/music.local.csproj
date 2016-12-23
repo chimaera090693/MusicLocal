@@ -230,6 +230,7 @@
     <Content Include="Content\bootstrap3.3.7\js\npm.js" />
     <Content Include="Content\CSS\Login.css" />
     <Content Include="Content\Image\1.png" />
+    <Content Include="Content\JavaScript1.js" />
     <Content Include="Content\jsTree\dist\jstree.js" />
     <Content Include="Content\jsTree\dist\jstree.min.js" />
     <Content Include="Content\jsTree\dist\themes\default-dark\32px.png" />
