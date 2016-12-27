@@ -19,7 +19,7 @@ $(function () {
         //update time
         UpdateDisplay();
     });
-    $.myPlayer.onerror(function () {
+    $.myPlayer.onerror =(function () {
         LogDebug($.myCrntID);
         nextTrack();
     });
