@@ -138,12 +138,15 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     }
 
     .control-btnCustom:before {
-        font-size: small;
+        font-size: large;
         margin: 10% auto;
     }
 
 .control-btnnext:before {
     content: "\e077";
+}
+.control-btnprev:before {
+    content: "\e069";
 }
 
 .control-loop1:before {

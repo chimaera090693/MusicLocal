@@ -95,7 +95,7 @@ function CheckSession() {
         url: "/home/CheckSession",
         contentType: "text/html; charset=utf-8",
         success: function (data) {
-            LogDebug.log(data);;
+            LogDebug(data);;
             if (data != "1") {
                location.reload();
            }

@@ -87,13 +87,16 @@ function endPlay() {
     return;
 }
 
-function nextTrack() {
+function nextTrack(nextVal) {
+    if (nextVal == undefined || nextVal == null) {
+        nextVal = 1;
+    }
     //get next track
     var next;
     if ($.myCrntID != undefined && $.myCrntID != "") {
         var current = $.myCrntID.split('-');
         var nextId = current[1];
-        next = current[0] + "-" + String(parseInt(nextId) + 1);
+        next = current[0] + "-" + String(parseInt(nextId) + nextVal);
         LogDebug(next);
         if ($("." + next).length) {
             playAudio(next, 1);
