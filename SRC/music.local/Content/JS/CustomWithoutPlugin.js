@@ -25,7 +25,7 @@ $(function () {
     });
     $.myCrntID = "";
     document.getElementById("player-display").onclick = Seek;
-
+    $.myCrntAlbunmCover = $("#cover").attr("src");
     InitLoop();
 });
 
@@ -40,14 +40,20 @@ function playAudio(cls, auto) {
     $.myPlayer.src = "";
     //$.myPlayer.waveform.pause();
     var newSrc = $("." + cls).first().data("src");
-    var cover = $("." + cls).first().parent().parent().data("src");
+    console.log(cls);
+    var albumCover = $("." + cls).first().parent().parent().data("src");
+    if (albumCover != undefined) {
+        $.myCrntAlbunmCover = albumCover;
+    }
     $("#playerSongInfor").text($("." + cls).attr("name"));
 
     var songname = $("." + cls + " a:first").text();
 
     setPageTitle(songname);
+    var songCover = newSrc.replace("api/Streamming/Get?p=", "Home/Cover?p=");
+    $("#cover").attr("src", songCover);
+    CheckCover();
 
-    $("#cover").attr("src", cover);
     //var playerimage = newSrc.replace("Home/File?p=", "Home/Demo?p=");
     var playerimage = newSrc.replace("api/Streamming/Get?p=", "Home/Demo?p=");
     playerimage = encodeURI(playerimage);
@@ -133,6 +139,20 @@ function Seek(event) {
     LogDebug(crntTime);
     $("#remain-display").css("width", (curPos) + "px");
     $.myPlayer.currentTime = parseInt(crntTime);
+}
+
+function CheckCover() {
+    setTimeout(function () {
+        var currentSrc = $.myCrntAlbunmCover;
+        console.log(currentSrc);
+        var coverElement = document.getElementById("cover");
+        if (!coverElement.complete) {
+            $("#cover").attr("src", currentSrc);
+        }
+        if (coverElement.naturalWidth === 0) {
+            $("#cover").attr("src", currentSrc);
+        }
+    }, 500);
 }
 ///============End Event ================
 

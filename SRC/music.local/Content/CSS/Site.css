@@ -36,7 +36,8 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     /*background-color:red;*/
     height: 150px;
     width: 20%;
-    background-color: #ccc;
+    background-color: #000;
+    opacity:.9;
 }
 
     .albumCover img {

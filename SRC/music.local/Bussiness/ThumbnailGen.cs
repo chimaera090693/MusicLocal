@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Web.Mvc;
+using Id3;
 
 namespace music.local
 {
@@ -200,6 +202,27 @@ namespace music.local
             if (hr == HResult.Ok) return hBitmap;
 
             throw Marshal.GetExceptionForHR((int)hr);
+        }
+    }
+
+
+    public class Mp3TagReader
+    {
+        public static FileContentResult GetPicture(string filePath)
+        {
+            using (var reader = new Mp3File(filePath))
+            {
+                Id3Tag tag = reader.GetTag(Id3TagFamily.Version2x);
+                if (tag != null)
+                {
+                    if (tag.Pictures.Count > 0)
+                    {
+                        var picData = tag.Pictures[0].PictureData;
+                        return new FileContentResult(picData, "image/png");
+                    }
+                }
+            }
+            return null;
         }
     }
 }

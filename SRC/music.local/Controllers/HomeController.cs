@@ -47,6 +47,22 @@ namespace music.local.Controllers
             return null;
         }
 
+
+        public ActionResult Cover(string p)
+        {
+            if (!LoginsProcessing.CheckLogin()) return null;
+            if (string.IsNullOrEmpty(p))
+                return null;
+            var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
+            var filePath = physPath + p;
+            if (System.IO.File.Exists(filePath))
+            {
+                return Mp3TagReader.GetPicture(filePath);
+            }
+            return null;
+        }
+
+
          /// <summary>
          /// renew session
          /// </summary>
