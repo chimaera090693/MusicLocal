@@ -37,7 +37,8 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     height: 150px;
     width: 20%;
     background-color: #000;
-    opacity:.9;
+    /*opacity:.9;*/
+    background: linear-gradient(to bottom right,#000, #333);
 }
 
     .albumCover img {
@@ -73,8 +74,9 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     height: 150px;
     width: 80%;
     background-color: #dedede;
+    background: linear-gradient(#ccc , #fff);
     opacity: 0.97;
-    border-left: 1px solid #000;
+    /*border-left: 1px solid #111;*/
 }
 
 #player-display {
@@ -82,17 +84,19 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     right: 0px;
     height: 150px;
     width: 100%;
-    background-color: #dedede;
+    /*background-color: #dedede;*/
+    background: linear-gradient(#ccc, #fff);
     background-size: 100% 100%;
     /*opacity: 0.99;*/
 }
 
 #remain-display {
     border-left: 1px solid #000;
-    background-color: #eee;
-    opacity: 0.3;
+    /*background-color: #efe;
+    opacity: 0.3;*/
     right: 0px;
-    transition: width 0.2s;
+    transition: width 0.1s;
+    transition-timing-function: linear;
     position: absolute;
     height: 150px;
 }
@@ -105,6 +109,7 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     font-size: 15pt;
     color: #fff;
     text-shadow: 0em 0em 1em #888;
+    padding-left: 10px;
 }
 
 #player {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
@@ -51,17 +52,21 @@ namespace music.local.Bussiness
                 using (Graphics g = Graphics.FromImage(bmp))
                 {
                     g.Clear(Color.Transparent);
-                    Pen pen1 = new Pen(Color.FromArgb(255, 110, 110, 110)) { Width = (float)0.1 };
-                    Pen pen2 = new Pen(Color.FromArgb(255,150,150,150)) {Width = (float) 0.1};
-                    Pen pen3 = new Pen(Color.FromArgb(255, 170, 170, 170)) { Width = (float)0.1 };
+                    LinearGradientBrush brsh = new LinearGradientBrush(new Point(0, 0), new Point(0, 500), Color.FromArgb(179, 179, 255), Color.Black);
+                    //Pen pen1 = new Pen(Color.FromArgb(255, 110, 110, 110)) { Width = 2 };
+                    //Pen pen1 = new Pen(Color.FromArgb(255, 110, 110, 110)) { Width = 2 };
+                    Pen pen1 = new Pen(brsh) { Width = 2 };
+                    //Pen pen2 = new Pen(Color.FromArgb(255,150,150,150)) {Width = (float) 0.1};
+                    //Pen pen3 = new Pen(Color.FromArgb(255, 170, 170, 170)) { Width = (float)0.1 };
 
                     Stream wavestream = new Mp3FileReader(strPath, wf => new NAudio.FileFormats.Mp3.DmoMp3FrameDecompressor(wf));
-                    var samplesPerPixel = (int)(wavestream.Length / bytesPerSample) / width;
+                    var samplesPerPixel = (int)(wavestream.Length / bytesPerSample) / width *3;
                     wavestream.Position = 0;
                     byte[] waveData1 = new byte[samplesPerPixel * bytesPerSample];
                     //wavestream.Position =  (width * bytesPerSample * samplesPerPixel);
-
-                    for (float x = 0; x < width-1; x++)
+                    long maxVal = 0;
+                    long minval = 0;
+                    for (float x = 0; x < width-1; x=x+3)
                     {
                         int low = 0;
                         int high = 0;
@@ -70,10 +75,10 @@ namespace music.local.Bussiness
                             break;
                         int totalLow = 0, countLow=0;
                         int totalHigh = 0, countHigh=0;
-                        for (int n = 0; n <= bytesRead1-2; n +=2)
+                        for (int n = 0; n <= bytesRead1 - 2; n += 2)
                         {
-                            int sample = BitConverter.ToInt16(waveData1, n); 
-                            if (sample > 0)
+                            int sample = BitConverter.ToInt16(waveData1, n);
+                            if (sample >= 0)
                             {
                                 if (sample > high) { high = sample; }
 
@@ -82,31 +87,41 @@ namespace music.local.Bussiness
                             }
                             else
                             {
-                                    if (sample < low) { low = sample; }
-                                    totalLow += sample;
-                                    countLow++;
+                                if (sample < low) { low = sample; }
+                                totalLow += sample;
+                                countLow++;
                             }
                             
                         }
                         low =(low + totalLow/(countLow == 0 ? 1 : countLow))/2;
                         high =(high + totalHigh / (countHigh == 0 ? 1 : countHigh))/2;
 
+
                         float lowPercent = ((float)(low - ConstMinVal) / Denominator);
                         float highPercent = ((float)(high - ConstMinVal) / Denominator);
                         float lowValue = (height * lowPercent);
                         float highValue = (height * highPercent);
-                        g.DrawLine(pen3, x, lowValue, x, highValue);
-                        var dif = 0.2*(highValue - lowValue);
-                        g.DrawLine(pen2, x, (int)(lowValue + dif), x, (int)(highValue - dif));
-                        dif =dif+ dif/1.5;
-                        g.DrawLine(pen1, x, (int)(lowValue + dif), x, (int)(highValue - dif));
 
+                        var Val = highValue - lowValue + 3 * (Math.Abs(height / 2 - highValue) - Math.Abs(height/2 - lowValue));
+                        //var Val = highValue - lowValue ;
+                        //fLow = height * ((float)(fLow - ConstMinVal) / Denominator);
+
+                        //g.DrawLine(pen1, x, lowValue, x, highValue);
+                        g.DrawLine(pen1, x, height- Val, x, height+2);
+
+
+                        //var dif = 0.2*(highValue - lowValue);
+                        //g.DrawLine(pen2, x, (int)(lowValue + dif), x, (int)(highValue - dif));
+                        //dif =dif+ dif/1.5;
+                        //g.DrawLine(pen1, x, (int)(lowValue + dif), x, (int)(highValue - dif));
                     }
                     wavestream.Close();
                     wavestream.Dispose();
                     pen1.Dispose();
-                    pen2.Dispose();
-                    pen3.Dispose();
+                    brsh.Dispose();
+                    //pen2.Dispose();
+                    //pen3.Dispose();
+                    
                 }
                 FileContentResult image;
                 using (var ms = new MemoryStream())
