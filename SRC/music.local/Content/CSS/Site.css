@@ -101,7 +101,7 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     height: 150px;
 }
 
-#playerSongInfor {
+.playerSongInfor {
     z-index: 999;
     position: absolute;
     font-family: Arial;

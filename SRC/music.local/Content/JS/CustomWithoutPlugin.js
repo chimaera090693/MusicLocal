@@ -123,6 +123,10 @@ function UpdateDisplay() {
     var width = $("#player-display").width();
     var totalTime = $.myPlayer.duration;
     var crntTime = $.myPlayer.currentTime;
+    //audio-time
+    var totalDisplayTime = Math.floor(totalTime / 60) + ":" + Math.floor(totalTime % 60);
+    var currentDisplayTime = Math.floor(crntTime / 60) + ":" + Math.floor(crntTime % 60);
+    $("#audio-time").text("-   " + currentDisplayTime + " / " + totalDisplayTime);
     $("#remain-display").css("width", (width-((crntTime / totalTime) * width).toFixed(0)) + "px ");
 }
 
