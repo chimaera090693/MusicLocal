@@ -124,8 +124,12 @@ function UpdateDisplay() {
     var totalTime = $.myPlayer.duration;
     var crntTime = $.myPlayer.currentTime;
     //audio-time
-    var totalDisplayTime = Math.floor(totalTime / 60) + ":" + Math.floor(totalTime % 60);
-    var currentDisplayTime = Math.floor(crntTime / 60) + ":" + Math.floor(crntTime % 60);
+    var min = Math.floor(totalTime / 60);
+    var sec = Math.floor(totalTime % 60);
+    var totalDisplayTime = (min < 10 ? ("0" + min) : (min + "")) + ":" + (sec < 10 ? ("0" + sec) : (sec + ""));
+    min = Math.floor(crntTime / 60);
+    sec = Math.floor(crntTime % 60);
+    var currentDisplayTime = (min < 10 ? ("0" + min) : (min + "")) + ":" + (sec < 10 ? ("0" + sec) : (sec + ""));
     $("#audio-time").text("-   " + currentDisplayTime + " / " + totalDisplayTime);
     $("#remain-display").css("width", (width-((crntTime / totalTime) * width).toFixed(0)) + "px ");
 }
