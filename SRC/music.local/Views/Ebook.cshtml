@@ -1,0 +1,61 @@
+﻿@using music.local.Models
+@{
+    Layout = null;
+    var data = (List<SoundTrackModel>)ViewBag.Data;
+    var icondata = "{\"icon\":\"glyphicon glyphicon-book\"}";
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ebook</title>
+    <link href="~/Content/bootstrap3.3.7/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/VideoJS5.13/video-js.css" rel="stylesheet" />
+    <link href="~/Content/CSS/Site.css" rel="stylesheet" />
+    <link href="~/Content/jsTree/dist/themes/default/style.css" rel="stylesheet" />
+</head>
+<body style="height: 100%; padding-bottom:10px !important;">
+    <div class="col-md-3 lib-wraper">
+        <ul>
+
+            @foreach (SoundTrackModel folder in data)
+            {
+                <li>
+                    <span>@folder.Name</span>
+                    <ul>
+                        @foreach (SoundTrackModel child in folder.ListTrack)
+                        {
+
+                            <li data-jstree="@icondata" title="@child.Name" onclick="Read('@(child.FilePath.Replace('\\','/'))')" ><span>@child.Name</span> </li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+
+    </div>
+<div class="col-md-9 reader-wraper">
+    <iframe id="reader" src="~/Content/pdf.js/web/viewer.html"></iframe>
+</div>
+    <input type="hidden" id="HostAddress" value="@(Request.Url.Host+":"+Request.Url.Port)" />
+</body>
+
+<script src="~/Content/JS/jquery-3.1.1.min.js"></script>
+<script src="~/Content/bootstrap3.3.7/js/bootstrap.js"></script>
+<script src="~/Content/jsTree/dist/jstree.js"></script>
+<script src="~/Content/JS/CookieHelper.js"></script>
+<script src="~/Content/JS/Common.js"></script>
+<script src="~/Content/JS/EbookIndex.js"></script>
+<script>
+    $(function () {
+        //lib-wraper
+        $.myEbookTree = $('.lib-wraper').jstree(
+           {
+               "core": {
+                   "multiple": false,
+                   "worker": false
+               }
+           }
+           );
+    });
+
+
+</script>

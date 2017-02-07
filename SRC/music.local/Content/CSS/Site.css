@@ -247,3 +247,17 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
 }
 
 /*end Video==============================================================*/
+
+
+/*Ebook*/
+#reader {
+    height:100%;
+    width: 100%;
+}
+.lib-wraper, .reader-wraper {
+    height:100%;
+    display:block;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+/*end Ebook ==============================================================*/

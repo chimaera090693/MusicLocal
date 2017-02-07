@@ -34,6 +34,10 @@ namespace music.local.Controllers
                 if (!f.Extension.ToLower().Replace(".", "").Equals("mp3"))
                 {
                     fileMine = "image/jpeg";
+                    if (f.Extension.ToLower().Equals(".pdf"))
+                    {
+                        fileMine = "application/pdf";
+                    }
                 }
                 using (var str = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {

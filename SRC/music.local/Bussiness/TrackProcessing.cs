@@ -118,5 +118,15 @@ namespace music.local.Bussiness
             return list;
         }
 
+        public static List<SoundTrackModel> GetEbookList()
+        {
+            var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
+
+            var stParent = new SoundTrackModel();
+            stParent.FilePath = "\\_Ebook";
+            var list = ReclusiveTree(physPath + "\\_Ebook", (int)TrackType.Singer, ref stParent, ".pdf");
+            return list;
+        }
+
     }
 }
