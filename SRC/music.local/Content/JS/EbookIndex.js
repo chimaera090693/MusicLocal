@@ -5,4 +5,5 @@
 function Read(url) {
     var newURL = encodeURIComponent("http://" + $("#HostAddress").val() + "/Home/File?p=" + encodeURIComponent(url) + "");
     $("#reader").attr("src", "http://" + $("#HostAddress").val() + "/Content/pdf.js/web/viewer.html?file=" + newURL + "");
+    setPageTitle(url.split('/')[3]);
 }
