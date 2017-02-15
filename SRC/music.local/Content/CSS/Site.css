@@ -203,7 +203,7 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
 .video-detail .playlist-wraper {
     background-color: #eee;
     box-shadow: 0em 0em 1em #ddd;
-    width: 990px;
+    width: 73%;
     overflow-y: hidden;
     display: block;
     height: 165px;
