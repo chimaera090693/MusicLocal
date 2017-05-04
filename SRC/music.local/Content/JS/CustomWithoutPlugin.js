@@ -2,6 +2,10 @@
 /// <reference path="~/Content/JS/CookieHelper.js" />
 /// <reference path="~/Content/JS/Common.js" />
 
+//volume
+$.crntVolume = 1;
+$.volumeDisplayTimeOut =false;
+$.volumeDisplay = "";
 $(function () {
     $.myFkingTree = $('.treeWraper').jstree(
     {
@@ -27,24 +31,46 @@ $(function () {
     document.getElementById("player-display").onclick = Seek;
     $.myCrntAlbunmCover = $("#cover").attr("src");
     InitLoop();
-
+    
     $("body").keypress(function (event) {
         var e = event.originalEvent;
         var crntPid = "";
         if ($.myCrntID == undefined || $.myCrntID == "") {
             //select thằng active đầu tiên
-            crntPid =$(".tab-content .tab-pane.active input:first").attr("class").split("-")[1];
+            crntPid = $(".tab-content .tab-pane.active input:first").attr("class").split("-")[1];
         } else {
             crntPid = $.myCrntID.split("-")[0];
         }
-        //33=> 175
+        console.log(e);
+        if (e.charCode == 32) {
+            togglePlay();
+            return false;
+        }
+        switch (e.keyCode) {
+            case 37:   //left  => prev
+                $("#btnMyPrev").click();
+                return false;
+            case 38:   //up  => vol up
+                ChangeVolume(5);
+                return false;
+            case 39:   //right => next
+                $("#btnMyNext").click();
+                return false;
+            case 40:  //down  => vol down
+                ChangeVolume(-5);
+                return false;
+        }
+
         if (e.charCode < 33 || e.charCode > 175) return true;
         var cls = crntPid + "-" + e.key + ":first";
         var element = $(".tab-content .tab-pane.active .treeWraper ." + cls);
         if ($(element).length < 1) return true;
-        $("body").animate({
-            scrollTop: ($(element).offset().top -30)
-        }, 500);
+        //$("body").animate({
+        //    scrollTop: ($(element).offset().top -30)
+        //}, 500);
+        $(element)[0].scrollIntoView({
+            behavior: "smooth" // or "auto" or "instant"
+        });
         return true;
     });
 });
@@ -158,7 +184,7 @@ function UpdateDisplay() {
     min = Math.floor(crntTime / 60);
     sec = Math.floor(crntTime % 60);
     var currentDisplayTime = (min < 10 ? ("0" + min) : (min + "")) + ":" + (sec < 10 ? ("0" + sec) : (sec + ""));
-    $("#audio-time").text("-   " + currentDisplayTime + " / " + totalDisplayTime);
+    $("#audio-time").text("-   " + currentDisplayTime + " / " + totalDisplayTime +" "+ $.volumeDisplay );
     $("#remain-display").css("width", (width - ((crntTime / totalTime) * width).toFixed(0)) + "px ");
 }
 
@@ -204,3 +230,20 @@ function BindSelectedTreeElement(selector) {
     });
 }
 ///============End Common Function ================
+
+function ChangeVolume(value) {
+    var crntvol = 100 * $.crntVolume;
+    crntvol = crntvol + parseInt(value);
+    if (crntvol > 100) crntvol = 100;
+    if (crntvol < 0) crntvol = 0;
+    crntvol = crntvol.toFixed(0);
+    if ($.volumeDisplayTimeOut) {
+        clearTimeout($.volumeDisplayTimeOut);
+    }
+    $.crntVolume = (crntvol / 100).toFixed(2);
+    $.myPlayer.volume = $.crntVolume;
+    $.volumeDisplay = " - Volume: " + crntvol + "%";
+    $.volumeDisplayTimeOut = setTimeout(function() {
+        $.volumeDisplay = "";
+    }, 2500);
+}

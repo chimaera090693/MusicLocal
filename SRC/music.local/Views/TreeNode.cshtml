@@ -38,17 +38,14 @@
 }
 
 
-<li @(ids) class="@(Model.ParentGid + "-" + Model.order) " @(Html.Raw(playAction)) data-jstree="@data" name="@(Model.Name+" / "+Model.CoverPath)" data-order="@Model.order" data-src="@src">
+<li @(ids) class="@(Model.ParentGid + "-" + Model.order) @scroolMark" @(Html.Raw(playAction)) data-jstree="@data" name="@(Model.Name+" / "+Model.CoverPath)" data-order="@Model.order" data-src="@src">
     @Model.Name
+
+    @if ((TrackType)Model.ItemType != TrackType.Track)
+    {
+        <input type="hidden" class="ids-@Model.Gid" value="@(Model.ListTrack == null ? 0 : Model.ListTrack.Count)" />
+    }
    
-    @if ((TrackType) Model.ItemType != TrackType.Track)
-    {
-        <input type="hidden" class="ids-@Model.Gid" value="@(Model.ListTrack == null ? 0 : Model.ListTrack.Count)"/>
-    }
-    else
-    {
-        <label class="@scroolMark"></label>
-    }
     @{
         if (Model.ListTrack != null && Model.ListTrack.Any())
         {
