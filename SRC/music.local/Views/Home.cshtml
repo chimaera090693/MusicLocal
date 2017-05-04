@@ -49,6 +49,10 @@
                     foreach (var soundTrackModel in list)
                     {
                         <div role="tabpanel" class="tab-pane @isFirst" id="@(count + soundTrackModel.Name)">
+                            @if (true)
+                            {
+                                <input type="hidden" class="ids-@soundTrackModel.Gid" value="@(soundTrackModel.ListTrack == null ? 0 : soundTrackModel.ListTrack.Count)" />
+                            }
                             <div class="treeWraper">
                                 <ul>
                                     @* build tree view *@

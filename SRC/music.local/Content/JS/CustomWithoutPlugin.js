@@ -15,11 +15,11 @@ $(function () {
     $.myPlayer.onended = (function () {
         endPlay();
     });
-    $.myPlayer.ontimeupdate= (function() {
+    $.myPlayer.ontimeupdate = (function () {
         //update time
         UpdateDisplay();
     });
-    $.myPlayer.onerror =(function () {
+    $.myPlayer.onerror = (function () {
         LogDebug($.myCrntID);
         nextTrack();
     });
@@ -27,6 +27,26 @@ $(function () {
     document.getElementById("player-display").onclick = Seek;
     $.myCrntAlbunmCover = $("#cover").attr("src");
     InitLoop();
+
+    $("body").keypress(function (event) {
+        var e = event.originalEvent;
+        var crntPid = "";
+        if ($.myCrntID == undefined || $.myCrntID == "") {
+            //select thằng active đầu tiên
+            crntPid =$(".tab-content .tab-pane.active input:first").attr("class").split("-")[1];
+        } else {
+            crntPid = $.myCrntID.split("-")[0];
+        }
+        //33=> 175
+        if (e.charCode < 33 || e.charCode > 175) return true;
+        var cls = crntPid + "-" + e.key + ":first";
+        var element = $(".tab-content .tab-pane.active .treeWraper ." + cls);
+        if ($(element).length < 1) return true;
+        $("body").animate({
+            scrollTop: ($(element).offset().top -30)
+        }, 500);
+        return true;
+    });
 });
 
 ///=============Event ============
@@ -59,18 +79,18 @@ function playAudio(cls, auto) {
     playerimage = encodeURI(playerimage);
     LogDebug(playerimage);
     $("#player-display").css("background-image", "url(\"" + playerimage + "\")");
-    $.myPlayer.src= newSrc;
+    $.myPlayer.src = newSrc;
     $.myPlayer.load();
-    $.myPlayer.addEventListener("canplay",function () {
+    $.myPlayer.addEventListener("canplay", function () {
         togglePlay(1);
-        $.myPlayer.removeEventListener("canplay", function (){});
+        $.myPlayer.removeEventListener("canplay", function () { });
     });
 
 }
 
 function togglePlay(isplay) {
     //$.myPlayer.playPause();
-    if ($.myPlayer.paused || isplay ==1) {
+    if ($.myPlayer.paused || isplay == 1) {
         //btnPlay
         setPageTitle();
         $.myPlayer.play();
@@ -102,7 +122,15 @@ function nextTrack(nextVal) {
     if ($.myCrntID != undefined && $.myCrntID != "") {
         var current = $.myCrntID.split('-');
         var nextId = current[1];
-        next = current[0] + "-" + String(parseInt(nextId) + nextVal);
+        if (isLoop == 3) {
+            //loop = random
+            var totalsong = parseInt($(".ids-" + current[0]).val());
+            if (!totalsong) totalsong = 0;
+            var randomId = Math.floor(Math.random() * totalsong);
+            next = current[0] + "-" + String(randomId);
+        } else {
+            next = current[0] + "-" + String(parseInt(nextId) + nextVal);
+        }
         LogDebug(next);
         if ($("." + next).length) {
             playAudio(next, 1);
@@ -131,7 +159,7 @@ function UpdateDisplay() {
     sec = Math.floor(crntTime % 60);
     var currentDisplayTime = (min < 10 ? ("0" + min) : (min + "")) + ":" + (sec < 10 ? ("0" + sec) : (sec + ""));
     $("#audio-time").text("-   " + currentDisplayTime + " / " + totalDisplayTime);
-    $("#remain-display").css("width", (width-((crntTime / totalTime) * width).toFixed(0)) + "px ");
+    $("#remain-display").css("width", (width - ((crntTime / totalTime) * width).toFixed(0)) + "px ");
 }
 
 function Seek(event) {

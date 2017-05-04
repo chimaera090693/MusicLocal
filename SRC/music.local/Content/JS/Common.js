@@ -20,6 +20,7 @@ var Class_BtnLoop = "control-btnCustom control-loop";
 var Txt_BtnLoop_ROne = "Repeat one";
 var Txt_BtnLoop_RAlbum = "Repeat Album";
 var Txt_BtnLoop_NoR = "No repeat";
+var Txt_BtnLoop_Suf = "Random";
 
 
 //audio player function
@@ -32,6 +33,8 @@ function getLoopButtonText() {
             return Txt_BtnLoop_ROne;
         case 2:
             return Txt_BtnLoop_RAlbum;
+        case 3:
+            return Txt_BtnLoop_Suf;
         case 0:
             return Txt_BtnLoop_NoR;
     }
@@ -57,6 +60,9 @@ function changeLoop(ele) {
             isLoop = 2;
             break;
         case 2:
+            isLoop = 3;
+            break;
+        case 3:
             isLoop = 0;
             break;
         case 0:

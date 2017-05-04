@@ -167,6 +167,10 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     content: "\e030";
     color: red;
 }
+/*random*/
+.control-loop3:before {
+    content: "\e110";
+}
 
 .control-btnplay:before {
     content: "\e072";
