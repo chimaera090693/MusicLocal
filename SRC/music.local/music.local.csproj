@@ -406,9 +406,7 @@
     </Content>
     <Content Include="Views\Home.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Ebook\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Content\VideoJS5.13\font\VideoJS.eot" />
