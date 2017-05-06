@@ -41,7 +41,7 @@ $(function () {
         } else {
             crntPid = $.myCrntID.split("-")[0];
         }
-        console.log(e);
+        //console.log(e);
         if (e.charCode == 32) {
             togglePlay();
             return false;
@@ -86,7 +86,7 @@ function playAudio(cls, auto) {
     $.myPlayer.src = "";
     //$.myPlayer.waveform.pause();
     var newSrc = $("." + cls).first().data("src");
-    console.log(cls);
+    //console.log(cls);
     var albumCover = $("." + cls).first().parent().parent().data("src");
     if (albumCover != undefined) {
         $.myCrntAlbunmCover = albumCover;
@@ -111,7 +111,7 @@ function playAudio(cls, auto) {
         togglePlay(1);
         $.myPlayer.removeEventListener("canplay", function () { });
     });
-
+    $(".body").click();
 }
 
 function togglePlay(isplay) {
@@ -205,7 +205,7 @@ function Seek(event) {
 function CheckCover() {
     setTimeout(function () {
         var currentSrc = $.myCrntAlbunmCover;
-        console.log(currentSrc);
+        //console.log(currentSrc);
         var coverElement = document.getElementById("cover");
         if (!coverElement.complete) {
             $("#cover").attr("src", currentSrc);
