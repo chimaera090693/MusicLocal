@@ -4,7 +4,7 @@
 
 //volume
 $.crntVolume = 1;
-$.volumeDisplayTimeOut =false;
+$.volumeDisplayTimeOut = false;
 $.volumeDisplay = "";
 $(function () {
     $.myFkingTree = $('.treeWraper').jstree(
@@ -15,6 +15,19 @@ $(function () {
         }
     }
     );
+    //$('.treeWraper').on("select_node.jstree", function (e, data) {
+    //    //focus vào body
+    //    //$("body").focus();
+    //    $(this).triggerHandler('blur');
+    //    //$(".footer-player").focus();
+    //});
+    document.getElementsByTagName("body")[0].addEventListener('keydown', function(a,b,c) {
+       if (a.keyCode >= 37 && a.keyCode <= 40) {
+           //stop capture parse
+           a.stopPropagation();
+       }
+    }, true);
+
     $.myPlayer = document.getElementById("player");
     $.myPlayer.onended = (function () {
         endPlay();
@@ -31,7 +44,7 @@ $(function () {
     document.getElementById("player-display").onclick = Seek;
     $.myCrntAlbunmCover = $("#cover").attr("src");
     InitLoop();
-    
+
     $("body").keypress(function (event) {
         var e = event.originalEvent;
         var crntPid = "";
@@ -184,7 +197,7 @@ function UpdateDisplay() {
     min = Math.floor(crntTime / 60);
     sec = Math.floor(crntTime % 60);
     var currentDisplayTime = (min < 10 ? ("0" + min) : (min + "")) + ":" + (sec < 10 ? ("0" + sec) : (sec + ""));
-    $("#audio-time").text("-   " + currentDisplayTime + " / " + totalDisplayTime +" "+ $.volumeDisplay );
+    $("#audio-time").text("-   " + currentDisplayTime + " / " + totalDisplayTime + " " + $.volumeDisplay);
     $("#remain-display").css("width", (width - ((crntTime / totalTime) * width).toFixed(0)) + "px ");
 }
 
@@ -243,7 +256,7 @@ function ChangeVolume(value) {
     $.crntVolume = (crntvol / 100).toFixed(2);
     $.myPlayer.volume = $.crntVolume;
     $.volumeDisplay = " - Volume: " + crntvol + "%";
-    $.volumeDisplayTimeOut = setTimeout(function() {
+    $.volumeDisplayTimeOut = setTimeout(function () {
         $.volumeDisplay = "";
     }, 2500);
 }
