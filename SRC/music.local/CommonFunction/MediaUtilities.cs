@@ -7,7 +7,7 @@ namespace music.local
 {
     public class MediaUtilities
     {
-        public const int BufferSize = 1024 * 1024;
+        public const int BufferSize = 1024 * 1024 *1024;
 
         /// <summary>
         /// trả về mime type từ extension của media file
@@ -16,32 +16,33 @@ namespace music.local
         /// <returns>mime type</returns>
         public static string GetMimeType(string extension)
         {
-            var ext = "";
-            switch (extension.ToLower())
-            {
-                case ".mp3":
-                    ext = "audio/mpeg";
-                    return ext;
-                case ".mp4":
-                    ext = "video/mp4";
-                    return ext;
-                case ".ogg":
-                    ext = "application/ogg";
-                    return ext;
-                case ".ogv":
-                    ext = "video/ogg";
-                    return ext;
-                case ".oga":
-                    ext = "audio/ogg";
-                    return ext;
-                case ".wav":
-                    ext = "audio/x-wav";
-                    return ext;
-                case ".webm":
-                    ext = "video/webm";
-                    return ext;
-            }
-            return ext;
+            return MimeMapping.GetMimeMapping(extension);
+            //var ext = "";
+            //switch (extension.ToLower())
+            //{
+            //    case ".mp3":
+            //        ext = "audio/mpeg";
+            //        return ext;
+            //    case ".mp4":
+            //        ext = "video/mp4";
+            //        return ext;
+            //    case ".ogg":
+            //        ext = "application/ogg";
+            //        return ext;
+            //    case ".ogv":
+            //        ext = "video/ogg";
+            //        return ext;
+            //    case ".oga":
+            //        ext = "audio/ogg";
+            //        return ext;
+            //    case ".wav":
+            //        ext = "audio/x-wav";
+            //        return ext;
+            //    case ".webm":
+            //        ext = "video/webm";
+            //        return ext;
+            //}
+            //return ext;
         }
 
         /// <summary>
