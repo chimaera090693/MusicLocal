@@ -1,7 +1,12 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections;
+using System.IO;
+using System.Linq;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using music.local.Bussiness;
+using WebGrease.Css;
+using WebGrease.Css.Extensions;
 
 namespace music.local.Controllers
 {
@@ -63,6 +68,11 @@ namespace music.local.Controllers
             {
                 return Mp3TagReader.GetPicture(filePath);
             }
+
+            var str = "ahihi";
+            var bytes = System.Text.UnicodeEncoding.Unicode.GetBytes(str);
+            var bite =BitConverter.GetBytes(1);
+
             return null;
         }
 
@@ -78,6 +88,62 @@ namespace music.local.Controllers
                 return Content("1");
             }
             return Content("0");
+        }
+
+
+        public ActionResult Text()
+        {
+
+            return View("/Views/Text.cshtml");
+        }
+
+        public ActionResult Encode(string str)
+        {
+            if (string.IsNullOrEmpty(str)) return Content("Fail!");
+            var bytes = System.Text.Encoding.Unicode.GetBytes(str);
+            var txt = "";
+            for (int index = 0; index < bytes.Length; index++)
+            {
+                var VARIABLE = bytes[index];
+                txt += Convert.ToString(VARIABLE, 2).PadLeft(8, '0')+" ";
+                //txt += index + ": " + VARIABLE+"\r\n";
+            }
+            txt = txt.Trim() + "\r\n";
+            txt += string.Join(" ", bytes.Select(byt => Convert.ToString(byt, 2).PadLeft(8, '0')));
+            return Content(txt);
+        }
+        public ActionResult Decode(string str)
+        {
+            try
+            {
+                var text = "";
+                 string[] separators = {" "};
+                if (string.IsNullOrEmpty(str)) return Content("Fail!");
+                var arr = str.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                var bytes = new byte[arr.Length];
+                for (int index = 0; index < arr.Length; index++)
+                {
+                    var byt = arr[index];
+                    if (string.IsNullOrEmpty(byt)) continue;
+                    if (byt.Length != 8) throw new Exception("Chuỗi nhập vào không đúng chuẩn!");
+                    int newBy=0;
+                    for (int i = 0; i < 8; i++)
+                    {
+                        var chr = byt[i];
+                        int s = int.Parse(chr+"");
+                        newBy = newBy << 1;
+                        newBy =  newBy ^ s;
+                    }
+                    //text +=+index+": "+newBy+ "\r\n";
+                    bytes[index] = Convert.ToByte(newBy);
+                }
+                text += System.Text.Encoding.Unicode.GetString(bytes);
+                return Content(text);
+            }
+            catch (Exception ex)
+            {
+                  return Content("Fail! \r\n"+ ex.Message+"\r\n"+ex.StackTrace);
+            }
         }
     }
 }

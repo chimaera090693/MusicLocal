@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Text</title>
+    <link href="~/Content/bootstrap3.3.7/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Content/JS/jquery-3.1.1.min.js"></script>
+    <style>
+        .content {
+            width: 600px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        textarea {
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="row">
+            <input id="txtInput" style="width:340px; display:inline-block" class="form-control" /><a onclick="GetBinary()" class="btn btn-primary">Get byte</a>
+            <a onclick="DecodeBinary()" class="btn btn-primary">Decode</a>
+        </div>
+        <div class="row">
+            <textarea class="form-control" placeholder="Result" readonly style="width:500px; height:200px" id="txtResult"></textarea>
+        </div>
+        <div class="row">
+            <textarea class="form-control" placeholder="Base64String result" readonly style="width:500px; height:200px" id="txtBase64"></textarea>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function GetBinary() {
+        var inputtxt = $("#txtInput").val();
+        if (inputtxt != "") {
+            var fData = new FormData();
+            fData.append("str", inputtxt);
+            $.ajax({
+                method: "POST",
+                url: "/home/Encode",
+                data: fData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $("#txtResult").text(data);
+                    $("#txtBase64").text(btoa(inputtxt));
+                },
+                error: function (x) {
+                    alert("Ajax thất bại!");
+                }
+            });
+        }
+    }
+    function DecodeBinary() {
+        var inputtxt = $("#txtInput").val();
+        if (inputtxt != "") {
+            var fData = new FormData();
+            fData.append("str", inputtxt);
+            $.ajax({
+                method: "POST",
+                url: "/home/Decode",
+                data: fData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $("#txtResult").text(data);
+                    $("#txtBase64").text(atob(inputtxt));
+                },
+                error: function (x) {
+                    alert("Ajax thất bại!");
+                }
+            });
+        }
+    }
+</script>

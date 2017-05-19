@@ -717,6 +717,7 @@
     <Content Include="Views\Video\VideoIndex.cshtml" />
     <Content Include="Views\Login\AccessLog.cshtml" />
     <Content Include="Views\Ebook.cshtml" />
+    <Content Include="Views\Text.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
