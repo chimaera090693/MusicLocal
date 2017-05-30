@@ -1,0 +1,1549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Release\MusicLocal</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Data/MusicLocal.db">
+      <publishTime>05/30/2017 14:45:13</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>11/18/2016 08:45:56</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/Id3.dll">
+      <publishTime>01/03/2017 15:15:27</publishTime>
+    </File>
+    <File Include="bin/Id3.Files.dll">
+      <publishTime>01/03/2017 15:15:28</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>09/23/2016 09:21:04</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Google.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
+      <publishTime>11/18/2016 08:45:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>11/18/2016 08:45:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
+      <publishTime>11/18/2016 08:45:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>11/18/2016 08:45:58</publishTime>
+    </File>
+    <File Include="bin/music.local.dll">
+      <publishTime>05/30/2017 14:47:13</publishTime>
+    </File>
+    <File Include="bin/NAudio.dll">
+      <publishTime>11/23/2016 18:34:21</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>11/18/2016 08:45:58</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>11/18/2016 08:45:58</publishTime>
+    </File>
+    <File Include="bin/System.Data.SQLite.dll">
+      <publishTime>09/14/2016 11:03:36</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>11/30/2016 17:24:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>11/30/2016 17:24:23</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>11/30/2016 17:24:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>11/18/2016 08:45:57</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>11/18/2016 08:45:59</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/css/bootstrap-theme.css">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/css/bootstrap-theme.css.map">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/css/bootstrap-theme.min.css">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/css/bootstrap-theme.min.css.map">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/css/bootstrap.css">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/css/bootstrap.css.map">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/css/bootstrap.min.css">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/css/bootstrap.min.css.map">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/js/bootstrap.js">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/js/bootstrap.min.js">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap3.3.7/js/npm.js">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/CSS/Login.css">
+      <publishTime>12/08/2016 09:46:19</publishTime>
+    </File>
+    <File Include="Content/CSS/Site.css">
+      <publishTime>05/03/2017 16:55:57</publishTime>
+    </File>
+    <File Include="Content/Image/1.png">
+      <publishTime>11/16/2016 18:50:45</publishTime>
+    </File>
+    <File Include="Content/Image/2.png">
+      <publishTime>11/30/2016 10:54:37</publishTime>
+    </File>
+    <File Include="Content/JS/Common.js">
+      <publishTime>05/03/2017 16:58:32</publishTime>
+    </File>
+    <File Include="Content/JS/CookieHelper.js">
+      <publishTime>11/29/2016 16:46:20</publishTime>
+    </File>
+    <File Include="Content/JS/CustomJSWithVideoJS.js">
+      <publishTime>11/29/2016 15:57:57</publishTime>
+    </File>
+    <File Include="Content/JS/CustomJSWithWavesurfer.js">
+      <publishTime>11/29/2016 15:57:56</publishTime>
+    </File>
+    <File Include="Content/JS/CustomWithoutPlugin.js">
+      <publishTime>05/08/2017 09:47:14</publishTime>
+    </File>
+    <File Include="Content/JS/EbookIndex.js">
+      <publishTime>02/09/2017 09:39:40</publishTime>
+    </File>
+    <File Include="Content/JS/jquery-3.1.1.min.js">
+      <publishTime>11/18/2016 08:43:14</publishTime>
+    </File>
+    <File Include="Content/JS/VideoIndex.js">
+      <publishTime>12/22/2016 14:34:11</publishTime>
+    </File>
+    <File Include="Content/jsTree/.gitignore">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/jsTree/bower.json">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/jsTree/component.json">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/jsTree/composer.json">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/jsTree/dist/jstree.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/dist/jstree.min.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/dist/themes/default-dark/32px.png">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/dist/themes/default-dark/40px.png">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/dist/themes/default-dark/style.css">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/dist/themes/default-dark/style.min.css">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/dist/themes/default-dark/throbber.gif">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/dist/themes/default/32px.png">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/dist/themes/default/40px.png">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/dist/themes/default/style.css">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/dist/themes/default/style.min.css">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/dist/themes/default/throbber.gif">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/gruntfile.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/jstree.jquery.json">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/LICENSE-MIT">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/jsTree/package.json">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/README.md">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/intro.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/jstree.changed.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/jstree.checkbox.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/jstree.conditionalselect.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/jstree.contextmenu.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/jstree.dnd.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/jstree.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/jstree.massload.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/jstree.search.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/jstree.sort.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/jstree.state.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/jstree.types.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/jstree.unique.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/jstree.wholerow.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/misc.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/outro.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/sample.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/base.less">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/default-dark/32px.png">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/default-dark/40px.png">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/default-dark/style.css">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/default-dark/style.less">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/default-dark/throbber.gif">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/default/32px.png">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/default/40px.png">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/default/style.css">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/default/style.less">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/default/throbber.gif">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/main.less">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/mixins.less">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/themes/responsive.less">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/jsTree/src/vakata-jstree.js">
+      <publishTime>11/18/2016 08:43:18</publishTime>
+    </File>
+    <File Include="Content/pdf.js/build/pdf.js">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/build/pdf.worker.js">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/78-EUC-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/78-EUC-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/78-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/78-RKSJ-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/78-RKSJ-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/78-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/78ms-RKSJ-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/78ms-RKSJ-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/83pv-RKSJ-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/90ms-RKSJ-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/90ms-RKSJ-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/90msp-RKSJ-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/90msp-RKSJ-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/90pv-RKSJ-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/90pv-RKSJ-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Add-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Add-RKSJ-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Add-RKSJ-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Add-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-CNS1-0.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-CNS1-1.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-CNS1-2.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-CNS1-3.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-CNS1-4.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-CNS1-5.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-CNS1-6.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-CNS1-UCS2.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-GB1-0.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-GB1-1.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-GB1-2.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-GB1-3.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-GB1-4.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-GB1-5.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-GB1-UCS2.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-Japan1-0.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-Japan1-1.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-Japan1-2.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-Japan1-3.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-Japan1-4.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-Japan1-5.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-Japan1-6.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-Japan1-UCS2.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-Korea1-0.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-Korea1-1.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-Korea1-2.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Adobe-Korea1-UCS2.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/B5-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/B5-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/B5pc-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/B5pc-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/CNS-EUC-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/CNS-EUC-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/CNS1-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/CNS1-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/CNS2-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/CNS2-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/ETen-B5-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/ETen-B5-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/ETenms-B5-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/ETenms-B5-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/ETHK-B5-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/ETHK-B5-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/EUC-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/EUC-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Ext-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Ext-RKSJ-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Ext-RKSJ-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Ext-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GB-EUC-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GB-EUC-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GB-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GB-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBK-EUC-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBK-EUC-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBK2K-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBK2K-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBKp-EUC-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBKp-EUC-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBpc-EUC-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBpc-EUC-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBT-EUC-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBT-EUC-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBT-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBT-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBTpc-EUC-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/GBTpc-EUC-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Hankaku.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Hiragana.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/HKdla-B5-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/HKdla-B5-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/HKdlb-B5-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/HKdlb-B5-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/HKgccs-B5-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/HKgccs-B5-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/HKm314-B5-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/HKm314-B5-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/HKm471-B5-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/HKm471-B5-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/HKscs-B5-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/HKscs-B5-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Katakana.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/KSC-EUC-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/KSC-EUC-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/KSC-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/KSC-Johab-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/KSC-Johab-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/KSC-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/KSCms-UHC-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/KSCms-UHC-HW-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/KSCms-UHC-HW-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/KSCms-UHC-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/KSCpc-EUC-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/KSCpc-EUC-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/LICENSE">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/NWP-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/NWP-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/RKSJ-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/RKSJ-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/Roman.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniCNS-UCS2-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniCNS-UCS2-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniCNS-UTF16-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniCNS-UTF16-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniCNS-UTF32-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniCNS-UTF32-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniCNS-UTF8-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniCNS-UTF8-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniGB-UCS2-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniGB-UCS2-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniGB-UTF16-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniGB-UTF16-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniGB-UTF32-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniGB-UTF32-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniGB-UTF8-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniGB-UTF8-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS-UCS2-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS-UCS2-HW-H.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS-UCS2-HW-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS-UCS2-V.bcmap">
+      <publishTime>02/06/2017 11:06:03</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS-UTF16-H.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS-UTF16-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS-UTF32-H.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS-UTF32-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS-UTF8-H.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS-UTF8-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS2004-UTF16-H.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS2004-UTF16-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS2004-UTF32-H.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS2004-UTF32-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS2004-UTF8-H.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJIS2004-UTF8-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJISPro-UCS2-HW-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJISPro-UCS2-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJISPro-UTF8-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJISX0213-UTF32-H.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJISX0213-UTF32-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJISX02132004-UTF32-H.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniJISX02132004-UTF32-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniKS-UCS2-H.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniKS-UCS2-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniKS-UTF16-H.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniKS-UTF16-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniKS-UTF32-H.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniKS-UTF32-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniKS-UTF8-H.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/UniKS-UTF8-V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/V.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/cmaps/WP-Symbol.bcmap">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/compatibility.js">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/debugger.js">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/annotation-check.svg">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/annotation-comment.svg">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/annotation-help.svg">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/annotation-insert.svg">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/annotation-key.svg">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/annotation-newparagraph.svg">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/annotation-noicon.svg">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/annotation-note.svg">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/annotation-paragraph.svg">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/findbarButton-next%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/findbarButton-next-rtl%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/findbarButton-next-rtl.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/findbarButton-next.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/findbarButton-previous%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/findbarButton-previous-rtl%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/findbarButton-previous-rtl.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/findbarButton-previous.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/grab.cur">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/grabbing.cur">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/loading-icon.gif">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/loading-small%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/loading-small.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/secondaryToolbarButton-documentProperties%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/secondaryToolbarButton-documentProperties.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/secondaryToolbarButton-firstPage%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/secondaryToolbarButton-firstPage.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/secondaryToolbarButton-handTool%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/secondaryToolbarButton-handTool.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/secondaryToolbarButton-lastPage%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/secondaryToolbarButton-lastPage.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/secondaryToolbarButton-rotateCcw%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/secondaryToolbarButton-rotateCcw.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/secondaryToolbarButton-rotateCw%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/secondaryToolbarButton-rotateCw.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/shadow.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/texture.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-bookmark%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-bookmark.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-download%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-download.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-menuArrows%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-menuArrows.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-openFile%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-openFile.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-pageDown%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-pageDown-rtl%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-pageDown-rtl.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-pageDown.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-pageUp%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-pageUp-rtl%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-pageUp-rtl.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-pageUp.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-presentationMode%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-presentationMode.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-print%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-print.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-search%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-search.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-secondaryToolbarToggle%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-secondaryToolbarToggle-rtl%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-secondaryToolbarToggle-rtl.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-secondaryToolbarToggle.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-sidebarToggle%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-sidebarToggle-rtl%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-sidebarToggle-rtl.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-sidebarToggle.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-viewAttachments%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-viewAttachments.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-viewOutline%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-viewOutline-rtl%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-viewOutline-rtl.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-viewOutline.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-viewThumbnail%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-viewThumbnail.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-zoomIn%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-zoomIn.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-zoomOut%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/toolbarButton-zoomOut.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/treeitem-collapsed%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/treeitem-collapsed-rtl%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/treeitem-collapsed-rtl.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/treeitem-collapsed.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/treeitem-expanded%402x.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/images/treeitem-expanded.png">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/l10n.js">
+      <publishTime>02/07/2017 09:58:08</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ach/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/af/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ak/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/an/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ar/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/as/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ast/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/az/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/be/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/bg/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/bn-BD/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/bn-IN/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/br/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/bs/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ca/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/cs/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/csb/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/cy/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/da/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/de/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/el/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/en-GB/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/en-US/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/en-ZA/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/eo/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/es-AR/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/es-CL/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/es-ES/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/es-MX/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/et/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/eu/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/fa/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ff/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/fi/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/fr/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/fy-NL/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ga-IE/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/gd/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/gl/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/gu-IN/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/he/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/hi-IN/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/hr/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/hu/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/hy-AM/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/id/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/is/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/it/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ja/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ka/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/kk/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/km/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/kn/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ko/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ku/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/lg/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/lij/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/locale.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/lt/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/lv/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/mai/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/mk/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ml/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/mn/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/mr/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ms/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/my/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/nb-NO/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/nl/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/nn-NO/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/nso/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/oc/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/or/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/pa-IN/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/pl/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/pt-BR/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/pt-PT/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/rm/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ro/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ru/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/rw/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/sah/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/si/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/sk/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/sl/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/son/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/sq/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/sr/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/sv-SE/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/sw/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ta-LK/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ta/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/te/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/th/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/tl/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/tn/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/tr/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/uk/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/ur/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/vi/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/wo/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/xh/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/zh-CN/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/zh-TW/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/locale/zu/viewer.properties">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/viewer.css">
+      <publishTime>02/06/2017 11:06:04</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/viewer.html">
+      <publishTime>02/07/2017 09:56:32</publishTime>
+    </File>
+    <File Include="Content/pdf.js/web/viewer.js">
+      <publishTime>02/06/2017 11:06:47</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/font/VideoJS.eot">
+      <publishTime>11/18/2016 08:43:16</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/font/VideoJS.svg">
+      <publishTime>11/18/2016 08:43:16</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/font/VideoJS.ttf">
+      <publishTime>11/18/2016 08:43:16</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/font/VideoJS.woff">
+      <publishTime>11/18/2016 08:43:16</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/ie8/videojs-ie8.js">
+      <publishTime>11/18/2016 08:43:16</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/ie8/videojs-ie8.min.js">
+      <publishTime>11/18/2016 08:43:16</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/lang/en.js">
+      <publishTime>11/18/2016 08:43:16</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/video-js.css">
+      <publishTime>11/18/2016 11:29:50</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/video-js.min.css">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/video-js.swf">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/video.js">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/video.min.js">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/videojs-sublime.css">
+      <publishTime>11/18/2016 08:43:17</publishTime>
+    </File>
+    <File Include="Content/VideoJS5.13/videojs.wavesurfer.js">
+      <publishTime>09/30/2016 02:36:08</publishTime>
+    </File>
+    <File Include="Content/WaveSurfer/wavesurfer.js">
+      <publishTime>11/23/2016 17:13:01</publishTime>
+    </File>
+    <File Include="Content/WaveSurfer/wavesurfer.min.js">
+      <publishTime>11/23/2016 17:20:19</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>11/18/2016 08:43:19</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>11/18/2016 08:43:19</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>11/30/2016 17:24:25</publishTime>
+    </File>
+    <File Include="Views/Ebook.cshtml">
+      <publishTime>02/07/2017 17:14:25</publishTime>
+    </File>
+    <File Include="Views/FilmIndex.cshtml">
+      <publishTime>12/05/2016 09:34:34</publishTime>
+    </File>
+    <File Include="Views/Home.cshtml">
+      <publishTime>05/03/2017 17:29:01</publishTime>
+    </File>
+    <File Include="Views/Login/AccessLog.cshtml">
+      <publishTime>12/15/2016 09:53:13</publishTime>
+    </File>
+    <File Include="Views/Login/Login.cshtml">
+      <publishTime>12/12/2016 15:03:04</publishTime>
+    </File>
+    <File Include="Views/Text.cshtml">
+      <publishTime>05/18/2017 14:26:17</publishTime>
+    </File>
+    <File Include="Views/TreeNode.cshtml">
+      <publishTime>05/04/2017 16:05:35</publishTime>
+    </File>
+    <File Include="Views/Video/VideoIndex.cshtml">
+      <publishTime>12/22/2016 14:33:48</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>11/18/2016 08:43:19</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/30/2017 14:47:14</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

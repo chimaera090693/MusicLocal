@@ -56,9 +56,9 @@ namespace music.local.Bussiness.DataAccess
             return sqliteHelper.ExecuteGetDataTable(strCommandText);
         }
 
-        public static int Logins_UpdateLastActive(string ip, string lastActive)
+        public static int Logins_UpdateLastActive(string ip, string lastActive,string expired)
         {
-            string strCommandText = "update Logins set LastActive = '" + lastActive + "' where Identity = '" + ip + "' ";
+            string strCommandText = "update Logins set LastActive = '" + lastActive + "', Expired='" + expired + "' where Identity = '" + ip + "' ";
             var sqliteHelper = new SqliteHelper();
             return sqliteHelper.ExecuteNonQuery(strCommandText);
         }

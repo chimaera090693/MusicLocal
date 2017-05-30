@@ -395,6 +395,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\CSS\Site.css" />
+    <Content Include="Properties\PublishProfiles\chim.pubxml.user" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -718,6 +719,7 @@
     <Content Include="Views\Login\AccessLog.cshtml" />
     <Content Include="Views\Ebook.cshtml" />
     <Content Include="Views\Text.cshtml" />
+    <None Include="Properties\PublishProfiles\chim.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

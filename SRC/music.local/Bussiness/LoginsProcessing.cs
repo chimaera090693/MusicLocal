@@ -28,7 +28,8 @@ namespace music.local.Bussiness
                         if (dt >= DateTime.Now)
                         {
 
-                            Logins.Logins_UpdateLastActive(idClient, DateTime.Now.ToString(SqliteHelper.SqliteDateTimeFormat));
+                            Logins.Logins_UpdateLastActive(idClient, DateTime.Now.ToString(SqliteHelper.SqliteDateTimeFormat),
+                                 DateTime.Now.AddDays(2).ToString(SqliteHelper.SqliteDateTimeFormat));
                             return true;
                         }
                     }
@@ -37,7 +38,8 @@ namespace music.local.Bussiness
                         var created = DateTime.ParseExact(chkLogin.Rows[0]["Created"].ToString(), SqliteHelper.SqliteDateTimeFormat, CultureInfo.InvariantCulture);
                         if (created.AddDays(2) >= DateTime.Now)
                         {
-                            Logins.Logins_UpdateLastActive(idClient, DateTime.Now.ToString(SqliteHelper.SqliteDateTimeFormat));
+                            Logins.Logins_UpdateLastActive(idClient, DateTime.Now.ToString(SqliteHelper.SqliteDateTimeFormat),
+                                 DateTime.Now.AddDays(2).ToString(SqliteHelper.SqliteDateTimeFormat));
                             return true;
                         }
                     }
