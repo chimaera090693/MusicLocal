@@ -97,6 +97,12 @@ namespace music.local.Controllers
             return View("/Views/Text.cshtml");
         }
 
+        public ActionResult Test()
+        {
+
+            return View("/Views/Test.cshtml");
+        }
+
         public ActionResult Encode(string str)
         {
             if (string.IsNullOrEmpty(str)) return Content("Fail!");
