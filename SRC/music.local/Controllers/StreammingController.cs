@@ -7,9 +7,11 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Web.Configuration;
 using System.Web.Http;
+using music.local.Filter;
 
 namespace music.local.Controllers
 {
+    [CustomAuthFilter]
     public class StreammingController : ApiController
     {
         private static readonly string appPath = WebConfigurationManager.AppSettings["PhysicalPath"];

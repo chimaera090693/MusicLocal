@@ -16,6 +16,17 @@ namespace music.local.Bussiness
         public static bool CheckLogin(bool redirect = false)
         {
             var idClient = GetRequestId(HttpContext.Current);
+            var isValid = ValiadateLogin(idClient);
+            if (redirect && !isValid)
+            {
+               var abpath = HttpContext.Current.Request.Url.AbsolutePath;
+              HttpContext.Current.Response.Redirect("~/Login?ru=" + abpath);
+            }
+            return isValid;
+        }
+
+        public static bool ValiadateLogin(string idClient)
+        {
             if (!string.IsNullOrEmpty(idClient))
             {
                 var chkLogin = Logins.Logins_Get(idClient);
@@ -45,11 +56,6 @@ namespace music.local.Bussiness
                     }
                 }
             }
-            if (redirect)
-            {
-               var abpath = HttpContext.Current.Request.Url.AbsolutePath;
-              HttpContext.Current.Response.Redirect("~/Login?ru=" + abpath);
-            }                                                                
             return false;
         }
 

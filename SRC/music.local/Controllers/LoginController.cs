@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using music.local.Bussiness;
 using music.local.Bussiness.DataAccess;
+using music.local.Filter;
 
 namespace music.local.Controllers
 {
@@ -39,20 +40,19 @@ namespace music.local.Controllers
             return View("~/Views/Login/Login.cshtml");
         }
 
+        [CustomAuthFilter]
         [HttpGet]
         public ActionResult AccessLog()
         {
-            if (!LoginsProcessing.CheckLogin(true)) return null;
             var listAC = Logins.Logins_Get();
             ViewBag.ListAccessLog = listAC;
             return View("~/Views/Login/AccessLog.cshtml");
         }
 
+        [CustomAuthFilter]
         [HttpPost]
-        public ActionResult AccessLog(string ru="/")
+        public ActionResult AccessLog(string xx="/")
         {
-            if (!LoginsProcessing.CheckLogin(true)) return null;
-
             var ip = Request.Form["ActionRemove"];
             //if (!string.IsNullOrEmpty(ip))
             {

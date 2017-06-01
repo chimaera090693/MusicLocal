@@ -3,22 +3,22 @@ using System.IO;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using music.local.Bussiness;
+using music.local.Filter;
 
 namespace music.local.Controllers
 {
+    [CustomAuthFilter]
     public class VideoController : Controller
     {
         // GET: Video
         public ActionResult Index()
         {
-            if (!LoginsProcessing.CheckLogin(true)) return null;
             ViewBag.Data = TrackProcessing.GetVideoList();
             return View("/Views/Video/VideoIndex.cshtml");
         }
 
         public ActionResult Thumbnail(string p = "")
         {
-            if (!LoginsProcessing.CheckLogin()) return null;
             if (!string.IsNullOrEmpty(p))
             {
                 var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];

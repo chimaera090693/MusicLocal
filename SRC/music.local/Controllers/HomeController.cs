@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using music.local.Bussiness;
+using music.local.Filter;
 using WebGrease.Css;
 using WebGrease.Css.Extensions;
 
@@ -12,22 +13,24 @@ namespace music.local.Controllers
 {
     public class HomeController : Controller
     {
+         [CustomAuthFilter]
         public ActionResult Index()
         {
-            if (!LoginsProcessing.CheckLogin(true)) return null;
             var listAlbum = TrackProcessing.GetTree();
             ViewBag.Data = listAlbum;
             return View("/Views/Home.cshtml");
         }
+
+         [CustomAuthFilter]
         public ActionResult Demo(string p = "")
         {
             //if (!Common.CheckLogin()) return null;
             return WaveFormProcessing.DemoDraw(p);
         }
 
+        [CustomAuthFilter]
         public ActionResult File(string p)
         {
-            if (!LoginsProcessing.CheckLogin()) return null;
             if (string.IsNullOrEmpty(p))
                 return null;
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
@@ -56,10 +59,9 @@ namespace music.local.Controllers
             return null;
         }
 
-
+         [CustomAuthFilter]
         public ActionResult Cover(string p)
         {
-            if (!LoginsProcessing.CheckLogin()) return null;
             if (string.IsNullOrEmpty(p))
                 return null;
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
@@ -90,19 +92,20 @@ namespace music.local.Controllers
             return Content("0");
         }
 
-
+        [CustomAuthFilter]
         public ActionResult Text()
         {
 
             return View("/Views/Text.cshtml");
         }
 
+        [CustomAuthFilter]
         public ActionResult Test()
         {
 
             return View("/Views/Test.cshtml");
         }
-
+         [CustomAuthFilter]
         public ActionResult Encode(string str)
         {
             if (string.IsNullOrEmpty(str)) return Content("Fail!");
@@ -118,6 +121,7 @@ namespace music.local.Controllers
             txt += string.Join(" ", bytes.Select(byt => Convert.ToString(byt, 2).PadLeft(8, '0')));
             return Content(txt);
         }
+         [CustomAuthFilter]
         public ActionResult Decode(string str)
         {
             try
