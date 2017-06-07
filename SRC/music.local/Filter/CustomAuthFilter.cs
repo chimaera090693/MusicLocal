@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using music.local.Bussiness;
 
 namespace music.local.Filter
@@ -13,12 +9,8 @@ namespace music.local.Filter
         {
             var str = "";
             bool isUnauthor = false;
-            //str += "On author Action:\r\n";
-            //str += filterContext.HttpContext.Request.Headers.Get("ClientId") +"\r\n";
-            //str += filterContext.HttpContext.Request.Cookies.Get("ClientId").Value + "\r\n";
-
-                var httpCookie = filterContext.HttpContext.Request.Cookies.Get("ClientId");
-                if (httpCookie != null)str = httpCookie.Value;
+            var httpCookie = filterContext.HttpContext.Request.Cookies.Get("ClientId");
+            if (httpCookie != null) str = httpCookie.Value;
 
             if (string.IsNullOrEmpty(str))
             {
@@ -26,7 +18,7 @@ namespace music.local.Filter
             }
             else
             {
-               isUnauthor=  !LoginsProcessing.ValiadateLogin(str);
+                isUnauthor = !LoginsProcessing.ValiadateLogin(str);
             }
 
             if (isUnauthor)
