@@ -14,6 +14,20 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     background-color: #eee;
 }
 
+#content-wraper {
+    background-color: #eee;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: 100% auto;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    opacity: 0.35;
+    margin-top: -20px;
+    position: fixed;
+}
+
 /*end nav singer============================================*/
 
 /*custom tree*/
@@ -74,7 +88,7 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     height: 150px;
     width: 80%;
     background-color: #dedede;
-    background: linear-gradient(#ccc , #fff);
+    background: linear-gradient(#ccc, #fff);
     opacity: 0.97;
     /*border-left: 1px solid #111;*/
 }
@@ -151,6 +165,7 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
 .control-btnnext:before {
     content: "\e077";
 }
+
 .control-btnprev:before {
     content: "\e069";
 }
@@ -193,12 +208,13 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
         cursor: pointer;
         color: #337ab7;
     }
-    .list-video-item .listitem-label{
-        font-size:10pt;
+
+    .list-video-item .listitem-label {
+        font-size: 10pt;
     }
 
 .listitem-cover {
-    margin:  0px 7px 2px 2px;
+    margin: 0px 7px 2px 2px;
     width: 50px;
     height: 30px;
     display: inline-block;
@@ -232,17 +248,18 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
 }
 
     .video-detail .li:hover {
-        background-color: #bbb
+        background-color: #bbb;
     }
-    .video-detail .actived {
-        background-color: #bbb !important;
-    }
-      
-    .video-detail .li p {
-        height: 62px;
-        width: 140px;
-        overflow: hidden;
-    }
+
+.video-detail .actived {
+    background-color: #bbb !important;
+}
+
+.video-detail .li p {
+    height: 62px;
+    width: 140px;
+    overflow: hidden;
+}
 
 .video-detail #video-player {
     width: 100%;
@@ -255,13 +272,14 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
 
 /*Ebook*/
 #reader {
-    height:100%;
+    height: 100%;
     width: 100%;
 }
+
 .lib-wraper, .reader-wraper {
-    height:100%;
-    display:block;
-    overflow-x:hidden;
-    overflow-y:scroll;
+    height: 100%;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 /*end Ebook ==============================================================*/

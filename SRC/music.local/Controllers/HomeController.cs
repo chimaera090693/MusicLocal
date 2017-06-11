@@ -8,12 +8,13 @@ using music.local.Bussiness;
 using music.local.Filter;
 using WebGrease.Css;
 using WebGrease.Css.Extensions;
+using System.Collections.Generic;
 
 namespace music.local.Controllers
 {
     public class HomeController : Controller
     {
-         [CustomAuthFilter]
+        [CustomAuthFilter]
         public ActionResult Index()
         {
             var listAlbum = TrackProcessing.GetTree();
@@ -21,7 +22,7 @@ namespace music.local.Controllers
             return View("/Views/Home.cshtml");
         }
 
-         [CustomAuthFilter]
+        [CustomAuthFilter]
         public ActionResult Demo(string p = "")
         {
             //if (!Common.CheckLogin()) return null;
@@ -59,7 +60,7 @@ namespace music.local.Controllers
             return null;
         }
 
-         [CustomAuthFilter]
+        [CustomAuthFilter]
         public ActionResult Cover(string p)
         {
             if (string.IsNullOrEmpty(p))
@@ -105,7 +106,7 @@ namespace music.local.Controllers
 
             return View("/Views/Test.cshtml");
         }
-         [CustomAuthFilter]
+        [CustomAuthFilter]
         public ActionResult Encode(string str)
         {
             if (string.IsNullOrEmpty(str)) return Content("Fail!");
@@ -121,7 +122,7 @@ namespace music.local.Controllers
             txt += string.Join(" ", bytes.Select(byt => Convert.ToString(byt, 2).PadLeft(8, '0')));
             return Content(txt);
         }
-         [CustomAuthFilter]
+        [CustomAuthFilter]
         public ActionResult Decode(string str)
         {
             try
@@ -155,5 +156,80 @@ namespace music.local.Controllers
                   return Content("Fail! \r\n"+ ex.Message+"\r\n"+ex.StackTrace);
             }
         }
+
+        #region Image Slider
+         public static List<string> ListFileImage = new List<string>();
+         [CustomAuthFilter]
+         public static string ImageInfor()
+         {
+             var str =@"<input id='countImage' type='hidden' value='0' />";;
+
+             try
+             {
+                 var physPath = WebConfigurationManager.AppSettings["ImagePath"];
+                 var txtFile = physPath + "\\listfile.txt ";
+                 if (System.IO.File.Exists(txtFile))
+                 {
+                     var lines = System.IO.File.ReadAllLines(txtFile, System.Text.UTF8Encoding.UTF8);
+                     if (lines == null || lines.Length == 0) goto NotFoundTXT;
+                     str = @"<input id='countImage' type='hidden' value='" + lines.Length + "' />";
+                     return str;
+                 }
+             NotFoundTXT:
+                 str = @"<input id='countImage' type='hidden' value='" + GenerateListImage() + "' />";
+             }
+             catch (Exception ex)
+             {
+                 Common.WriteLog("ImageInfor", ex+ex.StackTrace);
+             }
+             EndAction:
+             return str;
+         }
+
+         public ActionResult ImageCover(int id)
+         {
+             //check static list
+             if (ListFileImage == null || ListFileImage.Count == 0)
+             {
+                 var physPath = WebConfigurationManager.AppSettings["ImagePath"];
+                 var txtFile = physPath + "\\listfile.txt ";
+                 if (System.IO.File.Exists(txtFile)) GenerateListImage();
+                 var lines = System.IO.File.ReadAllLines(txtFile, System.Text.UTF8Encoding.UTF8);
+                 if (lines != null && lines.Length > 0)
+                 {
+                     ListFileImage = new List<string>();
+                     ListFileImage.AddRange(lines);
+                 }
+             }
+             if (id >= ListFileImage.Count) return null;
+             var path = ListFileImage[id];
+             var mime =path.Split('.').Last();
+             return new FilePathResult(path, MediaUtilities.GetMimeType("."+mime));
+         }
+
+         private static int GenerateListImage()
+         {
+             var physPath = WebConfigurationManager.AppSettings["ImagePath"];
+             var txtFile = physPath + "\\listfile.txt ";
+             var listFile = Directory.EnumerateFiles(physPath, "*", SearchOption.TopDirectoryOnly).ToList();
+             if (listFile == null || listFile.Count == 0) return 0; ;
+             StreamWriter filetxt = new StreamWriter(txtFile, false);
+             var count = 0;
+             foreach (var file in listFile)
+             {
+                 var fileinf = file.ToLower();
+                 if (fileinf.EndsWith(".jpeg") || fileinf.EndsWith(".png") || fileinf.EndsWith(".bmp") || fileinf.EndsWith(".jpg"))
+                 {
+                     filetxt.WriteLine(fileinf);
+                     count++;
+                 }
+             }
+             filetxt.Flush();
+             filetxt.Close();
+             return count;
+         }
+
+        #endregion
+
     }
 }

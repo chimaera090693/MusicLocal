@@ -1,5 +1,6 @@
 ﻿@using System.Web.Configuration
 @using System.Web.Mvc.Html
+@using music.local.Controllers
 @using music.local.Models
 @inherits WebViewPage
 @{
@@ -16,8 +17,9 @@
 <link href="~/Content/jsTree/dist/themes/default/style.css" rel="stylesheet" />
 @*<link href="~/Content/VideoJS5.13/video-js.css" rel="stylesheet" />*@
 <div class="body">
+    <div id="content-wraper"></div>
     <div class="main-cont">
-        <div class="col-md-4">
+        <div class="col-md-2" style="position: fixed">
             <ul class="nav nav-stacked">
                 @{
                     var isFirst = "active";
@@ -41,7 +43,7 @@
             </ul>
 
         </div>
-        <div class="col-md-8">
+        <div class="col-md-10" style="float: right">
             <div class="tab-content">
                 @{
                     isFirst = "active";
@@ -63,8 +65,8 @@
                                 </ul>
                             </div>
                         </div>
-                        isFirst = "";
-                        count++;
+                                    isFirst = "";
+                                    count++;
                     }
                 }
             </div>
@@ -93,10 +95,14 @@
     </div>
 
 </div>
+@* render infor cho image slider *@
+@Html.Raw(HomeController.ImageInfor())
+
 <script src="~/Content/JS/jquery-3.1.1.min.js"></script>
 <script src="~/Content/bootstrap3.3.7/js/bootstrap.js"></script>
 <script src="~/Content/jsTree/dist/jstree.js"></script>
 <script src="~/Content/JS/CookieHelper.js"></script>
-@*<script src="~/Content/WaveSurfer/wavesurfer.min.js"></script>*@
+
 <script src="~/Content/JS/Common.js"></script>
 <script src="~/Content/JS/CustomWithoutPlugin.js"></script>
+<script src="~/Content/JS/SlideShow.js"></script>
