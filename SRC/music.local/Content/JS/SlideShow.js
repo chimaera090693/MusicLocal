@@ -1,15 +1,19 @@
 ﻿//content-wraper
 
 $.myTimeoutImageSlider = 0;
-$.myCurrentImageId = -1;
+$.myCurrentImageId = 0;
 $(function () {
-    $.myCurrentImageId = $.myCurrentImageId + 1;
+    var totalImage = parseInt($("#countImage").val());
+    //background-image: url("img_tree.png
+    $.myCurrentImageId = Math.floor(Math.random() * totalImage);
     var newurl = "/Home/ImageCover?id=" + $.myCurrentImageId + "";
     $("#content-wraper").css("background-image", "url(\"" + newurl + "\")");
 
     $.myTimeoutImageSlider = setInterval(function () {
+        var totalImage = parseInt($("#countImage").val());
         //background-image: url("img_tree.png
-        $.myCurrentImageId = $.myCurrentImageId + 1;
+        var randomId = Math.floor(Math.random() * totalImage);
+        $.myCurrentImageId = randomId;
         var newurl = "/Home/ImageCover?id=" + $.myCurrentImageId + "";
         $("#content-wraper").css("background-image", "url(\"" + newurl + "\")");
     }, 15000)
