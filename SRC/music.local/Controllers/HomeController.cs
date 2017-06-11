@@ -166,7 +166,7 @@ namespace music.local.Controllers
 
              try
              {
-                 var physPath = WebConfigurationManager.AppSettings["ImagePath"];
+                 var physPath = WebConfigurationManager.AppSettings["ImagePath"].ToLower();
                  var txtFile = physPath + "\\listfile.txt ";
                  if (System.IO.File.Exists(txtFile))
                  {
@@ -189,11 +189,12 @@ namespace music.local.Controllers
          public ActionResult ImageCover(int id)
          {
              //check static list
+             var physPath = WebConfigurationManager.AppSettings["ImagePath"].ToLower();
              if (ListFileImage == null || ListFileImage.Count == 0)
              {
-                 var physPath = WebConfigurationManager.AppSettings["ImagePath"];
+                
                  var txtFile = physPath + "\\listfile.txt ";
-                 if (System.IO.File.Exists(txtFile)) GenerateListImage();
+                 if (!System.IO.File.Exists(txtFile)) GenerateListImage();
                  var lines = System.IO.File.ReadAllLines(txtFile, System.Text.UTF8Encoding.UTF8);
                  if (lines != null && lines.Length > 0)
                  {
@@ -204,12 +205,12 @@ namespace music.local.Controllers
              if (id >= ListFileImage.Count) return null;
              var path = ListFileImage[id];
              var mime =path.Split('.').Last();
-             return new FilePathResult(path, MediaUtilities.GetMimeType("."+mime));
+             return new FilePathResult(physPath+path, MediaUtilities.GetMimeType("." + mime));
          }
 
          private static int GenerateListImage()
          {
-             var physPath = WebConfigurationManager.AppSettings["ImagePath"];
+             var physPath = WebConfigurationManager.AppSettings["ImagePath"].ToLower();
              var txtFile = physPath + "\\listfile.txt ";
              var listFile = Directory.EnumerateFiles(physPath, "*", SearchOption.TopDirectoryOnly).ToList();
              if (listFile == null || listFile.Count == 0) return 0; ;
@@ -220,7 +221,7 @@ namespace music.local.Controllers
                  var fileinf = file.ToLower();
                  if (fileinf.EndsWith(".jpeg") || fileinf.EndsWith(".png") || fileinf.EndsWith(".bmp") || fileinf.EndsWith(".jpg"))
                  {
-                     filetxt.WriteLine(fileinf);
+                     filetxt.WriteLine(fileinf.ToLower().Replace(physPath, ""));
                      count++;
                  }
              }
