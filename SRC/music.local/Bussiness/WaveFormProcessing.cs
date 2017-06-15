@@ -35,6 +35,7 @@ namespace music.local.Bussiness
         {
             try
             {
+                //if (!strPath.ToLower().EndsWith(".mp3")) return null;
                 const int ConstMinVal = short.MinValue;
                 const int Denominator = ushort.MaxValue ;
 
@@ -44,11 +45,26 @@ namespace music.local.Bussiness
                 int width = bmp.Width - (2 * BORDER_WIDTH);
                 int height = bmp.Height - (2 * BORDER_WIDTH);
 
-                Mp3FileReader reader = new Mp3FileReader(strPath, wf => new NAudio.FileFormats.Mp3.DmoMp3FrameDecompressor(wf));
-                WaveChannel32 channelStream = new WaveChannel32(reader);
-                int bytesPerSample = (reader.WaveFormat.BitsPerSample / 8) * channelStream.WaveFormat.Channels;
-                channelStream.Dispose();
-                reader.Dispose();
+                int bytesPerSample = 1;
+
+                if (strPath.ToLower().EndsWith(".mp3"))
+                {
+                    Mp3FileReader reader = new Mp3FileReader(strPath,
+                        wf => new NAudio.FileFormats.Mp3.DmoMp3FrameDecompressor(wf));
+                    WaveChannel32 channelStream = new WaveChannel32(reader);
+                    bytesPerSample = (reader.WaveFormat.BitsPerSample/8)*channelStream.WaveFormat.Channels;
+                    channelStream.Dispose();
+                    reader.Dispose();
+                }else
+                    if (strPath.ToLower().EndsWith(".flac"))
+                {
+                        //NAudio.Wave.AudioFileReader
+                    NAudio.Wave.AudioFileReader reader = new AudioFileReader(strPath);
+                    WaveChannel32 channelStream = new WaveChannel32(reader);
+                    bytesPerSample = (reader.WaveFormat.BitsPerSample / 8) * channelStream.WaveFormat.Channels;
+                    channelStream.Dispose();
+                    reader.Dispose(); 
+                }
                 using (Graphics g = Graphics.FromImage(bmp))
                 {
                     g.Clear(Color.Transparent);
@@ -59,7 +75,16 @@ namespace music.local.Bussiness
                     //Pen pen2 = new Pen(Color.FromArgb(255,150,150,150)) {Width = (float) 0.1};
                     //Pen pen3 = new Pen(Color.FromArgb(255, 170, 170, 170)) { Width = (float)0.1 };
 
-                    Stream wavestream = new Mp3FileReader(strPath, wf => new NAudio.FileFormats.Mp3.DmoMp3FrameDecompressor(wf));
+                    Stream wavestream;
+                    if (strPath.ToLower().EndsWith(".mp3"))
+                    {
+                        wavestream = new Mp3FileReader(strPath,
+                            wf => new NAudio.FileFormats.Mp3.DmoMp3FrameDecompressor(wf));
+                    }
+                    else
+                    {
+                        wavestream = new AudioFileReader(strPath);
+                    }
                     var samplesPerPixel = (int)(wavestream.Length / bytesPerSample) / width *3;
                     wavestream.Position = 0;
                     byte[] waveData1 = new byte[samplesPerPixel * bytesPerSample];

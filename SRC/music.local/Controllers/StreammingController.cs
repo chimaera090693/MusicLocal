@@ -76,12 +76,15 @@ namespace music.local.Controllers
                 // status code là partial content.
                 response.StatusCode = HttpStatusCode.PartialContent;
                 response.Headers.TransferEncodingChunked = true;
-                if (fileInfo.Extension.Equals(".oga") || fileInfo.Extension.Equals(".mp3"))
+                if (fileInfo.Extension.ToLower().Equals(".oga") 
+                    || fileInfo.Extension.ToLower().Equals(".mp3") 
+                    || fileInfo.Extension.ToLower().Equals(".flac"))
                 {
                     response.Content = AudioContent(fileInfo, start, end);
                     response.Content.Headers.ContentLength = end - start + 1;
                     response.Headers.TransferEncodingChunked = null;
-                    response.Content.Headers.ContentType = new MediaTypeHeaderValue("audio/mpeg3");
+                    response.Content.Headers.ContentType = new MediaTypeHeaderValue(MediaUtilities.GetMimeType(fileInfo.Extension));
+                    
                 }
                 else
                 {
