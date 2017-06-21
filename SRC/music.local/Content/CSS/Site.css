@@ -6,6 +6,9 @@
 }
 
 /*nav singer*/
+ul.nav li{
+    opacity: 0.8;
+}
 ul.nav > li.active > a {
     background-color: #ddd !important;
 }
