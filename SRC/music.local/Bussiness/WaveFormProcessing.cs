@@ -16,7 +16,7 @@ namespace music.local.Bussiness
         public static ActionResult DemoDraw(string fn = "")
         {
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
-            var mp3Path = physPath + (fn==""? @"\Music\Millenario - Elisa.mp3": fn);
+            var mp3Path = physPath + (fn==""? @"\Music\Thả vào mưa - Trung Quân .flac" : fn);
             var imgPath = physPath + "\\_image\\" + Common.GetMd5Hash(mp3Path) + ".png";
 
             if (!Directory.Exists(physPath + "\\_image"))
@@ -85,7 +85,7 @@ namespace music.local.Bussiness
                     {
                         wavestream = new AudioFileReader(strPath);
                     }
-                    var samplesPerPixel = (int)(wavestream.Length / bytesPerSample) / width *3;
+                    var samplesPerPixel = (int)(wavestream.Length / bytesPerSample) / width*2;
                     wavestream.Position = 0;
                     byte[] waveData1 = new byte[samplesPerPixel * bytesPerSample];
                     //wavestream.Position =  (width * bytesPerSample * samplesPerPixel);
@@ -160,7 +160,7 @@ namespace music.local.Bussiness
 
                 if (!string.IsNullOrEmpty(hash) && !Common.IsTesting())
                 {
-                   bmp.Save(physPath + "\\_image\\" + hash + ".png", ImageFormat.Png);
+                  // bmp.Save(physPath + "\\_image\\" + hash + ".png", ImageFormat.Png);
                 }
                 bmp.Dispose();
                 return image;
