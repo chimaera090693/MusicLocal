@@ -160,7 +160,7 @@ namespace music.local.Bussiness
 
                 if (!string.IsNullOrEmpty(hash) && !Common.IsTesting())
                 {
-                  // bmp.Save(physPath + "\\_image\\" + hash + ".png", ImageFormat.Png);
+                  bmp.Save(physPath + "\\_image\\" + hash + ".png", ImageFormat.Png);
                 }
                 bmp.Dispose();
                 return image;
