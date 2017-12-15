@@ -24,7 +24,7 @@ namespace music.local.Bussiness
             var physPath = WebConfigurationManager.AppSettings["PhysicalPath"];
             var stParent = new SoundTrackModel();
             stParent.FilePath = "";
-            list = ReclusiveTree(physPath, (int)TrackType.Singer, ref stParent);
+            list = ReclusiveTree(physPath, (int)TrackType.Singer, ref stParent, ".mp3;.flac");
             return list;
         }
 
@@ -59,26 +59,28 @@ namespace music.local.Bussiness
                             st.ParentGid = parent.Gid;
                             st.FilePath = parent.FilePath + "\\" + dirInf.Name;
                             //if (extType.Equals(".mp3"))
-                               st.ListTrack = ReclusiveTree(physPath + "\\" + st.FilePath, lever + 1, ref st);
+                               st.ListTrack = ReclusiveTree(physPath + "\\" + st.FilePath, lever + 1, ref st, extType);
                             list.Add(st);
                         }
                     }
                 }
-
-                var listFile = Directory.EnumerateFiles(parentPath, "*", SearchOption.TopDirectoryOnly).ToList();
+                var extensions = extType.Split(';').Concat(arrImageExt);
+                var allowedExtensions = new HashSet<string>(extensions, StringComparer.OrdinalIgnoreCase);
+                var dirInfor = new DirectoryInfo(parentPath);
+                var listFile = dirInfor.EnumerateFiles( "*.*", SearchOption.TopDirectoryOnly).Where(f => allowedExtensions.Contains(f.Extension)).ToList();
                 if (listFile.Any())
                 {
                     var count = 0;
                     //foreach file
                     foreach (var item in listFile)
                     {
-                        var file = new FileInfo(item);
-                        var extension = Path.GetExtension(item);
-                        if (extension != null && (extension.ToLower() != extType) && arrImageExt.Contains(extension.ToLower()))
+                        //var file = new FileInfo(item);
+                        //var extension = Path.GetExtension(item);
+                        if (item != null && (item.Extension.ToLower() != extType) && arrImageExt.Contains(item.Extension.ToLower()))
                         {
                             //extension = extension.ToLower();
                             // image file
-                            parent.CoverPath = parent.FilePath + "\\" + file.Name;
+                            parent.CoverPath = parent.FilePath + "\\" + item.Name;
                         }
                         else
                         {
@@ -86,10 +88,10 @@ namespace music.local.Bussiness
                             SoundTrackModel st = new SoundTrackModel();
                             st.ItemType = (int)TrackType.Track;
                             st.order = count;
-                            st.Name = file.Name;
+                            st.Name = item.Name;
                             st.ParentGid = parent.Gid;
                             st.CoverPath = parent.Name;
-                            st.FilePath = parent.FilePath + "\\" + file.Name;
+                            st.FilePath = parent.FilePath + "\\" + item.Name;
                             //st.ListTrack = ReclusiveTree(st.FilePath, lever + 1, ref st);
                             count++;
                             list.Add(st);
