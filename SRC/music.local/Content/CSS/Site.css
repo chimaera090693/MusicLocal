@@ -291,7 +291,7 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
 
 /*style menu*/
 #menu {
-    position: absolute;
+    position: fixed;
     padding: 0px;
     top: 0px;
     width: 100px;
