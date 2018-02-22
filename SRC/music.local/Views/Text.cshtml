@@ -1,28 +1,20 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Text</title>
-    <link href="~/Content/bootstrap3.3.7/css/bootstrap.css" rel="stylesheet" />
-    <script src="~/Content/JS/jquery-3.1.1.min.js"></script>
-    <style>
-        .content {
-            width: 600px;
-            margin: 0 auto;
-            padding-top: 20px;
-        }
+<style>
+    .content {
+        width: 600px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
 
-        textarea {
-            resize: none;
-        }
-    </style>
-</head>
-<body>
+    textarea {
+        resize: none;
+    }
+</style>
+
     <div class="content">
         <div class="row">
             <input id="txtInput" style="width:340px; display:inline-block" class="form-control" /><a onclick="GetBinary()" class="btn btn-primary">Get byte</a>
@@ -35,8 +27,6 @@
             <textarea class="form-control" placeholder="Base64String result" readonly style="width:500px; height:200px" id="txtBase64"></textarea>
         </div>
     </div>
-</body>
-</html>
 
 <script>
     function GetBinary() {
