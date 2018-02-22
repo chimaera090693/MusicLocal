@@ -6,9 +6,10 @@
 }
 
 /*nav singer*/
-ul.nav li{
+ul.nav li {
     opacity: 0.8;
 }
+
 ul.nav > li.active > a {
     background-color: #ddd !important;
 }
@@ -286,3 +287,47 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     overflow-y: scroll;
 }
 /*end Ebook ==============================================================*/
+
+
+/*style menu*/
+#menu {
+    position: absolute;
+    padding: 0px;
+    top: 0px;
+    width: 100px;
+    height: 100vh;
+    background-color: #c1c1c1;
+    left: -90px;
+    opacity: 0;
+    transition-property: left, opacity;
+    transition-duration: 1s;
+    transition-delay: 0s;
+}
+
+    #menu:hover {
+        left: 0px;
+        opacity: 1;
+    }
+    #menu > li:first-child {
+        padding-top: 25px;
+        background: none !important;
+    }
+    #menu > li {
+        margin: 1px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #fff;
+        display: block;
+        text-align:center;
+    }
+
+    #menu > li:hover {
+        background: #888;
+    }
+    #menu > li > a {
+        text-decoration:none;
+        padding:15px;
+        font-size:16px;
+    }
+
+/*end style menu ==============================================================*/
