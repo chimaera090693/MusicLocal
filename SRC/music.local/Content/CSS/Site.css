@@ -296,7 +296,7 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
     top: 0px;
     width: 100px;
     height: 100vh;
-    background-color: #c1c1c1;
+    background-color: #cedaed;
     left: -90px;
     opacity: 0;
     transition-property: left, opacity;
@@ -306,7 +306,7 @@ ul.nav > li > a:hover, ul.nav > li > a:focus {
 
     #menu:hover {
         left: 0px;
-        opacity: 1;
+        opacity: 0.9;
     }
     #menu > li:first-child {
         padding-top: 25px;
