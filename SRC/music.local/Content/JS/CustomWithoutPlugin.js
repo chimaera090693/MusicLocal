@@ -1,6 +1,6 @@
 ﻿/// không có plugin player
-/// <reference path="~/Content/JS/CookieHelper.js" />
-/// <reference path="~/Content/JS/Common.js" />
+/// <reference path="./CookieHelper.js" />
+/// <reference path="./Common.js" />
 
 //volume
 $.crntVolume = 1;
@@ -46,7 +46,9 @@ $(function () {
     InitLoop();
 
     $("body").keypress(function (event) {
+       
         var e = event.originalEvent;
+        
         var crntPid = "";
         if ($.myCrntID == undefined || $.myCrntID == "") {
             //select thằng active đầu tiên
@@ -76,6 +78,7 @@ $(function () {
 
         if (e.charCode < 33 || e.charCode > 175) return true;
         var cls = crntPid + "-" + e.key + ":first";
+        console.log(cls);
         var element = $(".tab-content .tab-pane.active .treeWraper ." + cls);
         if ($(element).length < 1) return true;
         //$("body").animate({

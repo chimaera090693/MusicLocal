@@ -9,7 +9,7 @@
     var src = "";
     var playAction = "";
     var ids = "";
-    var scroolMark = Model.ParentGid +"-"+ Model.Name[0];
+    var scroolMark = (Model.ParentGid +"-"+ Model.Name[0]).ToLower();
     switch ((TrackType)Model.ItemType)
     {
         case TrackType.Group:
