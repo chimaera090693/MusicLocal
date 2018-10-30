@@ -14,6 +14,14 @@ namespace music.local.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Intro()
+        {
+            var listAlbum = TrackProcessing.GetTree();
+            ViewBag.Data = listAlbum;
+            return View();
+        }
+
+
         [CustomAuthFilter]
         public ActionResult Index()
         {
