@@ -20,6 +20,9 @@ namespace music.local
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             XmlConfigurator.Configure();
+
+
+
         }
     }
 }

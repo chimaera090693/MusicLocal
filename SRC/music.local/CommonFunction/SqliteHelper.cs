@@ -37,6 +37,25 @@ namespace music.local.CommonFunction
                     command.ExecuteNonQuery();
                     command.Dispose();
                 }
+
+                if (!CheckExistsTable("Files"))
+                {
+                    string sql =
+                        "create table Files (Identity nvarchar(50), Folder  nvarchar(1000), FileName nvarchar(1000) , FullPath nvarchar(1000), AdditionText nvarchar(5000))";
+                    command = new SQLiteCommand(sql, Connection);
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                }
+
+                if (!CheckExistsTable("Files"))
+                {
+                    string sql =
+                        "create table Files (Identity nvarchar(50), Folder  nvarchar(1000), FileName nvarchar(1000) , FullPath nvarchar(1000), AdditionText nvarchar(5000))";
+                    command = new SQLiteCommand(sql, Connection);
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                }
+
             }
             finally
             {

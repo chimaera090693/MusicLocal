@@ -212,14 +212,21 @@ namespace music.local
         {
             using (var reader = new Mp3File(filePath))
             {
-                Id3Tag tag = reader.GetTag(Id3TagFamily.Version2x);
-                if (tag != null)
+                try
                 {
-                    if (tag.Pictures.Count > 0)
+                    Id3Tag tag = reader.GetTag(Id3TagFamily.Version2x);
+                    if (tag != null)
                     {
-                        var picData = tag.Pictures[0].PictureData;
-                        return new FileContentResult(picData, "image/png");
+                        if (tag.Pictures.Count > 0)
+                        {
+                            var picData = tag.Pictures[0].PictureData;
+                            return new FileContentResult(picData, "image/png");
+                        }
                     }
+                }
+                catch (Exception)
+                {
+                    //ignore
                 }
             }
             return null;
