@@ -77,7 +77,7 @@ $(function () {
         }
 
         if (e.charCode < 33 || e.charCode > 175) return true;
-        var cls = crntPid + "-" + e.key + ":first";
+        var cls = crntPid + "-tagkey-" + e.key + ":first";
         console.log(cls);
         var element = $(".tab-content .tab-pane.active .treeWraper ." + cls);
         if ($(element).length < 1) return true;
