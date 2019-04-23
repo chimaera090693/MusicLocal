@@ -2,7 +2,7 @@
 /// Common variable
 var defaultTitle = "Far, anyway!";
 var enableLogErr = true;
-var enableLogDebug = false;
+var enableLogDebug = true;
 ///isloop
 ///0: no loop
 ///1: loop this track

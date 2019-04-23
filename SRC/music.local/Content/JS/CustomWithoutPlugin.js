@@ -45,10 +45,12 @@ $(function () {
     $.myCrntAlbunmCover = $("#cover").attr("src");
     InitLoop();
 
-    $("body").keypress(function (event) {
+    LogDebug("start init key press");
+    $("body").keydown(function (event) {
        
         var e = event.originalEvent;
-        
+        LogDebug("key pressed: ");
+        LogDebug(e);
         var crntPid = "";
         if ($.myCrntID == undefined || $.myCrntID == "") {
             //select thằng active đầu tiên
@@ -57,10 +59,11 @@ $(function () {
             crntPid = $.myCrntID.split("-")[0];
         }
         //console.log(e);
-        if (e.charCode == 32) {
+        if (e.keyCode == 32) {
             togglePlay();
             return false;
         }
+      
         switch (e.keyCode) {
             case 37:   //left  => prev
                 $("#btnMyPrev").click();
@@ -76,7 +79,7 @@ $(function () {
                 return false;
         }
 
-        if (e.charCode < 33 || e.charCode > 175) return true;
+        if (e.keyCode < 33 || e.keyCode > 175) return true;
         var cls = crntPid + "-tagkey-" + e.key + ":first";
         console.log(cls);
         var element = $(".tab-content .tab-pane.active .treeWraper ." + cls);
